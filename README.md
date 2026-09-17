@@ -1,3 +1,13 @@
+# Python FastAPI — Study Course
+
+**Start here: [Sequential course and examples](notes/00-course-guide.md).**
+
+The `notes/` directory contains the teaching chapters; `examples/` and `tests/` contain runnable applications and checks. See [version verification and troubleshooting](notes/23-reference-and-troubleshooting.md) for tested versions and limits.
+
+---
+
+## Original course requirements
+
 Create a **complete and extremely detailed set of notes for Python FastAPI**.
 
 The purpose of these notes is to **teach FastAPI from beginner to advanced level**.
