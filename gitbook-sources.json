@@ -19,6 +19,19 @@
         "01-nodejs": "Node.js",
         "02-express": "Express.js"
       }
+    },
+    {
+      "id": "Understanding_react",
+      "title": "React Notes",
+      "description": "Study React with detailed explanations, practical examples and projects.",
+      "repository": "ankitkumar131/Understanding_React",
+      "branch": "arena/01a0b8da-understanding-react",
+      "include": ["[0-9][0-9]-*/*.md", "cheatsheets/*.md", "common-errors/*.md"],
+      "group_titles": {
+        "01-prerequisites": "Prerequisites - ",
+        "02-typescript": "Typescript - ",
+        "03-react-fundamentals": "React-Fundamentals - "
+      }
     }
   ]
 }
