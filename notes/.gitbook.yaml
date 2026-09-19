@@ -1,0 +1,5 @@
+root: ./
+
+structure:
+  readme: 00-course-guide.md
+  summary: SUMMARY.md
