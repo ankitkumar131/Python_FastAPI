@@ -137,8 +137,120 @@ class DashboardTests(unittest.TestCase):
         self.write_generated()
 
     def write_generated(self):
-        for path, text in sync.render(self.config).items():
-            path.write_text(text)
+        sync.write_generated(self.config)
+
+    def add_source_page(self, name, text):
+        path = self.folder / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        data = text.encode('utf-8')
+        path.write_bytes(data)
+        self.manifest['files'][name] = {'source_sha256': sync.digest(data),
+                                        'published_sha256': sync.digest(data)}
+        (self.folder / 'source.json').write_text(json.dumps(self.manifest))
+
+    def test_nested_folders_and_root_files_have_the_correct_depth_and_order(self):
+        self.add_source_page('react-notes/02-typescript/02-types.md', '# Types\n')
+        self.add_source_page('react-notes/01-prerequisites/01-html.md', '# HTML\n')
+        self.add_source_page('react-notes/02-typescript/01-start.md', '# Start\n')
+        self.add_source_page('react-notes/common-errors.md', '# Common errors\n')
+        self.add_source_page('quick-reference.md', '# Quick reference\n')
+        before = (self.folder / 'source.json').read_bytes()
+        self.write_generated()
+        summary = (self.notes / 'SUMMARY.md').read_text()
+        expected = [
+            '  * [react-notes](courses/node-express/react-notes/README.md)',
+            '    * [01-prerequisites](courses/node-express/react-notes/01-prerequisites/README.md)',
+            '      * [HTML](courses/node-express/react-notes/01-prerequisites/01-html.md)',
+            '    * [02-typescript](courses/node-express/react-notes/02-typescript/README.md)',
+            '      * [Start](courses/node-express/react-notes/02-typescript/01-start.md)',
+            '      * [Types](courses/node-express/react-notes/02-typescript/02-types.md)',
+            '    * [Common errors](courses/node-express/react-notes/common-errors.md)',
+        ]
+        self.assertIn('\n'.join(expected), summary)
+        self.assertIn('  * [Quick reference](courses/node-express/quick-reference.md)', summary)
+        index = (self.folder / 'react-notes/02-typescript/README.md').read_text()
+        self.assertIn('[← react-notes](../README.md)', index)
+        self.assertIn('[Start](01-start.md)', index)
+        self.assertIn('  - [01-prerequisites](react-notes/01-prerequisites/README.md)',
+                      (self.folder / 'README.md').read_text())
+        self.assertEqual(before, (self.folder / 'source.json').read_bytes())
+        sync.check(self.config)
+
+    def test_directory_label_overrides_use_full_source_relative_paths(self):
+        self.add_source_page('one/shared/deep/chapter.md', '# One\n')
+        self.add_source_page('two/shared/chapter.md', '# Two\n')
+        self.config['imports'][0]['group_titles'] = {'one/shared': 'Custom name'}
+        self.write_generated()
+        summary = (self.notes / 'SUMMARY.md').read_text()
+        self.assertIn('    * [Custom name](courses/node-express/one/shared/README.md)', summary)
+        self.assertIn('    * [shared](courses/node-express/two/shared/README.md)', summary)
+        self.assertIn('        * [One](courses/node-express/one/shared/deep/chapter.md)', summary)
+        sync.check(self.config)
+
+    def test_imported_directory_readme_is_reused_once_without_modification(self):
+        self.add_source_page('01-node/README.md', '# Original folder introduction\n')
+        data = (self.folder / '01-node/README.md').read_bytes()
+        self.write_generated()
+        self.assertEqual(data, (self.folder / '01-node/README.md').read_bytes())
+        summary = (self.notes / 'SUMMARY.md').read_text()
+        self.assertEqual(summary.count('(courses/node-express/01-node/README.md)'), 1)
+        self.assertIn('    * [Node intro](courses/node-express/01-node/intro.md)', summary)
+        sync.check(self.config)
+
+    def test_source_cannot_replace_reserved_course_overview(self):
+        self.add_source_page('README.md', '# Source root overview\n')
+        with self.assertRaisesRegex(ValueError, 'reserved'):
+            self.write_generated()
+        self.assertEqual((self.folder / 'README.md').read_text(), '# Source root overview\n')
+
+    def test_unmanaged_folder_readme_is_not_overwritten(self):
+        path = self.folder / '01-node/README.md'
+        path.write_text('# My manual index\n')
+        with self.assertRaisesRegex(ValueError, 'unmanaged folder README'):
+            self.write_generated()
+        self.assertEqual(path.read_text(), '# My manual index\n')
+
+    def test_dangling_folder_index_symlink_is_not_followed(self):
+        path = self.folder / '01-node/README.md'
+        path.unlink()
+        target = self.folder / 'do-not-create.md'
+        try:
+            path.symlink_to(target)
+        except (OSError, NotImplementedError) as exc:
+            self.skipTest(f"Symlink creation is not available: {exc}")
+        with self.assertRaisesRegex(ValueError, 'unmanaged folder README'):
+            self.write_generated()
+        self.assertFalse(target.exists())
+
+    def test_stale_generated_folder_indexes_are_removed_but_unmanaged_files_remain(self):
+        self.add_source_page('retired/nested/chapter.md', '# Retired\n')
+        self.write_generated()
+        (self.folder / 'retired/nested/chapter.md').unlink()
+        del self.manifest['files']['retired/nested/chapter.md']
+        (self.folder / 'source.json').write_text(json.dumps(self.manifest))
+        unrelated = self.folder / 'retired/personal/README.md'
+        unrelated.parent.mkdir()
+        unrelated.write_text('# Personal notes\n')
+        with self.assertRaisesRegex(ValueError, 'Stale folder indexes'):
+            sync.check(self.config)
+        self.write_generated()
+        self.assertFalse((self.folder / 'retired/README.md').exists())
+        self.assertFalse((self.folder / 'retired/nested/README.md').exists())
+        self.assertEqual(unrelated.read_text(), '# Personal notes\n')
+        sync.check(self.config)
+
+    def test_missing_folder_index_is_detected(self):
+        (self.folder / '01-node/README.md').unlink()
+        with self.assertRaisesRegex(ValueError, 'stale'):
+            sync.check(self.config)
+
+    def test_spaces_in_directory_and_file_paths_are_encoded_in_navigation(self):
+        self.add_source_page('extra notes/first lesson.md', '# First lesson\n')
+        self.write_generated()
+        summary = (self.notes / 'SUMMARY.md').read_text()
+        self.assertIn('(courses/node-express/extra%20notes/README.md)', summary)
+        self.assertIn('(courses/node-express/extra%20notes/first%20lesson.md)', summary)
+        sync.check(self.config)
 
     def test_cards_and_sidebar_open_existing_local_courses(self):
         dashboard = (self.notes / 'README.md').read_text()

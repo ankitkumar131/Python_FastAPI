@@ -17,12 +17,7 @@
         "[0-9][0-9]-*/*.md",
         "cheatsheets/*.md",
         "common-errors/*.md"
-      ],
-      "group_titles": {
-        "00-web-fundamentals": "Web & backend fundamentals",
-        "01-nodejs": "Node.js",
-        "02-express": "Express.js"
-      }
+      ]
     },
     {
       "id": "understanding-react",
@@ -34,10 +29,7 @@
         "react-notes/[0-9][0-9]-*/*.md",
         "react-notes/cheatsheets/*.md",
         "react-notes/common-errors.md"
-      ],
-      "group_titles": {
-        "react-notes": "React + TypeScript"
-      }
+      ]
     }
   ]
 }

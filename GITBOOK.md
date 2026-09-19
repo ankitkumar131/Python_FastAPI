@@ -16,8 +16,10 @@ not GitHub source pages. The sidebar groups each course's chapters under its own
 overview. The FastAPI overview remains at `notes/00-course-guide.md`; its contents
 have not moved. The new homepage is `notes/README.md`.
 
-There are **224 navigation pages**: one dashboard, 25 FastAPI pages, one Node/Express
-overview plus 47 chapters, and one React overview plus 149 chapter/reference pages.
+There are **247 navigation pages**: one dashboard, 25 FastAPI pages, one Node/Express
+overview plus 47 chapters, and one React overview plus 149 chapter/reference pages,
+plus **23 generated folder indexes** (3 Node/Express and 20 React). These indexes
+are navigation pages, not additional lessons copied from the source.
 React includes all 18 numbered sections (139 lessons), nine cheatsheets and one
 common-errors page. Its source revision is recorded in the generated manifest.
 
@@ -25,6 +27,56 @@ One React link points at `../08-forms-validation/` rather than a Markdown page;
 it is marked unavailable instead of producing a broken navigation link. All five
 forms/validation chapters are available through the course overview and sidebar.
 Node/Express retains its 29 unavailable references; no fictional chapters are added.
+
+## Directory structure is preserved in navigation
+
+The sidebar now mirrors each imported course's selected source directory tree,
+not a flat list with a repeated prefix. GitBook reads the nested links in
+`notes/SUMMARY.md`; keeping folders on disk alone does not override that file.
+
+```text
+Understanding_React Notes
+└── react-notes
+    ├── 01-prerequisites
+    │   ├── 01 — HTML Basics …
+    │   ├── 02 — CSS Basics …
+    │   └── …
+    ├── 02-typescript
+    │   ├── 01 — Introduction to TypeScript
+    │   └── …
+    ├── 03-react-fundamentals
+    ├── … (remaining numbered source folders, through 18-interview)
+    ├── cheatsheets
+    └── Common Errors — Decoded, Debugged, Fixed
+```
+
+- Folder names are literal source directory names by default, including the
+  `react-notes` wrapper and numeric prefixes. Entries use sorted source path order.
+- Each folder is a real parent page with its children nested beneath it. The tool
+  generates a small marked `README.md` inside that folder, listing its direct children.
+- If a directory `README.md` is already selected as a source file, it is reused
+  unchanged as the parent page and not listed twice. The course-root README remains
+  reserved for the generated course overview.
+- All imported lesson paths, lesson contents and source manifests are unchanged by
+  this navigation update. Generated indexes are separate from source-file hashes.
+- Node/Express uses the same folder-aware layout. FastAPI's flat numbered source
+  chapters remain flat under their course overview.
+- Only folders containing selected Markdown pages appear. Excluded application
+  files, empty folders and other source material are not automatically published.
+- Optional `group_titles` overrides use **full source-relative folder paths**, such
+  as `react-notes/02-typescript`. They only rename labels, never flatten or reorder
+  the tree. The active registry omits overrides to show your actual folder names.
+
+Regenerate this structure offline with `python -X utf8 tools/sync_gitbook.py`.
+Use `--refresh` when upstream source files have changed. Both commands regenerate
+folder indexes and remove obsolete indexes bearing the tool's marker. They do not
+remove unrelated local README files; generation refuses to overwrite an unmanaged
+folder README. Do not manually maintain generated indexes or the sidebar in GitBook.
+
+After Git Sync imports this update, expand the parent pages in GitBook's preview.
+Check important public URLs and any redirects: GitBook can derive URLs from page
+hierarchy, so unchanged source file paths do not guarantee unchanged hosted URLs.
+The hosted UI, expansion state and public redirects have not been verified here.
 
 ## GitBook settings: keep the existing connection
 
@@ -150,8 +202,8 @@ Add an entry to `imports` in `gitbook-sources.json` with:
 - `include` patterns matching that repository's real Markdown chapters. Patterns
   use Python's `fnmatch` syntax; `*` can match slashes. Do not include setup prompts,
   unrelated administrative files or the root `README.md`/`SUMMARY.md` as chapters.
-- Optional `group_titles` mapping its existing top-level directories to readable
-  names for the generated course index and sidebar.
+- Optional `group_titles` mapping full source-relative directory paths to display
+  labels; omit it to preserve literal folder names in the nested navigation.
 
 Run `--refresh`, review the new index and validate. Another course card and sidebar
 group will be generated without requiring a new GitBook space or guessed URLs.
@@ -160,10 +212,12 @@ private content: publish only repositories you own or are authorized to redistri
 
 ## Verification for this dashboard change
 
-The complete Python test suite passes **37 tests**, including 19 offline dashboard/importer
+The complete Python test suite passes **46 tests**, including 28 offline dashboard/importer
 tests. Both documentation checkers pass: the original 25-page FastAPI course and the
-three-course, 224-page GitBook navigation. All 149 React publication files retain
-source-code fences verbatim; hashes and local/card links validate. The existing
+three-course, 247-page GitBook navigation. All imported chapter files and
+source manifests are byte-for-byte unchanged by the navigation update; hashes and
+local/card links validate. Tests cover deep nesting, folder ordering, reused source
+READMEs, safe stale-index cleanup, unmanaged-file protection and encoded paths. The existing
 upstream Starlette/AnyIO deprecation warning remains unrelated to the dashboard.
 
 Hosted GitBook rendering/publishing was not executed from this session. After Git

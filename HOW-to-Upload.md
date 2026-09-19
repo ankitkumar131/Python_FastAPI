@@ -9,8 +9,8 @@ Verified against the repository contents and publishing tool on **19 September 2
 > as a page in the GitBook course sidebar.
 >
 > **Implementation update:** React is now imported into this publishing repository: **149
-> selected pages** (139 chapters, 9 cheatsheets and one common-errors page), with **224
-> total navigation pages** across three courses. The registry corrections below are
+> selected pages** (139 chapters, 9 cheatsheets and one common-errors page), with **247
+> total navigation pages** (including 23 generated folder indexes) across three courses. The registry corrections below are
 > already applied. Pull the publishing branch on a new PC; use this guide to understand
 > the configuration and refresh future updates. GitBook account-side sync, preview and
 > publication still need verification; a repository import is not hosted-site confirmation.
@@ -120,7 +120,7 @@ needed three corrections. They are now applied; the table documents the old mist
 |---|---|---|
 | `"id": "Understanding_react"` | The importer permits lowercase letters, digits and hyphens only; uppercase/underscore fail validation | `"id": "understanding-react"` |
 | `"include": ["[0-9][0-9]-*/*.md", ...]` | This looks for numbered folders at repository root, but React's folders are inside `react-notes/` | `"include": ["react-notes/[0-9][0-9]-*/*.md"]` |
-| Group keys such as `"01-prerequisites"` | The current renderer groups by the **first** component of a source path; here that component is `react-notes` | `"group_titles": {"react-notes": "React + TypeScript"}` |
+| Group keys such as `"01-prerequisites"` | Nested label overrides need the full source-relative folder path | Omit `group_titles` for literal folder names, or use a key such as `"react-notes/01-prerequisites"` |
 
 **On an older checkout, replace the existing React entry; do not append a duplicate.** Section 7 supplies
 the complete corrected file for the currently known three-course setup.
@@ -367,6 +367,7 @@ path. This is a read-only check; it does not change that repository.
 | `notes/courses/understanding-react/source.json` | **Generated** | Source commit, file hashes and unavailable-reference record |
 | `notes/courses/understanding-react/react-notes/...` | **Generated** | Publication copies of the selected source chapters |
 | Existing `notes/courses/node-express/...` | May be refreshed automatically | `--refresh` updates every configured import, not just React |
+| `notes/courses/<course>/<source-folder>/README.md` | **Generated**, unless already selected from the source | Folder landing pages support the nested sidebar; do not edit by hand |
 | Existing numbered FastAPI chapter files | No manual course changes needed | The local FastAPI course remains in place |
 
 In short: **the only content-configuration file you manually edit is
@@ -408,12 +409,7 @@ React entry. If you have since added other courses, retain those additional entr
         "[0-9][0-9]-*/*.md",
         "cheatsheets/*.md",
         "common-errors/*.md"
-      ],
-      "group_titles": {
-        "00-web-fundamentals": "Web & backend fundamentals",
-        "01-nodejs": "Node.js",
-        "02-express": "Express.js"
-      }
+      ]
     },
     {
       "id": "understanding-react",
@@ -425,10 +421,7 @@ React entry. If you have since added other courses, retain those additional entr
         "react-notes/[0-9][0-9]-*/*.md",
         "react-notes/cheatsheets/*.md",
         "react-notes/common-errors.md"
-      ],
-      "group_titles": {
-        "react-notes": "React + TypeScript"
-      }
+      ]
     }
   ]
 }
@@ -453,10 +446,11 @@ React entry. If you have since added other courses, retain those additional entr
   path and `*.md` selects Markdown chapter files. Python's fnmatch treats `*` as
   able to match slashes, so matching deeper chapter paths are included too. The
   other two patterns include the cheatsheets and the exact common-errors page.
-- **`group_titles`** supplies a readable label for the first source path component.
-  This importer sees `react-notes` as that component, so use that exact key. The
-  inner parts still appear in correct sorted path order; this setting does not
-  create separate GitBook spaces or nested sidebar groups.
+- **`group_titles`** is optional and omitted here to preserve literal folder names.
+  Navigation automatically mirrors every selected source folder at its original
+  depth, in sorted path order. To rename a folder label, use its full source-relative
+  path, for example `"react-notes/02-typescript": "TypeScript"`. This changes only
+  the display label; the folders still appear as nested pages in the same space.
 
 JSON uses double quotes, has commas **between** objects, and does not support
 comments or trailing commas. The Node/Express object and React object must be two
@@ -549,7 +543,7 @@ What happens:
 5. It writes publication copies under `notes/courses/<id>/` and records hashes.
 6. It marks references to unavailable/excluded chapters rather than publishing
    fictional pages. Fenced examples are not executed or rewritten.
-7. It generates every imported course overview, the dashboard and the sidebar.
+7. It generates every course overview, folder index, dashboard and nested sidebar.
 8. It validates generated content and local navigation.
 
 No npm package installation or source code execution happens as part of the import.
@@ -561,22 +555,23 @@ portion and final check read:
 
 ```text
 Imported 149 chapters from ankitkumar131/Understanding_React@bcc0871cf916fb19731e198f82dcf28daac209b9; marked 1 unavailable references.
-GitBook dashboard verified: 3 courses, 224 unique pages; local/card links and imported-file hashes valid.
+GitBook dashboard verified: 3 courses, 247 unique pages; local/card links and imported-file hashes valid.
 ```
 
 There will also be a Node/Express import message. Future commits can legitimately
 change these numbers, the SHA and the number of unavailable references. Success of
 the validation matters more than matching a historical count exactly.
 
-The 224-page baseline is:
+The 247-page baseline is:
 
 ```text
 1 dashboard
 25 FastAPI pages
 1 Node/Express overview + 47 Node/Express chapters
 1 React overview + 149 React chapter/reference pages
+23 folder indexes (3 Node/Express + 20 React)
 -----------------------------------------------
-224 navigation pages
+247 navigation pages
 ```
 
 A missing-reference message is not the same as an import failure. In this revision,
@@ -607,9 +602,10 @@ Python_FastAPI/
             ├── README.md                # Generated React overview
             ├── source.json              # Generated provenance and hashes
             └── react-notes/              # Source hierarchy is preserved
-                ├── 01-prerequisites/     # 11 baseline chapters
-                ├── 02-typescript/        # 11 baseline chapters
-                ├── 03-react-fundamentals/ # 12 baseline chapters
+                ├── README.md            # Generated wrapper-folder index
+                ├── 01-prerequisites/     # Folder README + 11 chapters
+                ├── 02-typescript/        # Folder README + 11 chapters
+                ├── 03-react-fundamentals/ # Folder README + 12 chapters
                 ├── 04-state-and-hooks/   # 10 chapters
                 ├── ...                  # Parts 05–17; see section 3 for counts
                 ├── 18-interview/         # 4 chapters
@@ -659,18 +655,37 @@ same file works with your current GitBook site address or a later custom domain.
 
 ### File: `notes/SUMMARY.md` — generated navigation
 
-The React overview becomes another top-level course item. Its actual imported
-chapters become children. For example, the generated file contains entries like:
+The React overview is a top-level course item. Every selected source folder becomes
+a parent page, with deeper folders and chapters indented beneath it. For example:
 
 ```markdown
 * [Understanding_React Notes](courses/understanding-react/README.md)
-  * [React + TypeScript · 01 — HTML Basics](courses/understanding-react/react-notes/01-prerequisites/01-html-basics.md)
+  * [react-notes](courses/understanding-react/react-notes/README.md)
+    * [01-prerequisites](courses/understanding-react/react-notes/01-prerequisites/README.md)
+      * [01 — HTML Basics (the HTML React Actually Produces)](courses/understanding-react/react-notes/01-prerequisites/01-html-basics.md)
+    * [02-typescript](courses/understanding-react/react-notes/02-typescript/README.md)
+      * [01 — Introduction to TypeScript](courses/understanding-react/react-notes/02-typescript/01-typescript-introduction.md)
 ```
 
-This is an **illustrative excerpt**, not the complete sidebar and not a replacement
-file. Exact chapter titles are read from their first Markdown H1 headings. The
-full generated sidebar also retains Dashboard, all FastAPI pages, Node/Express and
-all selected React chapters. Never replace it with only the two lines above.
+This is an **illustrative excerpt**, not the complete sidebar. Chapter titles come
+from their first Markdown H1 headings. The full file retains Dashboard, FastAPI,
+Node/Express and every selected React chapter. Do not replace it with this excerpt.
+
+### Generated folder indexes: `<source-folder>/README.md`
+
+For example, `notes/courses/understanding-react/react-notes/02-typescript/README.md`
+is a generated parent page listing that folder's chapters. Its header contains a
+marker identifying it as generated navigation. The source lesson files and manifest
+hashes are not changed to add these indexes. If a folder README is itself selected
+from the source, the tool uses it unchanged rather than generating over it.
+
+Generation rejects an unrelated local README rather than silently overwriting it.
+Obsolete folder indexes are removed only when they carry the generator marker and
+are not selected source files. Re-run the tool instead of editing generated pages.
+
+The default labels retain literal directory names and the `react-notes` wrapper.
+This works for future repositories and deeper folders automatically. Only selected
+Markdown content appears; the runnable project and excluded source files stay out.
 
 ### File: `notes/courses/understanding-react/README.md`
 
@@ -729,7 +744,7 @@ python -X utf8 -m unittest discover -s tests -p test_gitbook_sync.py -v
    local links still work. It is not a React runtime test.
 3. The unittest command runs the importer/navigation regression tests. `-s tests`
    selects the test directory, `-p` selects the file and `-v` shows individual names.
-   The guide-era importer suite has 19 tests; later versions may have more.
+   The current importer suite has 28 tests; later versions may have more.
 
 These commands do not run React/TypeScript examples in a browser and cannot
 publish or visually preview the hosted GitBook site. That check comes after sync.
@@ -841,7 +856,9 @@ create a second site or space merely to follow this single-space workflow.
 5. Confirm all three course cards exist.
 6. Click Understanding_React Notes, then a prerequisites page, a TypeScript page and
    a state/hooks page.
-7. Use the sidebar to return to Dashboard; test the FastAPI and Node cards too.
+7. Expand `react-notes` and the numbered folder pages. Verify chapters are children
+   of the correct folders. Return to Dashboard and test the FastAPI and Node cards too.
+   Check important public URLs/redirects; GitBook may derive URLs from page hierarchy.
 8. If your GitBook workflow stages a change request or requires publication,
    merge/publish the reviewed change through the offered controls. If your existing
    configuration publishes synced changes automatically, verify the live result.
@@ -934,7 +951,7 @@ change, not quietly removing protections.
 | Duplicate React card or duplicate course ID | Replace the existing incorrect entry; do not append another entry for the same course |
 | `source.json` is missing | Use `--refresh` first for a new course; do not pre-create its directory without a manifest |
 | `was edited locally; preserve that edit before refreshing` | A generated chapter's bytes changed; preserve the edit and move the real correction upstream. On Windows also check automatic CRLF conversion. Do not fake the stored hash |
-| Missing group names / one broad React group | `group_titles` uses the first source path component; use `react-notes`, not its nested part directories. Nested group support would require a separate renderer change |
+| Flat chapter list / missing folder hierarchy | Pull the updated importer, run `python -X utf8 tools/sync_gitbook.py`, commit the generated folder indexes and sidebar, then confirm GitBook synced that commit. Label overrides use full source-relative paths |
 | Broken link to `../05-react-concepts/01-component-communication.md` | An older importer missed code-formatted Markdown labels; pull the fixed tool described in section 16, then refresh and check |
 | `--check` reports stale dashboard/sidebar | Regenerate after changing titles/settings; for new source content use `--refresh`, not only regeneration |
 | GitBook still displays two cards | Verify you committed generated dashboard/sidebar/course files, pushed the connected branch, and GitBook imported that commit |
@@ -1028,12 +1045,12 @@ modify a test file for each newly configured repository.
 
 - The source repository is public, and the requested branch was read successfully.
 - The configured patterns selected 139 lessons and ten reference pages at the recorded commit.
-- The actual repository import produced three course groups and 224 unique sidebar pages,
+- The actual repository import produced three course groups and 247 unique sidebar pages,
   with local/card links and imported-file hashes passing validation.
 - One directory-only link was safely marked unavailable; all five destination-section
   chapters are included. The previously absent Part 5 chapter now links normally.
-- The importer regression suite passed 19 tests after the fix. The full Python test
-  suite also passed **37 tests**, with the previously documented upstream
+- The importer regression suite passed 28 tests including nested navigation checks. The full Python test
+  suite also passed **46 tests**, with the previously documented upstream
   Starlette/AnyIO deprecation warning. No dependency changes were required.
 - The registry corrections, React publication copies, dashboard and sidebar are now
   applied to this publishing repository, not just an isolated rehearsal.
