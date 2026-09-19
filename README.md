@@ -1,8 +1,8 @@
 # Python FastAPI — Study Course
 
-**Start here: [Cognivolt Docs dashboard](notes/README.md)** — choose Python FastAPI or Node/Express notes.
+**Start here: [Cognivolt Docs dashboard](notes/README.md)** — choose Python FastAPI, Node/Express or React + TypeScript notes.
 
-[FastAPI course guide](notes/00-course-guide.md) · [GitBook publishing and refresh instructions](GITBOOK.md)
+[FastAPI course guide](notes/00-course-guide.md) · [GitBook publishing and refresh instructions](GITBOOK.md) · [Detailed React publishing guide](HOW-to-Upload.md)
 
 The `notes/` directory contains the teaching chapters; `examples/` and `tests/` contain runnable applications and checks. See [version verification and troubleshooting](notes/23-reference-and-troubleshooting.md) for tested versions and limits.
 

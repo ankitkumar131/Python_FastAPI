@@ -8,7 +8,7 @@ Study web fundamentals, Node.js and Express with detailed explanations, practica
 
 Read the notes here in GitBook. For runnable project setup and source files, use the original repository.
 
-**Publication copy:** this course is refreshed from its source repository; upstream changes are not automatically imported by GitBook. The source README also lists chapters that are not present in this revision. Only files that actually exist are included below.
+**Publication copy:** this course is refreshed from its source repository; upstream changes are not automatically imported by GitBook. Only files selected from the recorded source revision are included below; source roadmaps may describe additional material.
 
 
 ## Web & backend fundamentals
@@ -67,6 +67,6 @@ Read the notes here in GitBook. For runnable project setup and source files, use
 - [20 — Production Architecture](02-express/20-production-architecture.md)
 - [21 — Project: Complete Express API](02-express/21-complete-express-project.md)
 
-## References to future material
+## Unavailable reference targets
 
-Some source chapters refer to files absent from this branch. Those links are displayed as “not available in this published source revision” instead of sending you to a 404. Code examples are left unchanged.
+Some source links do not resolve to selected pages in this publication. Those links are displayed as “not available in this published source revision” instead of sending you to a 404. Code examples are left unchanged.

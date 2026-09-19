@@ -7,12 +7,14 @@ Pick a course below to read its notes, examples and exercises. Each course opens
 <table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody>
 <tr><td><strong>Python_FastAPI Notes</strong></td><td>Learn FastAPI from Python and HTTP fundamentals to databases, authentication, testing and deployment.</td><td><a href="00-course-guide.md">Open course</a></td></tr>
 <tr><td><strong>Node_Express Notes</strong></td><td>Study web fundamentals, Node.js and Express with detailed explanations, practical examples and projects.</td><td><a href="courses/node-express/README.md">Open course</a></td></tr>
+<tr><td><strong>Understanding_React Notes</strong></td><td>Learn React and TypeScript from web prerequisites through hooks, routing, APIs, testing, authentication and production projects.</td><td><a href="courses/understanding-react/README.md">Open course</a></td></tr>
 </tbody></table>
 
 ### Quick links
 
 - [Python_FastAPI Notes](00-course-guide.md)
 - [Node_Express Notes](courses/node-express/README.md)
+- [Understanding_React Notes](courses/understanding-react/README.md)
 
 ### How to use this library
 

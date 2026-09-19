@@ -206,8 +206,8 @@ def render(config: dict) -> dict[Path, str]:
                     f'— branch `{manifest["branch"]}`, revision [`{sha[:7]}`]({base}/commit/{sha}).', '',
                     'Read the notes here in GitBook. For runnable project setup and source files, use the original repository.', '',
                     '**Publication copy:** this course is refreshed from its source repository; upstream changes '
-                    'are not automatically imported by GitBook. The source README also lists chapters that are not '
-                    'present in this revision. Only files that actually exist are included below.', '']
+                    'are not automatically imported by GitBook. Only files selected from the recorded source '
+                    'revision are included below; source roadmaps may describe additional material.', '']
         group = None
         for name in sorted(manifest['files']):
             current = name.split('/')[0]
@@ -220,8 +220,8 @@ def render(config: dict) -> dict[Path, str]:
             published_path = (folder / name).relative_to(NOTES).as_posix()
             summary.append(f'  * [{group_title} · {page_title}]({published_path})')
         if manifest['unavailable_links']:
-            overview.extend(['', '## References to future material', '',
-                             'Some source chapters refer to files absent from this branch. Those links are displayed '
+            overview.extend(['', '## Unavailable reference targets', '',
+                             'Some source links do not resolve to selected pages in this publication. Those links are displayed '
                              'as “not available in this published source revision” instead of sending you to a 404. '
                              'Code examples are left unchanged.'])
         output[folder / 'README.md'] = '\n'.join(overview) + '\n'

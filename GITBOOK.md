@@ -6,20 +6,25 @@
 Cognivolt Docs
 └── Dashboard
     ├── Python_FastAPI Notes → original FastAPI course (25 pages)
-    └── Node_Express Notes → course overview and 47 imported chapters
+    ├── Node_Express Notes → course overview and 47 imported chapters
+    └── Understanding_React Notes → overview, 139 chapters and 10 reference pages
 ```
 
 The landing page uses GitBook's documented card-table format, plus ordinary quick
-links for Markdown readers. Both cards open **notes inside the same GitBook site**,
+links for Markdown readers. All three cards open **notes inside the same GitBook site**,
 not GitHub source pages. The sidebar groups each course's chapters under its own
 overview. The FastAPI overview remains at `notes/00-course-guide.md`; its contents
 have not moved. The new homepage is `notes/README.md`.
 
-There are 74 navigation pages: one dashboard, 25 FastAPI pages, one Node/Express
-overview and 47 Node/Express chapter pages. The imported branch currently contains
-8 web-fundamentals, 18 Node.js and 21 Express chapters. Its root README lists later
-material that does not exist in that commit. We did **not** create fictional chapters
-or label that absent material as published.
+There are **224 navigation pages**: one dashboard, 25 FastAPI pages, one Node/Express
+overview plus 47 chapters, and one React overview plus 149 chapter/reference pages.
+React includes all 18 numbered sections (139 lessons), nine cheatsheets and one
+common-errors page. Its source revision is recorded in the generated manifest.
+
+One React link points at `../08-forms-validation/` rather than a Markdown page;
+it is marked unavailable instead of producing a broken navigation link. All five
+forms/validation chapters are available through the course overview and sidebar.
+Node/Express retains its 29 unavailable references; no fictional chapters are added.
 
 ## GitBook settings: keep the existing connection
 
@@ -38,11 +43,11 @@ it can replace the space and break links.
 
 `notes/.gitbook.yaml` selects `README.md` as the entry page and `SUMMARY.md` as the
 sidebar. After the push, let Git Sync import the revision, preview the dashboard,
-click both course cards and publish/merge the change as required by your GitBook
+click all three course cards and publish/merge the change as required by your GitBook
 site workflow. This repository cannot authenticate or click Publish on your behalf.
 If the old homepage remains, check the selected branch and last synced commit first.
 
-## How the second repository is published (important)
+## How the source repositories are published (important)
 
 Node/Express source remains here:
 
@@ -50,8 +55,15 @@ Node/Express source remains here:
 - Branch: `arena/01a0b31e-node-express`
 - Initial imported commit: `1dbb069c54d4c5cfe63503118494afb532fab240`
 
+React source remains here:
+
+- Repository: <https://github.com/ankitkumar131/Understanding_React>
+- Branch: `arena/01a0b8da-understanding-react`
+- Imported commit: `bcc0871cf916fb19731e198f82dcf28daac209b9`
+- Full walkthrough: [HOW-to-Upload.md](HOW-to-Upload.md)
+
 This site contains a **revision-tracked publication copy**, not a second live
-GitBook Git Sync connection. Updating the Node repository alone does **not** update
+GitBook Git Sync connection. Updating either source repository alone does **not** update
 this GitBook site. Refresh the copy and push this repository as described below.
 Neither the source repository nor its branch is modified by the importer.
 
@@ -69,25 +81,26 @@ this repository's site configuration.
 ## Source registry and provenance
 
 `gitbook-sources.json` defines the local course plus additional repositories. For
-Node/Express the importer reads only matching Markdown chapter files. It does not
+each source the importer reads only matching Markdown chapter/reference files. It does not
 execute JavaScript, npm scripts, shell commands or instructions found in the source.
 The original root README is replaced in the publication copy by an honest index of
 files actually available; executable project files stay in the source repository.
 
-`notes/courses/node-express/source.json` records the immutable source commit, branch,
+Each course's `source.json` (`notes/courses/node-express/source.json` or
+`notes/courses/understanding-react/source.json`) records the immutable source commit, branch,
 original and published SHA-256 hashes, and references to unavailable chapters.
 Those missing links are rendered as explanatory text instead of broken links.
 Fenced code examples and inline code are not rewritten. Future refreshes restore a
 real link automatically if the referenced chapter has become available.
 
 Do not edit generated imported chapters directly in GitBook or this repository.
-Edit the original Node/Express source, then refresh. The importer refuses to
+Edit the original source repository, then refresh. The importer refuses to
 silently overwrite imported files whose published hashes have changed locally.
 Generated overviews, dashboard and sidebar are rebuilt from the registry; customize
 the registry/rendering code rather than manually editing these generated files.
 The original FastAPI chapter files are not regenerated by this tool.
 
-## Refresh Node/Express after source changes
+## Refresh Node/Express and React after source changes
 
 Requirements: Python 3.11+ and the GitHub CLI (`gh`) with repository read access.
 No additional Python packages are needed for the importer or its offline tests.
@@ -107,7 +120,7 @@ git status --short
    dashboard/navigation. It is explicit network activity, not a background job.
 2. `--check` performs read-only, offline checks of generated files, sidebar coverage,
    card/local links and imported hashes. It does not claim runtime correctness of
-   the Node/Express code samples or test GitBook's hosted rendering.
+   the Node/Express or React code samples or test GitBook's hosted rendering.
 3. The existing checker verifies the original FastAPI course and examples.
 4. The unittest command checks importer/navigation behaviour without network calls.
 5. Review the diff and status, including new or removed chapters. Commit the intended
@@ -147,15 +160,21 @@ private content: publish only repositories you own or are authorized to redistri
 
 ## Verification for this dashboard change
 
-The complete Python test suite passes **34 tests**, including 16 offline dashboard/importer
-tests. Both documentation checkers pass. All fenced source-code blocks in the 47 imported
-chapters were compared with the selected source archive and are unchanged. `pip check`
-reports no dependency conflicts. The existing upstream Starlette/AnyIO deprecation warning
-remains; it is unrelated to the dashboard. Hosted GitBook rendering/publishing was not
-executed from this session and should be checked in your site preview after sync.
-The imported HTTP walkthrough retains 12 whitespace-only lines inside its upstream
-fenced text diagram to preserve that source block exactly; `git diff --check` may
-report those imported lines. Newly authored tooling and configuration pass that check.
+The complete Python test suite passes **37 tests**, including 19 offline dashboard/importer
+tests. Both documentation checkers pass: the original 25-page FastAPI course and the
+three-course, 224-page GitBook navigation. All 149 React publication files retain
+source-code fences verbatim; hashes and local/card links validate. The existing
+upstream Starlette/AnyIO deprecation warning remains unrelated to the dashboard.
+
+Hosted GitBook rendering/publishing was not executed from this session. After Git
+Sync imports the publishing commit, verify all three cards and representative React
+pages in the hosted preview, then publish/merge as required by the site workflow.
+The source repositories, their runnable projects and the stable GitBook YAML
+configuration are unchanged. Imported upstream whitespace is preserved intentionally;
+newly authored tooling/configuration pass `git diff --check`. The new React import
+retains one upstream trailing space in the fenced example at
+`react-notes/04-state-and-hooks/01-state.md:97`; the full staged whitespace check
+reports that line intentionally rather than silently modifying source code.
 
 ## References
 

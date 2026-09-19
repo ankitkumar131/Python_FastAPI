@@ -8,9 +8,12 @@ Verified against the repository contents and publishing tool on **19 September 2
 > `Python_FastAPI`, alongside `gitbook-sources.json`. It is not automatically added
 > as a page in the GitBook course sidebar.
 >
-> Writing this guide does **not** publish the React course. Follow the configuration,
-> refresh, validation and push steps below. The React import was rehearsed in a
-> temporary directory, not applied to the live dashboard's course files.
+> **Implementation update:** React is now imported into this publishing repository: **149
+> selected pages** (139 chapters, 9 cheatsheets and one common-errors page), with **224
+> total navigation pages** across three courses. The registry corrections below are
+> already applied. Pull the publishing branch on a new PC; use this guide to understand
+> the configuration and refresh future updates. GitBook account-side sync, preview and
+> publication still need verification; a repository import is not hosted-site confirmation.
 
 ## Contents
 
@@ -49,7 +52,9 @@ Cognivolt Docs
         ├── HTML, CSS and JavaScript prerequisites
         ├── TypeScript
         ├── React fundamentals
-        └── State and hooks
+        ├── State and hooks, routing, APIs and forms
+        ├── Advanced React, testing, authentication and production
+        └── Projects, interview preparation, cheatsheets and common errors
 ```
 
 Clicking **Understanding_React Notes** opens its overview **inside GitBook**.
@@ -109,7 +114,7 @@ notes. The importer uses GitHub CLI to download the specified source revision.
 ### Your React registry entry already exists on GitHub
 
 At inspection, publishing commit `46b3e3e` had already added a React entry, but it
-needed three corrections:
+needed three corrections. They are now applied; the table documents the old mistakes:
 
 | Existing value | Problem | Correct value |
 |---|---|---|
@@ -117,7 +122,7 @@ needed three corrections:
 | `"include": ["[0-9][0-9]-*/*.md", ...]` | This looks for numbered folders at repository root, but React's folders are inside `react-notes/` | `"include": ["react-notes/[0-9][0-9]-*/*.md"]` |
 | Group keys such as `"01-prerequisites"` | The current renderer groups by the **first** component of a source path; here that component is `react-notes` | `"group_titles": {"react-notes": "React + TypeScript"}` |
 
-**Replace the existing React entry; do not append a duplicate.** Section 7 supplies
+**On an older checkout, replace the existing React entry; do not append a duplicate.** Section 7 supplies
 the complete corrected file for the currently known three-course setup.
 
 If you have added more courses since this guide was written, preserve their entries
@@ -126,65 +131,58 @@ pasting an older full-file example.
 
 ## 3. What actually exists in Understanding_React
 
-The inspected source commit was:
+The imported source commit is:
 
 ```text
-2a95ce23a25731bc791e353874df9ab09c766359
+bcc0871cf916fb19731e198f82dcf28daac209b9
 ```
 
-The actual source layout includes:
+The source now includes all 18 numbered course sections, nine cheatsheets, a
+common-errors page, and a runnable `react-lab/` project. The publication preserves
+the `react-notes/` hierarchy. The selected documentation is:
 
-```text
-Understanding_React/
-├── Instruction.md
-└── react-notes/
-    ├── README.md
-    ├── react-roadmap.md
-    ├── 01-prerequisites/
-    │   ├── 01-html-basics.md
-    │   └── ...11 chapter files in this folder
-    ├── 02-typescript/
-    │   ├── 01-typescript-introduction.md
-    │   └── ...11 chapter files in this folder
-    ├── 03-react-fundamentals/
-    │   ├── 01-what-is-react.md
-    │   └── ...12 chapter files in this folder
-    └── 04-state-and-hooks/
-        ├── 01-state.md
-        └── ...10 chapter files in this folder
-```
-
-The `...` lines above abbreviate an explanatory tree; they are not filenames to
-create.
-
-| Source directory | Chapters verified |
+| Source directory/file | Pages verified |
 |---|---:|
 | `react-notes/01-prerequisites/` | 11 |
 | `react-notes/02-typescript/` | 11 |
 | `react-notes/03-react-fundamentals/` | 12 |
 | `react-notes/04-state-and-hooks/` | 10 |
-| **Total selected React chapters** | **44** |
+| `react-notes/05-react-concepts/` | 9 |
+| `react-notes/06-routing/` | 8 |
+| `react-notes/07-api-integration/` | 11 |
+| `react-notes/08-forms-validation/` | 5 |
+| `react-notes/09-state-management/` | 6 |
+| `react-notes/10-advanced-react/` | 9 |
+| `react-notes/11-modern-react/` | 8 |
+| `react-notes/12-styling/` | 5 |
+| `react-notes/13-testing/` | 5 |
+| `react-notes/14-authentication/` | 6 |
+| `react-notes/15-production/` | 8 |
+| `react-notes/16-build-tools/` | 4 |
+| `react-notes/17-projects/` | 7 |
+| `react-notes/18-interview/` | 4 |
+| `react-notes/cheatsheets/` | 9 |
+| `react-notes/common-errors.md` | 1 |
+| **Total selected React pages** | **149** |
 
-The proposed include pattern deliberately excludes:
+The include patterns select the 139 numbered-section chapters plus the ten reference
+pages. They deliberately exclude:
 
-- `Instruction.md`: instructions for writing the source course, not a student lesson.
-- `react-notes/README.md`: a source overview/roadmap; our importer builds an overview
-  containing only the selected, available chapter files.
-- `react-notes/react-roadmap.md`: a roadmap rather than one of the numbered chapter
-  files chosen for this import.
+- `Instruction.md`: course-writing instructions, not a student lesson.
+- The root README and `react-notes/README.md`: source overviews; the importer builds
+  an index of the pages actually selected.
+- `react-notes/react-roadmap.md`: a roadmap rather than a selected chapter.
+- `react-lab/`: runnable source, environment files, assets and evidence remain in
+  the original repository. No source code is executed or environment file published.
 
-This is an intentional selection, not an assertion that those source files are
-useless. If you later want to publish them too, add their exact paths to `include`,
-regenerate and check their links. Do not include the **repository-root** `README.md`
-or `SUMMARY.md` as imported chapters: those names have generated roles in the copy.
+One source link targets the directory `../08-forms-validation/`, not a Markdown
+page. The importer marks that link unavailable. **All five forms/validation chapters
+are included** and accessible through the React overview and sidebar. No lesson is
+missing because of this directory-only reference.
 
-The source chapter about hook rules links to a future Part 5 file that is absent
-from this revision. The corrected importer marks that reference as unavailable
-instead of creating a fictional chapter or leaving a broken navigation link.
-
-The branch can advance after this guide is written. Treat these counts and the SHA
-as the **verified baseline**, not a permanent expected count for every future run.
-The importer records whichever commit it actually imports.
+The first version of this guide tested an older 44-chapter revision. The branch has
+since advanced. Treat the current counts and SHA as a verified baseline, not a
+permanent expectation: the manifest records the revision each refresh actually imports.
 
 ## 4. Prepare a new PC
 
@@ -420,11 +418,13 @@ React entry. If you have since added other courses, retain those additional entr
     {
       "id": "understanding-react",
       "title": "Understanding_React Notes",
-      "description": "Learn React and TypeScript from HTML, CSS and JavaScript prerequisites through components, state and hooks.",
+      "description": "Learn React and TypeScript from web prerequisites through hooks, routing, APIs, testing, authentication and production projects.",
       "repository": "ankitkumar131/Understanding_React",
       "branch": "arena/01a0b8da-understanding-react",
       "include": [
-        "react-notes/[0-9][0-9]-*/*.md"
+        "react-notes/[0-9][0-9]-*/*.md",
+        "react-notes/cheatsheets/*.md",
+        "react-notes/common-errors.md"
       ],
       "group_titles": {
         "react-notes": "React + TypeScript"
@@ -451,11 +451,12 @@ React entry. If you have since added other courses, retain those additional entr
   `react-notes/` is therefore required; the numbered folders are not at root.
   `[0-9][0-9]` matches the two-digit part prefix, `-*` matches the rest of the folder
   path and `*.md` selects Markdown chapter files. Python's fnmatch treats `*` as
-  able to match slashes, so matching deeper chapter paths are included too.
+  able to match slashes, so matching deeper chapter paths are included too. The
+  other two patterns include the cheatsheets and the exact common-errors page.
 - **`group_titles`** supplies a readable label for the first source path component.
   This importer sees `react-notes` as that component, so use that exact key. The
-  four inner parts still appear in correct sorted path order; this setting does not
-  create four separate GitBook spaces or four nested sidebar groups.
+  inner parts still appear in correct sorted path order; this setting does not
+  create separate GitBook spaces or nested sidebar groups.
 
 JSON uses double quotes, has commas **between** objects, and does not support
 comments or trailing commas. The Node/Express object and React object must be two
@@ -559,29 +560,30 @@ With the verified source revision and otherwise unchanged course counts, the Rea
 portion and final check read:
 
 ```text
-Imported 44 chapters from ankitkumar131/Understanding_React@2a95ce23a25731bc791e353874df9ab09c766359; marked 1 unavailable references.
-GitBook dashboard verified: 3 courses, 119 unique pages; local/card links and imported-file hashes valid.
+Imported 149 chapters from ankitkumar131/Understanding_React@bcc0871cf916fb19731e198f82dcf28daac209b9; marked 1 unavailable references.
+GitBook dashboard verified: 3 courses, 224 unique pages; local/card links and imported-file hashes valid.
 ```
 
 There will also be a Node/Express import message. Future commits can legitimately
 change these numbers, the SHA and the number of unavailable references. Success of
 the validation matters more than matching a historical count exactly.
 
-The 119-page baseline is:
+The 224-page baseline is:
 
 ```text
 1 dashboard
 25 FastAPI pages
 1 Node/Express overview + 47 Node/Express chapters
-1 React overview + 44 React chapters
+1 React overview + 149 React chapter/reference pages
 -----------------------------------------------
-119 navigation pages
+224 navigation pages
 ```
 
 A missing-reference message is not the same as an import failure. In this revision,
-Part 4's final chapter mentions a Part 5 file that does not exist yet. The importer
-keeps a clear unavailable-reference note until that chapter exists in a later
-selected source revision.
+one source link points to a directory rather than a Markdown page. The importer
+keeps a clear unavailable-reference note; its five chapter pages are published and
+can be opened from the overview. The CLI calls all selected Markdown files
+“chapters”; the 149 files include 139 lessons and ten reference pages.
 
 **If the command exits with an error, do not push the partial result.** It can have
 written some files before a later check fails. Resolve the error, rerun the command
@@ -608,7 +610,11 @@ Python_FastAPI/
                 ├── 01-prerequisites/     # 11 baseline chapters
                 ├── 02-typescript/        # 11 baseline chapters
                 ├── 03-react-fundamentals/ # 12 baseline chapters
-                └── 04-state-and-hooks/   # 10 baseline chapters
+                ├── 04-state-and-hooks/   # 10 chapters
+                ├── ...                  # Parts 05–17; see section 3 for counts
+                ├── 18-interview/         # 4 chapters
+                ├── cheatsheets/          # 9 reference pages
+                └── common-errors.md     # 1 reference page
 ```
 
 ### File: `notes/README.md` — complete expected generated dashboard
@@ -627,7 +633,7 @@ Pick a course below to read its notes, examples and exercises. Each course opens
 <table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody>
 <tr><td><strong>Python_FastAPI Notes</strong></td><td>Learn FastAPI from Python and HTTP fundamentals to databases, authentication, testing and deployment.</td><td><a href="00-course-guide.md">Open course</a></td></tr>
 <tr><td><strong>Node_Express Notes</strong></td><td>Study web fundamentals, Node.js and Express with detailed explanations, practical examples and projects.</td><td><a href="courses/node-express/README.md">Open course</a></td></tr>
-<tr><td><strong>Understanding_React Notes</strong></td><td>Learn React and TypeScript from HTML, CSS and JavaScript prerequisites through components, state and hooks.</td><td><a href="courses/understanding-react/README.md">Open course</a></td></tr>
+<tr><td><strong>Understanding_React Notes</strong></td><td>Learn React and TypeScript from web prerequisites through hooks, routing, APIs, testing, authentication and production projects.</td><td><a href="courses/understanding-react/README.md">Open course</a></td></tr>
 </tbody></table>
 
 ### Quick links
@@ -695,7 +701,7 @@ python -X utf8 -c "import json; from pathlib import Path; m=json.loads(Path('not
 ```
 
 Expected at the baseline: the requested repository and branch, the source SHA shown
-above, and `Chapters: 44`.
+above, and `Chapters: 149`.
 
 ### Files under `notes/courses/understanding-react/react-notes/`
 
@@ -946,15 +952,15 @@ site's visibility before committing publication copies.
 
 ### Why a small fix was necessary
 
-The final available hooks chapter uses a real Markdown link with a code-formatted
-label:
+At the original 44-chapter inspection, the final hooks chapter used a real Markdown
+link with a code-formatted label:
 
 ```markdown
 [`../05-react-concepts/01-component-communication.md`](../05-react-concepts/01-component-communication.md)
 ```
 
-The target chapter does not yet exist in the verified branch. The older importer
-split prose around inline backticks before examining links. That split accidentally
+The target did not exist at that older revision; it exists in the current import.
+The older importer split prose around inline backticks before examining links. That split accidentally
 broke this real link into pieces and prevented the unavailable-target replacement.
 The later link checker correctly rejected the remaining broken destination.
 
@@ -1021,15 +1027,16 @@ modify a test file for each newly configured repository.
 ### What was actually verified for this guide
 
 - The source repository is public, and the requested branch was read successfully.
-- The corrected include pattern selected 44 real chapters at the recorded commit.
-- A temporary-copy import produced three course groups and 119 unique sidebar pages,
+- The configured patterns selected 139 lessons and ten reference pages at the recorded commit.
+- The actual repository import produced three course groups and 224 unique sidebar pages,
   with local/card links and imported-file hashes passing validation.
-- One link to an absent future chapter was safely marked unavailable.
+- One directory-only link was safely marked unavailable; all five destination-section
+  chapters are included. The previously absent Part 5 chapter now links normally.
 - The importer regression suite passed 19 tests after the fix. The full Python test
   suite also passed **37 tests**, with the previously documented upstream
   Starlette/AnyIO deprecation warning. No dependency changes were required.
-- This was an isolated import rehearsal. The live registry/course files were not
-  replaced with the proposed React publication during guide creation.
+- The registry corrections, React publication copies, dashboard and sidebar are now
+  applied to this publishing repository, not just an isolated rehearsal.
 - Hosted GitBook rendering/publication was **not** performed by this test; your
   post-sync preview remains necessary.
 
