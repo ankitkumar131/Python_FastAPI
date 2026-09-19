@@ -1,5 +1,7 @@
 # FastAPI: from your first request to a production-style backend
 
+[← All courses](README.md)
+
 Welcome! We will build a small product catalogue, then learn how to protect and deploy APIs. You do not need previous FastAPI experience. Read in order, run the examples, deliberately send bad input, and do the exercises before looking at their solutions.
 
 The repository's root `README.md` preserves the original course brief. This file is the course entrance.

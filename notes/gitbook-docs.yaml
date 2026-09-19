@@ -5,7 +5,8 @@ site:
   structure:
     - type: space
       key: python-fastapi
-      title: Python FastAPI
+      # Keep this existing key and path stable so GitBook preserves the space.
+      title: Learning library
       path: python-fastapi
       default: true
       content:

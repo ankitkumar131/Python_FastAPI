@@ -69,7 +69,9 @@ Python 3.11 is the minimum used syntax family here (`StrEnum`, `Self`, union ann
 
 ### Verification results and honest limits
 
-The repository test suite has **18 passing tests**, exercising earlier foundations plus async client lifecycle/error translation, settings parsing/redaction, async SQLite persistence, scoped cross-account access and conditional responses. Tests run without a network listener or real outbound service requests; HTTP calls in the lifecycle tests use a controlled MockTransport.
+The original course verification had **18 passing tests**, exercising earlier foundations plus async client lifecycle/error translation, settings parsing/redaction, async SQLite persistence, scoped cross-account access and conditional responses. Tests run without a network listener or real outbound service requests; HTTP calls in the lifecycle tests use a controlled MockTransport.
+
+The subsequent GitBook dashboard/importer adds 16 offline tests; the expanded repository suite passes **34 tests**. Repository-level publishing instructions are in `GITBOOK.md`.
 
 A fresh SQLite Alembic upgrade reached `0001_products`; a second upgrade made no extra schema changes. The relationship, Python prerequisite and password scripts were also run. `pip check` reported no broken requirements. The documentation checker and bytecode/syntax checks are part of the final verification commands.
 

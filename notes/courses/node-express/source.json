@@ -1,0 +1,313 @@
+{
+  "repository": "ankitkumar131/Node_Express",
+  "branch": "arena/01a0b31e-node-express",
+  "commit": "1dbb069c54d4c5cfe63503118494afb532fab240",
+  "files": {
+    "00-web-fundamentals/01-what-is-backend-development.md": {
+      "source_sha256": "8d9689caf19b166b94e15b88d48efb56e9bbb24748979fa56447d09c3d7d869e",
+      "published_sha256": "bafc2c61e71d4dbc3f1c3e8a572d427fa64f3ae250fd9c78de0bcf99a21c8daa"
+    },
+    "00-web-fundamentals/02-how-the-web-works.md": {
+      "source_sha256": "9aec15690bdf5e04401ce2da6f9d07a38b977a1d266d1fa2c2f0e5134776df43",
+      "published_sha256": "17a3e8fe01ee51423b6c4cabaed651f577eca4ee79d9c759addc8a97d88782ca"
+    },
+    "00-web-fundamentals/03-http-basics.md": {
+      "source_sha256": "55f4cd04d7c02a2c25d0d10ada8a47dbf573c838f9c1ac2a8481c4ec7dd1b8b0",
+      "published_sha256": "12c73bd9b386cf08d9917769f10db01a6dd5385f24384f0cc6dc4ea6021aa44f"
+    },
+    "00-web-fundamentals/04-urls-endpoints-and-routing.md": {
+      "source_sha256": "421c327f855e2e530fbfd5fb588b4b2aa3780d2c1f841cf49a4c69d5d28c7f91",
+      "published_sha256": "421c327f855e2e530fbfd5fb588b4b2aa3780d2c1f841cf49a4c69d5d28c7f91"
+    },
+    "00-web-fundamentals/05-rest-and-api-design.md": {
+      "source_sha256": "3e146a976123604796108172df51969864a72d0c9be52a38aaf17889d29ea329",
+      "published_sha256": "3e146a976123604796108172df51969864a72d0c9be52a38aaf17889d29ea329"
+    },
+    "00-web-fundamentals/06-json-and-data-formats.md": {
+      "source_sha256": "9ad983b71d163abdf353615c701d176a420551376a604754d76eda23139b0ed8",
+      "published_sha256": "9ad983b71d163abdf353615c701d176a420551376a604754d76eda23139b0ed8"
+    },
+    "00-web-fundamentals/07-cookies-sessions-and-state.md": {
+      "source_sha256": "d9235efd18e31318fd2c7b987b9aaf42734e13dac846a63e2e0e55eea4be0978",
+      "published_sha256": "054b7e4a6a90c055700a4bbb9a7dab5b74107153acb19e2edca11cd437350a8c"
+    },
+    "00-web-fundamentals/08-full-request-lifecycle.md": {
+      "source_sha256": "13dc6e3772910baba0f72f77266949a563aa509d03616cad1926fc855743195e",
+      "published_sha256": "939efad68f742d3c8af3e883701c26b5085ecc58831ae549f52e5c14e0f2550d"
+    },
+    "01-nodejs/01-introduction.md": {
+      "source_sha256": "2da529205d5f69ba116bc5e7bac4d32fc7b0d16b5b9d5443c9d30361dddba044",
+      "published_sha256": "9ffed3b2f1eb555e6e32eacc96ec6e7f802d185fa2925e20b21fbc99db3dad77"
+    },
+    "01-nodejs/02-javascript-prerequisites.md": {
+      "source_sha256": "1b8c785acdb378d4639152125294b6a4eabdfad2684f78d4edece41a050df68b",
+      "published_sha256": "1b8c785acdb378d4639152125294b6a4eabdfad2684f78d4edece41a050df68b"
+    },
+    "01-nodejs/03-nodejs-basics.md": {
+      "source_sha256": "db8c891aa726c5e50c7a004b5742ccace91b7e01c619cf81339adc59885e0f82",
+      "published_sha256": "ae2c7b8bc3e76e5a10147b545dc9d2b2cee4e495b3a7406452cfac2dbd740284"
+    },
+    "01-nodejs/04-modules.md": {
+      "source_sha256": "23e5e38ad3ad199027c560a94f98e3e92a8320e8e7c30197bc7fc17c2039e0f6",
+      "published_sha256": "50179a5782ae533115422404d52b2926295e9e5fc0f4c7655eb2fec9759bb9ae"
+    },
+    "01-nodejs/05-npm.md": {
+      "source_sha256": "940f0318a0097e6ec178bbe06ef128765f751e2317452b1ebecd984d6aaec143",
+      "published_sha256": "940f0318a0097e6ec178bbe06ef128765f751e2317452b1ebecd984d6aaec143"
+    },
+    "01-nodejs/06-filesystem.md": {
+      "source_sha256": "e5f893d594c948cc1d5f07d9c6e07bf50b83b777d85c9c143c5f6a4e4e56455c",
+      "published_sha256": "2b3f4b2001db5e7b7ce61675a76a24908e623bd9d09293906d6f814eaf544443"
+    },
+    "01-nodejs/07-path.md": {
+      "source_sha256": "ffcd7ae9bb736b9db2bcfc64b3e09f7a2ceb6c7c4d4b32132852632a6c5b1d61",
+      "published_sha256": "ffcd7ae9bb736b9db2bcfc64b3e09f7a2ceb6c7c4d4b32132852632a6c5b1d61"
+    },
+    "01-nodejs/08-events.md": {
+      "source_sha256": "01aeaa66ad2bcbfde90a61e384da5d42bc35f828b5c11517491f6b4d0df1cb3a",
+      "published_sha256": "01aeaa66ad2bcbfde90a61e384da5d42bc35f828b5c11517491f6b4d0df1cb3a"
+    },
+    "01-nodejs/09-streams.md": {
+      "source_sha256": "2cbe69cf910c246e370fa2b5165e8612c7f617f1fe1c482ae6f235719e9414c5",
+      "published_sha256": "2cbe69cf910c246e370fa2b5165e8612c7f617f1fe1c482ae6f235719e9414c5"
+    },
+    "01-nodejs/10-buffers.md": {
+      "source_sha256": "48b447afc8d65fbe341f5f1ada1b6f2af1cdb240560b23a2ac8f83bb9a242e48",
+      "published_sha256": "2c1bfb1f7228c1ec7560b59123231e9810a2f3e216aa19913eddd2209a6f346d"
+    },
+    "01-nodejs/11-http-module.md": {
+      "source_sha256": "e9b962f269da7a604ca0875a625f459d7fa008c4416fae5a71f7c096bc1337b8",
+      "published_sha256": "e9b962f269da7a604ca0875a625f459d7fa008c4416fae5a71f7c096bc1337b8"
+    },
+    "01-nodejs/12-async-programming.md": {
+      "source_sha256": "d04211eba328d3b4de11c2a359eff8b53474e8b3a667a9ba63a6c4c5ca1f2874",
+      "published_sha256": "d04211eba328d3b4de11c2a359eff8b53474e8b3a667a9ba63a6c4c5ca1f2874"
+    },
+    "01-nodejs/13-promises.md": {
+      "source_sha256": "c9d73b15f4f8a134fc327e350522429ae5d3ad6ddba046ed470a9d03b5de1f33",
+      "published_sha256": "c9d73b15f4f8a134fc327e350522429ae5d3ad6ddba046ed470a9d03b5de1f33"
+    },
+    "01-nodejs/14-event-loop.md": {
+      "source_sha256": "b986bd0e7e0efe2972db6263434338d1c45eec851df0a959695d1e6061f317ef",
+      "published_sha256": "c8798c460ae6a7698da5649ecfac3edaace8f2e19901093ef1cd258232e93de3"
+    },
+    "01-nodejs/15-environment-variables.md": {
+      "source_sha256": "651e327c12e07bd9ae114ca39ce713055ba714a332f642930e5af80ee8e8de86",
+      "published_sha256": "651e327c12e07bd9ae114ca39ce713055ba714a332f642930e5af80ee8e8de86"
+    },
+    "01-nodejs/16-error-handling.md": {
+      "source_sha256": "35bce25aa2ff972f5fbdfa5050313380f4423d235fbabbd3cd2539d77583e21b",
+      "published_sha256": "35bce25aa2ff972f5fbdfa5050313380f4423d235fbabbd3cd2539d77583e21b"
+    },
+    "01-nodejs/17-debugging.md": {
+      "source_sha256": "bd15e52191bbe857579ce441f3eb3642f545e5fa2a93054b63cb256f4c25e250",
+      "published_sha256": "bd15e52191bbe857579ce441f3eb3642f545e5fa2a93054b63cb256f4c25e250"
+    },
+    "01-nodejs/18-nodejs-project.md": {
+      "source_sha256": "c182940ea70166db5f09d382f8f4fa1fbb7fa95800d55ce9f58b30b2418c4877",
+      "published_sha256": "c182940ea70166db5f09d382f8f4fa1fbb7fa95800d55ce9f58b30b2418c4877"
+    },
+    "02-express/01-introduction.md": {
+      "source_sha256": "2a001fd2df2d99236cf7a39d146b691ccc7466470254acd6d553865947021542",
+      "published_sha256": "2a001fd2df2d99236cf7a39d146b691ccc7466470254acd6d553865947021542"
+    },
+    "02-express/02-project-setup.md": {
+      "source_sha256": "0704b5b0dbaf4243f75dd774a8eeb265895ecab3e2629277e5576039f65a4031",
+      "published_sha256": "0704b5b0dbaf4243f75dd774a8eeb265895ecab3e2629277e5576039f65a4031"
+    },
+    "02-express/03-routing.md": {
+      "source_sha256": "cffb0d0ee417547dfa0bdea7c898b489c5d99c3c7fea65f70370e04868d05e6c",
+      "published_sha256": "cffb0d0ee417547dfa0bdea7c898b489c5d99c3c7fea65f70370e04868d05e6c"
+    },
+    "02-express/04-http-methods.md": {
+      "source_sha256": "00026c1d20896df1a820ef4b122481baf9a0dad991f2bfe99b411a3a51c4701f",
+      "published_sha256": "00026c1d20896df1a820ef4b122481baf9a0dad991f2bfe99b411a3a51c4701f"
+    },
+    "02-express/05-request-response.md": {
+      "source_sha256": "1ec0712f5f858ff2c3b740d8937cb4d617551c477d89e1b6d15a5cf080cf8928",
+      "published_sha256": "1ec0712f5f858ff2c3b740d8937cb4d617551c477d89e1b6d15a5cf080cf8928"
+    },
+    "02-express/06-params-query-body.md": {
+      "source_sha256": "4f6347a961acf89e8c4bc049a8f504a11e583ac0827e188b5b480fe2ac4abe34",
+      "published_sha256": "7220d21ab43c842c15c363fd6dc3eddaeb06846a6be8f9c5bd10cee854c5aef2"
+    },
+    "02-express/07-middleware.md": {
+      "source_sha256": "8aa991eebfa90aaab1f1d51c3bab3659306435ce767ee7aea8cd91f85d8ce605",
+      "published_sha256": "8aa991eebfa90aaab1f1d51c3bab3659306435ce767ee7aea8cd91f85d8ce605"
+    },
+    "02-express/08-error-handling.md": {
+      "source_sha256": "77c5203e53fa99d62a3691dbc3c1ad51567aabea7ebc3b1b10291ddbee587115",
+      "published_sha256": "77c5203e53fa99d62a3691dbc3c1ad51567aabea7ebc3b1b10291ddbee587115"
+    },
+    "02-express/09-routers.md": {
+      "source_sha256": "8d49236c31142d2b60b32809dd557277f1e5777c9ee6597a50aa507f03a57434",
+      "published_sha256": "8d49236c31142d2b60b32809dd557277f1e5777c9ee6597a50aa507f03a57434"
+    },
+    "02-express/10-controllers.md": {
+      "source_sha256": "4ec8acc9b5155cb2e66a280c20fa586a2f519bfaf6348526f28c578505198b86",
+      "published_sha256": "4ec8acc9b5155cb2e66a280c20fa586a2f519bfaf6348526f28c578505198b86"
+    },
+    "02-express/11-services.md": {
+      "source_sha256": "ce4f1b92f902e086e8e666f05fea497c2793b8c87850160032e86bdc87e117a7",
+      "published_sha256": "ce4f1b92f902e086e8e666f05fea497c2793b8c87850160032e86bdc87e117a7"
+    },
+    "02-express/12-validation.md": {
+      "source_sha256": "31498f62eea6c9b5c91bdf667e23281ed2f8367b239d0a71323416b9f02d08fa",
+      "published_sha256": "31498f62eea6c9b5c91bdf667e23281ed2f8367b239d0a71323416b9f02d08fa"
+    },
+    "02-express/13-authentication.md": {
+      "source_sha256": "b832a896404533d51f08ef1c12629985868b9843821f37d384a0c048f2c0f35f",
+      "published_sha256": "41b8cf060c8800c91d7adf60abc1b0f3205a042f7405d6fb65a463254936e32d"
+    },
+    "02-express/14-jwt.md": {
+      "source_sha256": "544d9e10c6866523d35b237106728939da6d0c422151fecd77368287408a37ca",
+      "published_sha256": "895362a8b7b7aa61f47a398abab97249eb0839e274b7318b9f93676d2aa14545"
+    },
+    "02-express/15-cookies-sessions.md": {
+      "source_sha256": "62b58cf9778421e98b5c9db9ebb1bcf8b2288f793ffe50669b5b6880c2be4e7a",
+      "published_sha256": "b7a5ebfb1fdf0e8e772b88412d4520b23a850df35b54e79b5fd9bbbccc6c90df"
+    },
+    "02-express/16-cors.md": {
+      "source_sha256": "74ea0d9154b0ca3f2e5c9d4c7a2d980c6f2dc6732e5693b1b891e3c1622ce2fd",
+      "published_sha256": "74ea0d9154b0ca3f2e5c9d4c7a2d980c6f2dc6732e5693b1b891e3c1622ce2fd"
+    },
+    "02-express/17-file-upload.md": {
+      "source_sha256": "bfcf93f6b4e0a3e8b5ddd07d48b66cfa496ebe97c52437fe822160e097d24279",
+      "published_sha256": "bfcf93f6b4e0a3e8b5ddd07d48b66cfa496ebe97c52437fe822160e097d24279"
+    },
+    "02-express/18-security.md": {
+      "source_sha256": "dc6eba23ddc3553c9bfd72239bf1a18df4c23f7f674e49eab3260b274e6dbe15",
+      "published_sha256": "2c5b23c1773f286c09d315d49882e0abf29132a57045bba1fef44accbeb225f8"
+    },
+    "02-express/19-testing.md": {
+      "source_sha256": "84d71158354563f87d07caa04625d3dd76ca7ba3c10f96d09183cfc57209cc2c",
+      "published_sha256": "8222b9981887776452c8c6aa3174174f1d552b2ad01b0998739557375b1fe345"
+    },
+    "02-express/20-production-architecture.md": {
+      "source_sha256": "1c1153b7e691d31f99206634d11cf5d2194ac7435743ce03955e59b2ff2404b8",
+      "published_sha256": "1c1153b7e691d31f99206634d11cf5d2194ac7435743ce03955e59b2ff2404b8"
+    },
+    "02-express/21-complete-express-project.md": {
+      "source_sha256": "dfd9bfe80bc2b433ea6273a054933e587e70d0a34d51d32781fcc15aca0f1516",
+      "published_sha256": "537b07f8a90a4d717ae2755a6065c8efef55fb89fa71359a580b60c8bc879174"
+    }
+  },
+  "unavailable_links": [
+    {
+      "file": "00-web-fundamentals/01-what-is-backend-development.md",
+      "target": "../03-databases/01-database-fundamentals/01-database-basics.md"
+    },
+    {
+      "file": "00-web-fundamentals/02-how-the-web-works.md",
+      "target": "../common-errors/README.md"
+    },
+    {
+      "file": "00-web-fundamentals/02-how-the-web-works.md",
+      "target": "../03-databases/03-mysql/12-connection-pooling.md"
+    },
+    {
+      "file": "00-web-fundamentals/03-http-basics.md",
+      "target": "../03-databases/05-redis/03-rate-limiting-queues-pubsub.md"
+    },
+    {
+      "file": "00-web-fundamentals/07-cookies-sessions-and-state.md",
+      "target": "../04-authentication/01-authentication-basics.md"
+    },
+    {
+      "file": "00-web-fundamentals/07-cookies-sessions-and-state.md",
+      "target": "../04-authentication/04-access-refresh-tokens.md"
+    },
+    {
+      "file": "00-web-fundamentals/07-cookies-sessions-and-state.md",
+      "target": "../04-authentication/03-jwt.md"
+    },
+    {
+      "file": "00-web-fundamentals/08-full-request-lifecycle.md",
+      "target": "../03-databases/03-mysql/12-connection-pooling.md"
+    },
+    {
+      "file": "01-nodejs/01-introduction.md",
+      "target": "../04-authentication/02-password-hashing.md"
+    },
+    {
+      "file": "01-nodejs/03-nodejs-basics.md",
+      "target": "../07-deployment/03-deployment.md"
+    },
+    {
+      "file": "01-nodejs/03-nodejs-basics.md",
+      "target": "../05-testing/03-supertest.md"
+    },
+    {
+      "file": "01-nodejs/04-modules.md",
+      "target": "../04-authentication/02-password-hashing.md"
+    },
+    {
+      "file": "01-nodejs/04-modules.md",
+      "target": "../05-testing/01-testing-basics.md"
+    },
+    {
+      "file": "01-nodejs/04-modules.md",
+      "target": "../07-deployment/01-production-basics.md"
+    },
+    {
+      "file": "01-nodejs/06-filesystem.md",
+      "target": "../03-databases/02-mongodb/10-mongodb-nodejs.md"
+    },
+    {
+      "file": "01-nodejs/06-filesystem.md",
+      "target": "../03-databases/01-database-fundamentals/01-database-basics.md"
+    },
+    {
+      "file": "01-nodejs/10-buffers.md",
+      "target": "../04-authentication/02-password-hashing.md"
+    },
+    {
+      "file": "01-nodejs/14-event-loop.md",
+      "target": "../03-databases/05-redis/01-redis-basics.md"
+    },
+    {
+      "file": "02-express/06-params-query-body.md",
+      "target": "../04-authentication/02-password-hashing.md"
+    },
+    {
+      "file": "02-express/13-authentication.md",
+      "target": "../04-authentication/02-password-hashing.md"
+    },
+    {
+      "file": "02-express/13-authentication.md",
+      "target": "../04-authentication/03-jwt.md"
+    },
+    {
+      "file": "02-express/13-authentication.md",
+      "target": "../04-authentication/04-access-refresh-tokens.md"
+    },
+    {
+      "file": "02-express/13-authentication.md",
+      "target": "../04-authentication/05-oauth.md"
+    },
+    {
+      "file": "02-express/13-authentication.md",
+      "target": "../04-authentication/06-role-based-access.md"
+    },
+    {
+      "file": "02-express/14-jwt.md",
+      "target": "../04-authentication/03-jwt.md"
+    },
+    {
+      "file": "02-express/15-cookies-sessions.md",
+      "target": "../03-databases/05-redis/02-caching.md"
+    },
+    {
+      "file": "02-express/18-security.md",
+      "target": "../04-authentication/01-authentication-basics.md"
+    },
+    {
+      "file": "02-express/19-testing.md",
+      "target": "../05-testing/01-testing-basics.md"
+    },
+    {
+      "file": "02-express/21-complete-express-project.md",
+      "target": "../03-databases/01-database-fundamentals/01-database-basics.md"
+    }
+  ]
+}

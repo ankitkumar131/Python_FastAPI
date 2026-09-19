@@ -1,0 +1,24 @@
+{
+  "site_title": "Cognivolt Docs",
+  "local": {
+    "title": "Python_FastAPI Notes",
+    "description": "Learn FastAPI from Python and HTTP fundamentals to databases, authentication, testing and deployment.",
+    "entry": "00-course-guide.md",
+    "chapter_glob": "[0-9][0-9]-*.md"
+  },
+  "imports": [
+    {
+      "id": "node-express",
+      "title": "Node_Express Notes",
+      "description": "Study web fundamentals, Node.js and Express with detailed explanations, practical examples and projects.",
+      "repository": "ankitkumar131/Node_Express",
+      "branch": "arena/01a0b31e-node-express",
+      "include": ["[0-9][0-9]-*/*.md", "cheatsheets/*.md", "common-errors/*.md"],
+      "group_titles": {
+        "00-web-fundamentals": "Web & backend fundamentals",
+        "01-nodejs": "Node.js",
+        "02-express": "Express.js"
+      }
+    }
+  ]
+}
