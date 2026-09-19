@@ -65,18 +65,22 @@ def adapt_links(path: str, text: str, available: set[str]) -> tuple[str, list[di
     missing = []
 
     def rewrite(prose):
-        # Inline code is instructional text, not navigation.
-        pieces = re.split(r'(`+[^`\n]*`+)', prose)
-        for index in range(0, len(pieces), 2):
-            def replace(match):
-                label, href = match.groups()
-                target = local_target(path, href)
-                if target is None or target in available:
-                    return match[0]
-                missing.append({'file': path, 'target': href})
-                return f'{label} *(not available in this published source revision)*'
-            pieces[index] = LINK.sub(replace, pieces[index])
-        return ''.join(pieces)
+        # Ignore links written INSIDE inline code, but still process real links
+        # whose LABEL contains inline code, such as [`next.md`](next.md).
+        code_spans = [(match.start(), match.end())
+                      for match in re.finditer(r'`+[^`\n]*`+', prose)]
+
+        def replace(match):
+            if any(start <= match.start() < end for start, end in code_spans):
+                return match[0]
+            label, href = match.groups()
+            target = local_target(path, href)
+            if target is None or target in available:
+                return match[0]
+            missing.append({'file': path, 'target': href})
+            return f'{label} *(not available in this published source revision)*'
+
+        return LINK.sub(replace, prose)
 
     return prose_map(text, rewrite), missing
 

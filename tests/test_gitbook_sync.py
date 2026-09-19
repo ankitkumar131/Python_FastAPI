@@ -23,6 +23,29 @@ class LinkAdaptationTests(unittest.TestCase):
         self.assertNotIn('](', result)
         self.assertEqual(missing, [{'file': '01-node/chapter.md', 'target': '../03-db/intro.md'}])
 
+    def test_missing_link_with_code_formatted_label_is_adapted(self):
+        text = '[`../05-react-concepts/intro.md`](../05-react-concepts/intro.md)'
+        result, missing = sync.adapt_links('react-notes/04-hooks/rules.md', text, set())
+        self.assertIn('`../05-react-concepts/intro.md`', result)
+        self.assertIn('not available in this published source revision', result)
+        self.assertNotIn('](', result)
+        self.assertEqual(missing, [{'file': 'react-notes/04-hooks/rules.md',
+                                    'target': '../05-react-concepts/intro.md'}])
+
+    def test_existing_link_with_code_formatted_label_is_preserved(self):
+        text = '[`next.md`](next.md#example)'
+        result, missing = sync.adapt_links('react-notes/01-basics/start.md', text,
+                                          {'react-notes/01-basics/next.md'})
+        self.assertEqual(result, text)
+        self.assertEqual(missing, [])
+
+    def test_literal_inline_link_and_real_code_label_are_distinguished(self):
+        text = 'Literal `[Demo](absent.md)`, followed by [`missing.md`](missing.md).'
+        result, missing = sync.adapt_links('chapter.md', text, set())
+        self.assertIn('`[Demo](absent.md)`', result)
+        self.assertNotIn('[`missing.md`](missing.md)', result)
+        self.assertEqual(missing, [{'file': 'chapter.md', 'target': 'missing.md'}])
+
     def test_fenced_and_inline_code_are_not_rewritten(self):
         text = 'Inline `[Demo](missing.md)`\n\n```js\nconst s = "[Example](missing.md)";\n```\n'
         result, missing = sync.adapt_links('chapter.md', text, set())
