@@ -1,15 +1,12 @@
 $schema: https://api.gitbook.com/gitbook-docs.yaml
-
 site:
   title: Cognivolt Docs
   structure:
     - type: space
       key: python-fastapi
-      # Keep this existing key and path stable so GitBook preserves the space.
       title: Learning library
       path: python-fastapi
       default: true
       content:
-        # Relative to the GitBook project directory: notes/
         directory: ./
         language: en
