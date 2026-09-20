@@ -16,6 +16,12 @@ Verified against the repository contents and publishing tool on **20 September 2
 > the configuration and refresh future updates. GitBook account-side sync, preview and
 > publication still need verification; a repository import is not hosted-site confirmation.
 
+> **Later GitBook export:** the current dashboard/sidebar were reorganized by
+> GitBook after the five-course import. This guide describes the generator
+> configuration; do not run a full regeneration just to add repository links.
+> See [the export compatibility note](GITBOOK.md#dashboard-source-repository-links)
+> before replacing the current exported navigation.
+
 ## Contents
 
 1. [The exact result you are building](#1-the-exact-result-you-are-building)
@@ -392,7 +398,9 @@ React entry has already been corrected. If you have since added other courses, r
     "title": "Python_FastAPI Notes",
     "description": "Learn FastAPI from Python and HTTP fundamentals to databases, authentication, testing and deployment.",
     "entry": "00-course-guide.md",
-    "chapter_glob": "[0-9][0-9]-*.md"
+    "chapter_glob": "[0-9][0-9]-*.md",
+    "repository": "ankitkumar131/Python_FastAPI",
+    "branch": "arena/01a0b045-python-fastapi"
   },
   "imports": [
     {
@@ -665,6 +673,18 @@ Pick a course below to read its notes, examples and exercises. Each course opens
 - [Understanding_React Notes](courses/understanding-react/README.md)
 - [DSA-in-java Notes](courses/dsa-in-java/README.md)
 - [Springboot Notes](courses/springboot/README.md)
+
+### Source repositories
+
+These links open the original GitHub repositories and their study branches. Use the course cards above to read the notes here in GitBook.
+
+| Course | GitHub repository | Study branch |
+|---|---|---|
+| Python_FastAPI Notes | [ankitkumar131/Python_FastAPI](https://github.com/ankitkumar131/Python_FastAPI) | [arena/01a0b045-python-fastapi](https://github.com/ankitkumar131/Python_FastAPI/tree/arena/01a0b045-python-fastapi) |
+| Node_Express Notes | [ankitkumar131/Node_Express](https://github.com/ankitkumar131/Node_Express) | [arena/01a0b31e-node-express](https://github.com/ankitkumar131/Node_Express/tree/arena/01a0b31e-node-express) |
+| Understanding_React Notes | [ankitkumar131/Understanding_React](https://github.com/ankitkumar131/Understanding_React) | [arena/01a0b8da-understanding-react](https://github.com/ankitkumar131/Understanding_React/tree/arena/01a0b8da-understanding-react) |
+| DSA-in-java Notes | [ankitkumar131/DSA-in-java](https://github.com/ankitkumar131/DSA-in-java) | [arena/01a0bf70-dsa-in-java](https://github.com/ankitkumar131/DSA-in-java/tree/arena/01a0bf70-dsa-in-java) |
+| Springboot Notes | [ankitkumar131/Springboot](https://github.com/ankitkumar131/Springboot) | [arena/01a0bfa7-springboot](https://github.com/ankitkumar131/Springboot/tree/arena/01a0bfa7-springboot) |
 
 ### How to use this library
 

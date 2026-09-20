@@ -276,6 +276,25 @@ def write_generated(config: dict) -> None:
         path.unlink()
 
 
+
+def source_repositories(config: dict) -> list[str]:
+    """Keep source links separate from the cards that open local GitBook lessons."""
+    lines = ['### Source repositories', '',
+             'These links open the original GitHub repositories and their study branches. '
+             'Use the course cards above to read the notes here in GitBook.', '',
+             '| Course | GitHub repository | Study branch |',
+             '|---|---|---|']
+    for course in [config['local'], *config['imports']]:
+        repo = course.get('repository')
+        if not repo:
+            continue  # Older registries may not declare the local repository metadata.
+        url = f'https://github.com/{repo}'
+        branch = course.get('branch')
+        branch_link = f'[{branch}]({url}/tree/{quote(branch, safe="/")})' if branch else '—'
+        lines.append(f'| {course["title"]} | [{repo}]({url}) | {branch_link} |')
+    return lines
+
+
 def render(config: dict) -> dict[Path, str]:
     """Generate a single-space dashboard: relative Markdown links work without GitBook IDs."""
     local = config['local']
@@ -330,6 +349,7 @@ def render(config: dict) -> dict[Path, str]:
                          f'<td><a href="{html.escape(target, quote=True)}">Open course</a></td></tr>')
     dashboard.extend(['</tbody></table>', '', '### Quick links', ''])
     dashboard.extend(f'- [{heading}]({target})' for heading, _, target in cards)
+    dashboard.extend(['', *source_repositories(config)])
     dashboard.extend(['', '### How to use this library', '',
                       'Start with a course overview, then follow its chapters in the sidebar. Each course stays '
                       'grouped together. Choose **Dashboard** in the sidebar whenever you want to switch courses.', '',

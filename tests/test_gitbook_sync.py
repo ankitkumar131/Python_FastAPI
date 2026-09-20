@@ -280,6 +280,27 @@ class DashboardTests(unittest.TestCase):
         self.assertIn('(courses/node-express/extra%20notes/first%20lesson.md)', summary)
         sync.check(self.config)
 
+    def test_dashboard_lists_local_and_imported_repositories_and_study_branches(self):
+        self.config['local'].update(repository='owner/python', branch='docs/python')
+        self.write_generated()
+        dashboard = (self.notes / 'README.md').read_text()
+        self.assertIn('### Source repositories', dashboard)
+        self.assertIn('[owner/python](https://github.com/owner/python)', dashboard)
+        self.assertIn('[docs/python](https://github.com/owner/python/tree/docs/python)', dashboard)
+        self.assertIn('[owner/node](https://github.com/owner/node)', dashboard)
+        self.assertIn('[course](https://github.com/owner/node/tree/course)', dashboard)
+        self.assertIn('href="00-course-guide.md"', dashboard)
+        self.assertIn('href="courses/node-express/README.md"', dashboard)
+        sync.check(self.config)
+
+    def test_repository_section_supports_legacy_local_config_and_optional_branch(self):
+        lines = '\n'.join(sync.source_repositories(self.config))
+        self.assertNotIn('None', lines)
+        self.assertIn('[owner/node](https://github.com/owner/node)', lines)
+        self.config['local']['repository'] = 'owner/python'
+        lines = '\n'.join(sync.source_repositories(self.config))
+        self.assertIn('| Python | [owner/python](https://github.com/owner/python) | — |', lines)
+
     def test_cards_and_sidebar_open_existing_local_courses(self):
         dashboard = (self.notes / 'README.md').read_text()
         self.assertIn('data-card-target', dashboard)

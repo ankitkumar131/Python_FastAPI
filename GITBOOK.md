@@ -163,6 +163,22 @@ points to an absent `DSA-Java-30-Days/PROGRESS.md`. They are marked unavailable 
 of leaving broken local links. The actual `progress-tracker.md` is imported and
 accessible from the sidebar. Use the source-repository link for runnable Java files.
 
+## Dashboard source repository links
+
+The dashboard's **Source repositories** table links all five courses to their
+GitHub repositories and configured study branches. These external links are
+separate from the local GitBook course-card destinations. The generator reads the
+links from `gitbook-sources.json`; the local course now declares its own
+`repository` and `branch`, just like the imported sources.
+
+The later GitBook export (`8d09ae5`) changed the dashboard, sidebar and course paths
+and currently displays three course cards. The repository-link update preserves
+that exported layout and adds links for **all five configured repositories**.
+It does not regenerate navigation or revert the export. Consequently the existing
+strict importer `--check` reports generated-file drift (already present before this
+change). Reconcile the GitBook-exported layout with the generator before running a
+full regeneration; do not blindly overwrite the exported navigation to clear that check.
+
 ## GitBook settings: keep the existing connection
 
 | Setting | Value |
@@ -308,7 +324,9 @@ group will be generated without requiring a new GitBook space or guessed URLs.
 A registry entry is publication configuration, not permission to copy unrelated
 private content: publish only repositories you own or are authorized to redistribute.
 
-## Verification for this dashboard change
+## Verification for the original five-course import
+
+The figures below record the checks before the later GitBook export described above.
 
 The complete Python test suite passes **50 tests**, including 32 offline dashboard/importer
 tests. Both documentation checkers pass: the original 25-page FastAPI course and the

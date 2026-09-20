@@ -12,6 +12,18 @@ Pick a course below to read its notes, examples and exercises. Each course opens
 * [Node\_Express Notes](node-express/)
 * [Understanding\_React Notes](understanding-react/)
 
+### Source repositories
+
+These links open the original GitHub repositories and their study branches. Use the course cards above to read the notes here in GitBook.
+
+| Course | GitHub repository | Study branch |
+|---|---|---|
+| Python_FastAPI Notes | [ankitkumar131/Python_FastAPI](https://github.com/ankitkumar131/Python_FastAPI) | [arena/01a0b045-python-fastapi](https://github.com/ankitkumar131/Python_FastAPI/tree/arena/01a0b045-python-fastapi) |
+| Node_Express Notes | [ankitkumar131/Node_Express](https://github.com/ankitkumar131/Node_Express) | [arena/01a0b31e-node-express](https://github.com/ankitkumar131/Node_Express/tree/arena/01a0b31e-node-express) |
+| Understanding_React Notes | [ankitkumar131/Understanding_React](https://github.com/ankitkumar131/Understanding_React) | [arena/01a0b8da-understanding-react](https://github.com/ankitkumar131/Understanding_React/tree/arena/01a0b8da-understanding-react) |
+| DSA-in-java Notes | [ankitkumar131/DSA-in-java](https://github.com/ankitkumar131/DSA-in-java) | [arena/01a0bf70-dsa-in-java](https://github.com/ankitkumar131/DSA-in-java/tree/arena/01a0bf70-dsa-in-java) |
+| Springboot Notes | [ankitkumar131/Springboot](https://github.com/ankitkumar131/Springboot) | [arena/01a0bfa7-springboot](https://github.com/ankitkumar131/Springboot/tree/arena/01a0bfa7-springboot) |
+
 ### How to use this library
 
 Start with a course overview, then follow its chapters in the sidebar. Each course stays grouped together. Choose **Dashboard** in the sidebar whenever you want to switch courses.

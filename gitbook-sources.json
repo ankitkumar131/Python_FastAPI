@@ -4,7 +4,9 @@
     "title": "Python_FastAPI Notes",
     "description": "Learn FastAPI from Python and HTTP fundamentals to databases, authentication, testing and deployment.",
     "entry": "00-course-guide.md",
-    "chapter_glob": "[0-9][0-9]-*.md"
+    "chapter_glob": "[0-9][0-9]-*.md",
+    "repository": "ankitkumar131/Python_FastAPI",
+    "branch": "arena/01a0b045-python-fastapi"
   },
   "imports": [
     {
