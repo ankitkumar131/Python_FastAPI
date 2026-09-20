@@ -20,7 +20,7 @@ import posixpath
 import re
 import subprocess
 import tarfile
-from urllib.parse import quote, unquote, urlsplit
+from urllib.parse import quote, unquote, urlsplit, urlunsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 NOTES = ROOT / 'notes'
@@ -78,12 +78,26 @@ def adapt_links(path: str, text: str, available: set[str]) -> tuple[str, list[di
             target = local_target(path, href)
             if target is None or target in available:
                 return match[0]
+            # GitHub accepts folder links; GitBook navigation needs a Markdown page.
+            if posixpath.join(target, 'README.md') in available:
+                parsed = urlsplit(href)
+                href = urlunsplit(parsed._replace(path=posixpath.join(parsed.path, 'README.md')))
+                return f'[{label}]({href})'
             missing.append({'file': path, 'target': href})
             return f'{label} *(not available in this published source revision)*'
 
         return LINK.sub(replace, prose)
 
     return prose_map(text, rewrite), missing
+
+
+def publication_paths(files: set[str]) -> set[str]:
+    """Selected files plus the course/folder indexes the renderer creates or reuses."""
+    available = set(files) | {'README.md'}
+    for name in files:
+        for parent in PurePosixPath(name).parents:
+            available.add((parent / 'README.md').as_posix())
+    return available
 
 
 def read_archive(data: bytes, patterns: list[str]) -> dict[str, bytes]:
@@ -151,7 +165,7 @@ def refresh(course: dict) -> None:
     if len(data) > 25_000_000:
         raise ValueError('Source archive exceeds the compressed-size safety limit')
     original = read_archive(data, course['include'])
-    available = set(original) | {'README.md'}  # A truthful local overview replaces the upstream roadmap.
+    available = publication_paths(set(original))
     published, missing, records = {}, [], {}
     for name, raw in original.items():
         text, absent = adapt_links(name, raw.decode('utf-8'), available)

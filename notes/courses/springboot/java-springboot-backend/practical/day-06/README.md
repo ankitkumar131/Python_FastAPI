@@ -1,0 +1,10 @@
+# Practical — Day 06 (answer key)
+
+Type these files yourself under `~/springboot-practice/day-06` while following
+[the lesson](../../day-06-spring-boot-annotations/README.md).
+
+```bash
+mvn spring-boot:run
+# other terminal:
+curl 'http://localhost:8080/api/greet?name=Ada'
+```

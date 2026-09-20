@@ -1,0 +1,3 @@
+POST /api/auth/login { "email", "password" }
+Authorization: Bearer ...
+POST /api/orders  → 201

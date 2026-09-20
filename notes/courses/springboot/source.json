@@ -1,0 +1,412 @@
+{
+  "repository": "ankitkumar131/Springboot",
+  "branch": "arena/01a0bfa7-springboot",
+  "commit": "1cc8be4a573637619a9af4d640ea470e04888a40",
+  "files": {
+    "java-springboot-backend/00-roadmap/backend-development-roadmap.md": {
+      "source_sha256": "0602d2eacd62a1118d99683a31c77c3f7a246a312ef96dafa4a6e2ed854dfe40",
+      "published_sha256": "0602d2eacd62a1118d99683a31c77c3f7a246a312ef96dafa4a6e2ed854dfe40"
+    },
+    "java-springboot-backend/00-roadmap/learning-roadmap.md": {
+      "source_sha256": "2f380bd6cb29f6e65996090d2e75cb4ce43b1baa8d5541a451a7e37a4b2b67b9",
+      "published_sha256": "2f380bd6cb29f6e65996090d2e75cb4ce43b1baa8d5541a451a7e37a4b2b67b9"
+    },
+    "java-springboot-backend/00-roadmap/prerequisites.md": {
+      "source_sha256": "1347fe81a22063e83101d9ca23b77d618407454b4df88ad8e62dc6d6d9eb1a6f",
+      "published_sha256": "1347fe81a22063e83101d9ca23b77d618407454b4df88ad8e62dc6d6d9eb1a6f"
+    },
+    "java-springboot-backend/00-roadmap/setup-guide.md": {
+      "source_sha256": "811935f1fb6a7565b17b1538d4c114dcf9e1b039d0b59da9a148d845c61e3544",
+      "published_sha256": "811935f1fb6a7565b17b1538d4c114dcf9e1b039d0b59da9a148d845c61e3544"
+    },
+    "java-springboot-backend/README.md": {
+      "source_sha256": "e1da0c2c85496e75db8393d9cdc863a4ba7d9860efdde71e9fe29034841ec2c6",
+      "published_sha256": "4e5a5761140de0c38d3473a579be12d545e245ded0896155fbc90af6d3908d44"
+    },
+    "java-springboot-backend/cheatsheets/debugging-cheatsheet.md": {
+      "source_sha256": "53bfdd13250f9e031bbdcbc722bb15aaf528dce3a43bc2fbdc8f669507bcbe0e",
+      "published_sha256": "53bfdd13250f9e031bbdcbc722bb15aaf528dce3a43bc2fbdc8f669507bcbe0e"
+    },
+    "java-springboot-backend/cheatsheets/jpa-cheatsheet.md": {
+      "source_sha256": "ec6bbacedc618a0dd8cb77f11390c75d0cf474fdeeebffa680c02ac4bf2cc234",
+      "published_sha256": "ec6bbacedc618a0dd8cb77f11390c75d0cf474fdeeebffa680c02ac4bf2cc234"
+    },
+    "java-springboot-backend/cheatsheets/mongodb-cheatsheet.md": {
+      "source_sha256": "14efed367f32dd8ca450ba21898bd42c416009026e3efed190262c53ae4f259d",
+      "published_sha256": "14efed367f32dd8ca450ba21898bd42c416009026e3efed190262c53ae4f259d"
+    },
+    "java-springboot-backend/cheatsheets/mysql-cheatsheet.md": {
+      "source_sha256": "7dcd588a8ff77b50e67ba46ee88741dc797e620655ce3bf993eb27cd15849b56",
+      "published_sha256": "7dcd588a8ff77b50e67ba46ee88741dc797e620655ce3bf993eb27cd15849b56"
+    },
+    "java-springboot-backend/cheatsheets/postgresql-cheatsheet.md": {
+      "source_sha256": "f701585a92010c8ac327926a8ea07826869f6959afcb5df3d63d67932085197f",
+      "published_sha256": "f701585a92010c8ac327926a8ea07826869f6959afcb5df3d63d67932085197f"
+    },
+    "java-springboot-backend/cheatsheets/rest-api-cheatsheet.md": {
+      "source_sha256": "41dbe22df439de00fcecd62283bf7c58b1c7f7391238845d0c6d27bf5f96a616",
+      "published_sha256": "41dbe22df439de00fcecd62283bf7c58b1c7f7391238845d0c6d27bf5f96a616"
+    },
+    "java-springboot-backend/cheatsheets/springboot-annotations.md": {
+      "source_sha256": "33694d037a89035397d9bc2153f565fc7d7e2488291b634339564787d82f2906",
+      "published_sha256": "33694d037a89035397d9bc2153f565fc7d7e2488291b634339564787d82f2906"
+    },
+    "java-springboot-backend/day-01-java-for-springboot/README.md": {
+      "source_sha256": "c3a60ed9bd8d56e39234559715525e2f0702fb7f5be3d0e93245cfd3b91e445d",
+      "published_sha256": "c3a60ed9bd8d56e39234559715525e2f0702fb7f5be3d0e93245cfd3b91e445d"
+    },
+    "java-springboot-backend/day-02-java-for-springboot/README.md": {
+      "source_sha256": "cce102491596444269e58c55496b2651ebf84aa2b6d9f447d914efdece07ee51",
+      "published_sha256": "cce102491596444269e58c55496b2651ebf84aa2b6d9f447d914efdece07ee51"
+    },
+    "java-springboot-backend/day-03-spring-fundamentals/README.md": {
+      "source_sha256": "f4e3b244f46e11e83740bf69e9a8ff98e902d8a6084f9e6adb5a38c62db75f90",
+      "published_sha256": "f4e3b244f46e11e83740bf69e9a8ff98e902d8a6084f9e6adb5a38c62db75f90"
+    },
+    "java-springboot-backend/day-04-dependency-injection/README.md": {
+      "source_sha256": "4aa9fbe1a74c784ff8302a13b917c44a46eda3468897a95556af4e04fb1413e6",
+      "published_sha256": "4aa9fbe1a74c784ff8302a13b917c44a46eda3468897a95556af4e04fb1413e6"
+    },
+    "java-springboot-backend/day-05-spring-boot-fundamentals/README.md": {
+      "source_sha256": "160cde6bcd30eb01eb31e656f1ea8d5619d3a8e056333336954ddbdec5cbcc3a",
+      "published_sha256": "160cde6bcd30eb01eb31e656f1ea8d5619d3a8e056333336954ddbdec5cbcc3a"
+    },
+    "java-springboot-backend/day-06-spring-boot-annotations/README.md": {
+      "source_sha256": "66816a685814660f4a3b6b690b8c964125d81a4d06f31d07ff6de011f503e864",
+      "published_sha256": "66816a685814660f4a3b6b690b8c964125d81a4d06f31d07ff6de011f503e864"
+    },
+    "java-springboot-backend/day-07-spring-mvc/README.md": {
+      "source_sha256": "c860de9a9822166b9a631ccec86b833b1959c713a397644343da07b8ed889d12",
+      "published_sha256": "c860de9a9822166b9a631ccec86b833b1959c713a397644343da07b8ed889d12"
+    },
+    "java-springboot-backend/day-08-rest-apis/README.md": {
+      "source_sha256": "eb9f6806f19bdce3b5f609011f677f8853b4ae2725f756cdb8f3b43550972b2a",
+      "published_sha256": "eb9f6806f19bdce3b5f609011f677f8853b4ae2725f756cdb8f3b43550972b2a"
+    },
+    "java-springboot-backend/day-09-first-rest-api/README.md": {
+      "source_sha256": "41dc5d3860de4ed9d15459db8177a7cb30f97fa8952a0b56d2233cc7d8e80fa8",
+      "published_sha256": "41dc5d3860de4ed9d15459db8177a7cb30f97fa8952a0b56d2233cc7d8e80fa8"
+    },
+    "java-springboot-backend/day-10-service-layer/README.md": {
+      "source_sha256": "1e54bee83758d96b75d2dba104d05a53d2c4690c8689e15247c129772ff3fcae",
+      "published_sha256": "1e54bee83758d96b75d2dba104d05a53d2c4690c8689e15247c129772ff3fcae"
+    },
+    "java-springboot-backend/day-11-dtos/README.md": {
+      "source_sha256": "47b5dded2ad6e5f1661e8ee2758a0bf050e6a548af0b7d0a761d2302da2eabc9",
+      "published_sha256": "47b5dded2ad6e5f1661e8ee2758a0bf050e6a548af0b7d0a761d2302da2eabc9"
+    },
+    "java-springboot-backend/day-12-validation-exceptions/README.md": {
+      "source_sha256": "b4d5441640f8a89a1480c30c7273da22284bcc6ae122f8549e8be4082bf8c2c8",
+      "published_sha256": "b4d5441640f8a89a1480c30c7273da22284bcc6ae122f8549e8be4082bf8c2c8"
+    },
+    "java-springboot-backend/day-13-mysql-fundamentals/README.md": {
+      "source_sha256": "0283552bd8dcbc60626fe8f5e27957ab63741dbec8125baccf4186ffebb8fb1c",
+      "published_sha256": "0283552bd8dcbc60626fe8f5e27957ab63741dbec8125baccf4186ffebb8fb1c"
+    },
+    "java-springboot-backend/day-14-spring-data-jpa/README.md": {
+      "source_sha256": "26d3e246756321888ed8ef08774b7bbeb698d09946b271c1f8f68814cd56300b",
+      "published_sha256": "26d3e246756321888ed8ef08774b7bbeb698d09946b271c1f8f68814cd56300b"
+    },
+    "java-springboot-backend/day-15-mysql-crud-jpa/README.md": {
+      "source_sha256": "da8e5621ae768dcc264d04fb3ba79e02f41a51616f1571ba3e33a925eac950e8",
+      "published_sha256": "da8e5621ae768dcc264d04fb3ba79e02f41a51616f1571ba3e33a925eac950e8"
+    },
+    "java-springboot-backend/day-16-jpa-relationships/README.md": {
+      "source_sha256": "c5ef25b01b1c3d4ee2c591f2d0129855f2166b59e132e19c23b63ec9566afd92",
+      "published_sha256": "c5ef25b01b1c3d4ee2c591f2d0129855f2166b59e132e19c23b63ec9566afd92"
+    },
+    "java-springboot-backend/day-17-advanced-jpa/README.md": {
+      "source_sha256": "52543d55851a76cf9e37e4a078a1e8e8a9c31c6a00c8ec1d26476d521cf24f51",
+      "published_sha256": "52543d55851a76cf9e37e4a078a1e8e8a9c31c6a00c8ec1d26476d521cf24f51"
+    },
+    "java-springboot-backend/day-18-postgresql-fundamentals/README.md": {
+      "source_sha256": "e08db10f0cfbb534ff65e14d9c021a0418f5a09f71a55a111d941f80d776c2bb",
+      "published_sha256": "e08db10f0cfbb534ff65e14d9c021a0418f5a09f71a55a111d941f80d776c2bb"
+    },
+    "java-springboot-backend/day-19-springboot-postgresql/README.md": {
+      "source_sha256": "0db5901ff1208173a680b50ea1bea66746db44010ca173cea236484e2a84b788",
+      "published_sha256": "0db5901ff1208173a680b50ea1bea66746db44010ca173cea236484e2a84b788"
+    },
+    "java-springboot-backend/day-20-advanced-postgresql/README.md": {
+      "source_sha256": "ba87e88471b9d13ce705042df0fd3d3c8dc86a923a8742c1bf37eaedf76c6dc0",
+      "published_sha256": "ba87e88471b9d13ce705042df0fd3d3c8dc86a923a8742c1bf37eaedf76c6dc0"
+    },
+    "java-springboot-backend/day-21-mongodb-fundamentals/README.md": {
+      "source_sha256": "13a4b23ad7e9ce407047b3fc5ba149da0236f9a6ff12fc7d154fe177d85a3150",
+      "published_sha256": "13a4b23ad7e9ce407047b3fc5ba149da0236f9a6ff12fc7d154fe177d85a3150"
+    },
+    "java-springboot-backend/day-22-spring-data-mongodb/README.md": {
+      "source_sha256": "70230d5d701fe5a8d5f933cb2b085aa8e48dae9ff6589f9efdbd5ef8c5c6ed83",
+      "published_sha256": "70230d5d701fe5a8d5f933cb2b085aa8e48dae9ff6589f9efdbd5ef8c5c6ed83"
+    },
+    "java-springboot-backend/day-23-advanced-mongodb/README.md": {
+      "source_sha256": "93e7cfbc19405973115425ee23ce66e7d6f2be4a61116be66fc8a56addde8dd5",
+      "published_sha256": "93e7cfbc19405973115425ee23ce66e7d6f2be4a61116be66fc8a56addde8dd5"
+    },
+    "java-springboot-backend/day-24-spring-security/README.md": {
+      "source_sha256": "68a5d29074a0d4028b82fd8b9cf2917ef3b116e5d30c6dc9756e60426822bbe4",
+      "published_sha256": "68a5d29074a0d4028b82fd8b9cf2917ef3b116e5d30c6dc9756e60426822bbe4"
+    },
+    "java-springboot-backend/day-25-jwt-authentication/README.md": {
+      "source_sha256": "b4685542444fa0f3b8a1e4f282e0acd56a295a2add7ea22c008e4dd96b884a6d",
+      "published_sha256": "b4685542444fa0f3b8a1e4f282e0acd56a295a2add7ea22c008e4dd96b884a6d"
+    },
+    "java-springboot-backend/day-26-authorization-security/README.md": {
+      "source_sha256": "c54e46c8105c85a39176070d3e843a84555da38ed9cfa4322ade0a6b45e316ed",
+      "published_sha256": "c54e46c8105c85a39176070d3e843a84555da38ed9cfa4322ade0a6b45e316ed"
+    },
+    "java-springboot-backend/day-27-testing/README.md": {
+      "source_sha256": "1bd64166ddbf71581a8e5bb0343a4d7e84f4f37e9fa3f26aab805ba3bdba5f1a",
+      "published_sha256": "1bd64166ddbf71581a8e5bb0343a4d7e84f4f37e9fa3f26aab805ba3bdba5f1a"
+    },
+    "java-springboot-backend/day-28-production-apis/README.md": {
+      "source_sha256": "b71f300111ef27e16fb64540205a37dd2456c9c4f0851751ece094ad9976bea2",
+      "published_sha256": "b71f300111ef27e16fb64540205a37dd2456c9c4f0851751ece094ad9976bea2"
+    },
+    "java-springboot-backend/day-29-docker-deployment/README.md": {
+      "source_sha256": "2d209bd5eea55388ce9bcea992051c9f027593c39d46a2b6870e785d46c17361",
+      "published_sha256": "2d209bd5eea55388ce9bcea992051c9f027593c39d46a2b6870e785d46c17361"
+    },
+    "java-springboot-backend/day-30-final-capstone/README.md": {
+      "source_sha256": "3edf750082880faf549214ba2fc9c53f64aa8e3af5d77267699aa5a40203d832",
+      "published_sha256": "3edf750082880faf549214ba2fc9c53f64aa8e3af5d77267699aa5a40203d832"
+    },
+    "java-springboot-backend/interview/backend-system-design-questions.md": {
+      "source_sha256": "d4b71433a98e7a3adcf1fbd7edfd0fd4e97116f30c8ba8b0801da3030599998e",
+      "published_sha256": "d4b71433a98e7a3adcf1fbd7edfd0fd4e97116f30c8ba8b0801da3030599998e"
+    },
+    "java-springboot-backend/interview/coding-questions.md": {
+      "source_sha256": "c5c998f5f54bbb18f0e1f80aa61b86babb00bda54e82f64af64324f6ed6edbd2",
+      "published_sha256": "c5c998f5f54bbb18f0e1f80aa61b86babb00bda54e82f64af64324f6ed6edbd2"
+    },
+    "java-springboot-backend/interview/docker-interview-questions.md": {
+      "source_sha256": "0b46b7682097ba90a4c912a55bf5842b1e7448a60cdb597972bffad19194d84a",
+      "published_sha256": "0b46b7682097ba90a4c912a55bf5842b1e7448a60cdb597972bffad19194d84a"
+    },
+    "java-springboot-backend/interview/java-interview-questions.md": {
+      "source_sha256": "821649e71e2570d8a06141966c5edd85d471a6fb9746b43688587b174a56b69b",
+      "published_sha256": "821649e71e2570d8a06141966c5edd85d471a6fb9746b43688587b174a56b69b"
+    },
+    "java-springboot-backend/interview/jpa-hibernate-interview-questions.md": {
+      "source_sha256": "91eccba9dcfd0e5a0b26c64f075d0431f3298c3b3232f802b46e3d0c27a96ee2",
+      "published_sha256": "91eccba9dcfd0e5a0b26c64f075d0431f3298c3b3232f802b46e3d0c27a96ee2"
+    },
+    "java-springboot-backend/interview/jwt-interview-questions.md": {
+      "source_sha256": "fc46090c4c74780106e6bbcef31cfce8def8e5b7bde8728f888fe984b5e872de",
+      "published_sha256": "fc46090c4c74780106e6bbcef31cfce8def8e5b7bde8728f888fe984b5e872de"
+    },
+    "java-springboot-backend/interview/mongodb-interview-questions.md": {
+      "source_sha256": "683623d98b2eaec09936318d75c06322518aaa1b3e1d6fa7f3f7e796a624db4f",
+      "published_sha256": "683623d98b2eaec09936318d75c06322518aaa1b3e1d6fa7f3f7e796a624db4f"
+    },
+    "java-springboot-backend/interview/mysql-interview-questions.md": {
+      "source_sha256": "e545aa56ef28f7accb21c35be44dc1877e3d6065e8a5d40791bbe51221cdb3ac",
+      "published_sha256": "e545aa56ef28f7accb21c35be44dc1877e3d6065e8a5d40791bbe51221cdb3ac"
+    },
+    "java-springboot-backend/interview/postgresql-interview-questions.md": {
+      "source_sha256": "dd37b388fa731ff1c250e9b5ba3753b81cc261a9c2547a4e42f696272d7b8f46",
+      "published_sha256": "dd37b388fa731ff1c250e9b5ba3753b81cc261a9c2547a4e42f696272d7b8f46"
+    },
+    "java-springboot-backend/interview/rest-api-interview-questions.md": {
+      "source_sha256": "fb5a695778f3029ebfa71482976482171f42b457728a0ba92cd92d00b5b79631",
+      "published_sha256": "fb5a695778f3029ebfa71482976482171f42b457728a0ba92cd92d00b5b79631"
+    },
+    "java-springboot-backend/interview/security-interview-questions.md": {
+      "source_sha256": "1b8ccc76827370cd17ce625fdef6a068cb349868e5d4319fa95a00874853f3f1",
+      "published_sha256": "1b8ccc76827370cd17ce625fdef6a068cb349868e5d4319fa95a00874853f3f1"
+    },
+    "java-springboot-backend/interview/spring-interview-questions.md": {
+      "source_sha256": "4e0dfbddfd0db422b1663ebe5086cc34cc500e8ed183f5d1f9391add08ca0a0d",
+      "published_sha256": "4e0dfbddfd0db422b1663ebe5086cc34cc500e8ed183f5d1f9391add08ca0a0d"
+    },
+    "java-springboot-backend/interview/spring-mvc-interview-questions.md": {
+      "source_sha256": "bece22d8163c917b7a59466047862b3af5147c62863d80f8116565d7cecc3578",
+      "published_sha256": "bece22d8163c917b7a59466047862b3af5147c62863d80f8116565d7cecc3578"
+    },
+    "java-springboot-backend/interview/springboot-interview-questions.md": {
+      "source_sha256": "251e1e61d85b5acfdf01f2e724a44758290028187d6c4787f3078845bd9ab04a",
+      "published_sha256": "251e1e61d85b5acfdf01f2e724a44758290028187d6c4787f3078845bd9ab04a"
+    },
+    "java-springboot-backend/interview/testing-interview-questions.md": {
+      "source_sha256": "65e24af3359823969d6f4eeef59a6efd47b86b6f7bfe619424d4d35d3ed8edd4",
+      "published_sha256": "65e24af3359823969d6f4eeef59a6efd47b86b6f7bfe619424d4d35d3ed8edd4"
+    },
+    "java-springboot-backend/practical/README.md": {
+      "source_sha256": "df211b41e80ab0c4c9b178077bf31f67fe86b264c841f78659926116bc72659d",
+      "published_sha256": "19eb21a9524dc40a2c29cfad2f3950d86b9964bf1fcf05e73a67cf6dbf3db75d"
+    },
+    "java-springboot-backend/practical/day-01/README.md": {
+      "source_sha256": "8fb7de7d6e243940ed3e5e97a3abd6783ecbcab5e8c6290a808c53406110da80",
+      "published_sha256": "8fb7de7d6e243940ed3e5e97a3abd6783ecbcab5e8c6290a808c53406110da80"
+    },
+    "java-springboot-backend/practical/day-02/README.md": {
+      "source_sha256": "2f2f7cb6dd7b5e8f0ddf4b29769237e61ce8974a62943d0e2075f843e15572cd",
+      "published_sha256": "2f2f7cb6dd7b5e8f0ddf4b29769237e61ce8974a62943d0e2075f843e15572cd"
+    },
+    "java-springboot-backend/practical/day-03/README.md": {
+      "source_sha256": "96a70ddd9d338c23dd389d87392fe1ea56da074b27bc773aa5b827687d022928",
+      "published_sha256": "96a70ddd9d338c23dd389d87392fe1ea56da074b27bc773aa5b827687d022928"
+    },
+    "java-springboot-backend/practical/day-04/README.md": {
+      "source_sha256": "a48797396dd675007ccc6e0ba2957461e4fba8d008b2940c37eebc00a210f79f",
+      "published_sha256": "a48797396dd675007ccc6e0ba2957461e4fba8d008b2940c37eebc00a210f79f"
+    },
+    "java-springboot-backend/practical/day-05/README.md": {
+      "source_sha256": "d773b83178329c6cb9519e9fd97fa2310f3256d6d21a61780d1560e1ed8b93e6",
+      "published_sha256": "d773b83178329c6cb9519e9fd97fa2310f3256d6d21a61780d1560e1ed8b93e6"
+    },
+    "java-springboot-backend/practical/day-06/README.md": {
+      "source_sha256": "f82f7fe52792923222ffabd6d1178a347fdf4bb858c7e41af5d3756d35500cef",
+      "published_sha256": "f82f7fe52792923222ffabd6d1178a347fdf4bb858c7e41af5d3756d35500cef"
+    },
+    "java-springboot-backend/practical/day-07/README.md": {
+      "source_sha256": "d4e67c093a8629b1c0cedb9f7f2c977ecf6f5c45028a1909838632d6f1128e5f",
+      "published_sha256": "d4e67c093a8629b1c0cedb9f7f2c977ecf6f5c45028a1909838632d6f1128e5f"
+    },
+    "java-springboot-backend/practical/day-08/README.md": {
+      "source_sha256": "a02466ccc5182b57a7cee0c53b05f46a7b2e6ebc77cc50a4cc222e3b2e50cb46",
+      "published_sha256": "a02466ccc5182b57a7cee0c53b05f46a7b2e6ebc77cc50a4cc222e3b2e50cb46"
+    },
+    "java-springboot-backend/practical/day-09/README.md": {
+      "source_sha256": "f09f76d8a146a69a6947e8c20ddfafaa0ea9b983bcf3df7f36c2d90144bda8b3",
+      "published_sha256": "f09f76d8a146a69a6947e8c20ddfafaa0ea9b983bcf3df7f36c2d90144bda8b3"
+    },
+    "java-springboot-backend/practical/day-10/README.md": {
+      "source_sha256": "1d0d9ef698f8acba0cbc33f8f8e540d008a489442db9bf9306a0702120f49a5c",
+      "published_sha256": "1d0d9ef698f8acba0cbc33f8f8e540d008a489442db9bf9306a0702120f49a5c"
+    },
+    "java-springboot-backend/practical/day-11/README.md": {
+      "source_sha256": "7049b2e16002b4f9696d61e7334ea39d2c9c3abd9bfdca14851bbbf4a8e78e47",
+      "published_sha256": "7049b2e16002b4f9696d61e7334ea39d2c9c3abd9bfdca14851bbbf4a8e78e47"
+    },
+    "java-springboot-backend/practical/day-12/README.md": {
+      "source_sha256": "161913e38d3479bfdbb795ebd83f5bff37c9e2e44a1a9796d268acd1147c19a3",
+      "published_sha256": "161913e38d3479bfdbb795ebd83f5bff37c9e2e44a1a9796d268acd1147c19a3"
+    },
+    "java-springboot-backend/practical/day-13/README.md": {
+      "source_sha256": "81da49408413df8fa2fdc5c5796e6e8ef76ff4415b60dd09275091cadef61b54",
+      "published_sha256": "81da49408413df8fa2fdc5c5796e6e8ef76ff4415b60dd09275091cadef61b54"
+    },
+    "java-springboot-backend/practical/day-13/notes.md": {
+      "source_sha256": "b11dbf542bc86dd67eb98a98fe7ae2390f33d4364cbbdd377394c239e7dfdfed",
+      "published_sha256": "b11dbf542bc86dd67eb98a98fe7ae2390f33d4364cbbdd377394c239e7dfdfed"
+    },
+    "java-springboot-backend/practical/day-14/README.md": {
+      "source_sha256": "5ebe3db3255e2fd3a05846cbbbb42fc9338ea0c929c94337272503c372c108f7",
+      "published_sha256": "5ebe3db3255e2fd3a05846cbbbb42fc9338ea0c929c94337272503c372c108f7"
+    },
+    "java-springboot-backend/practical/day-15/README.md": {
+      "source_sha256": "1bdf687341646280c226689b841fc4573705261aba4dce050b8eded63b1da875",
+      "published_sha256": "1bdf687341646280c226689b841fc4573705261aba4dce050b8eded63b1da875"
+    },
+    "java-springboot-backend/practical/day-16/README.md": {
+      "source_sha256": "eca0d06170254493425f4cb252ea7d573256bdf37d274aa11071f4132f5e9f02",
+      "published_sha256": "eca0d06170254493425f4cb252ea7d573256bdf37d274aa11071f4132f5e9f02"
+    },
+    "java-springboot-backend/practical/day-17/README.md": {
+      "source_sha256": "06d5d23b6ad2d01c849e9b5822e2634ceee69c3572ec9e65239f133ae98e27c2",
+      "published_sha256": "06d5d23b6ad2d01c849e9b5822e2634ceee69c3572ec9e65239f133ae98e27c2"
+    },
+    "java-springboot-backend/practical/day-18/README.md": {
+      "source_sha256": "119a6b7cc77b5da5d7e2e0040d66f919e693118dc110b48e42ddb05228cf82b9",
+      "published_sha256": "119a6b7cc77b5da5d7e2e0040d66f919e693118dc110b48e42ddb05228cf82b9"
+    },
+    "java-springboot-backend/practical/day-18/notes.md": {
+      "source_sha256": "ded118d69891f0fa4966c8b030587364a8b3991a139c3949289bd1015d08af40",
+      "published_sha256": "ded118d69891f0fa4966c8b030587364a8b3991a139c3949289bd1015d08af40"
+    },
+    "java-springboot-backend/practical/day-19/README.md": {
+      "source_sha256": "9fd8eabe449388f411007d02e39c5dedb9deb6774e59369032251c4fcef47911",
+      "published_sha256": "9fd8eabe449388f411007d02e39c5dedb9deb6774e59369032251c4fcef47911"
+    },
+    "java-springboot-backend/practical/day-20/README.md": {
+      "source_sha256": "66bad67b9815788a4f0bb65f1ecc70abb0b37e319cbe0a8cc187ac81f10f029b",
+      "published_sha256": "66bad67b9815788a4f0bb65f1ecc70abb0b37e319cbe0a8cc187ac81f10f029b"
+    },
+    "java-springboot-backend/practical/day-21/README.md": {
+      "source_sha256": "d41693a325da0c58920207c39c5c71cf06a29e0a0c84a2f79a8cac6135aa2454",
+      "published_sha256": "d41693a325da0c58920207c39c5c71cf06a29e0a0c84a2f79a8cac6135aa2454"
+    },
+    "java-springboot-backend/practical/day-21/notes.md": {
+      "source_sha256": "a96886b374648755716d9e249a66c6c1146889ff62a57c28d352d1b8acd62541",
+      "published_sha256": "a96886b374648755716d9e249a66c6c1146889ff62a57c28d352d1b8acd62541"
+    },
+    "java-springboot-backend/practical/day-22/README.md": {
+      "source_sha256": "c09064fd833e422e73562302fd1472b22e7710b89d289eab6403e48055a4b776",
+      "published_sha256": "c09064fd833e422e73562302fd1472b22e7710b89d289eab6403e48055a4b776"
+    },
+    "java-springboot-backend/practical/day-23/README.md": {
+      "source_sha256": "4890b34aaeb9a668a197946e5e81b3fc51c98f73e7c853f2daf2d5998786c224",
+      "published_sha256": "4890b34aaeb9a668a197946e5e81b3fc51c98f73e7c853f2daf2d5998786c224"
+    },
+    "java-springboot-backend/practical/day-23/comparison.md": {
+      "source_sha256": "afd4899f2c9c9a9e4d5fde6df7af11fbb7b1d05a95516365f7b6c254a82442cd",
+      "published_sha256": "afd4899f2c9c9a9e4d5fde6df7af11fbb7b1d05a95516365f7b6c254a82442cd"
+    },
+    "java-springboot-backend/practical/day-24/README.md": {
+      "source_sha256": "b60dbe1ab3b969db28d8577e5a2e3357e00774c3a222b25561ace0b4c688f212",
+      "published_sha256": "b60dbe1ab3b969db28d8577e5a2e3357e00774c3a222b25561ace0b4c688f212"
+    },
+    "java-springboot-backend/practical/day-25/README.md": {
+      "source_sha256": "0e696a8a15d1967f47067c0811c984eec46b3dfbc15f92ed82c7e15435838aba",
+      "published_sha256": "0e696a8a15d1967f47067c0811c984eec46b3dfbc15f92ed82c7e15435838aba"
+    },
+    "java-springboot-backend/practical/day-26/README.md": {
+      "source_sha256": "c10b796fa1c6ec65ad842f07512a821ca8a3a0de411ea629bfe0406c7e54d1ce",
+      "published_sha256": "c10b796fa1c6ec65ad842f07512a821ca8a3a0de411ea629bfe0406c7e54d1ce"
+    },
+    "java-springboot-backend/practical/day-27/README.md": {
+      "source_sha256": "9fa37087e7bb51ce97195525aef675897b47b48ac0bb5f24969f6c598fa91be5",
+      "published_sha256": "9fa37087e7bb51ce97195525aef675897b47b48ac0bb5f24969f6c598fa91be5"
+    },
+    "java-springboot-backend/practical/day-28/README.md": {
+      "source_sha256": "0e6ba1bd3e16a4549223c0b773b45645ca4c17b890d1a66b54c097ba140a6521",
+      "published_sha256": "0e6ba1bd3e16a4549223c0b773b45645ca4c17b890d1a66b54c097ba140a6521"
+    },
+    "java-springboot-backend/practical/day-29/README.md": {
+      "source_sha256": "2d13a3ac9e183c8d4bf122dfa6f0960595a0e6cd546ccea47102c7993e422c26",
+      "published_sha256": "2d13a3ac9e183c8d4bf122dfa6f0960595a0e6cd546ccea47102c7993e422c26"
+    },
+    "java-springboot-backend/practical/day-30/README-SHOP.md": {
+      "source_sha256": "7cdf52ea596adcef436beda71c46741cead282c465e291bb639f8bd3c535292b",
+      "published_sha256": "7cdf52ea596adcef436beda71c46741cead282c465e291bb639f8bd3c535292b"
+    },
+    "java-springboot-backend/practical/day-30/README.md": {
+      "source_sha256": "aef4ce08a354a3e16d325ec2991c5e050f940bf630ecef62be841627b6089127",
+      "published_sha256": "aef4ce08a354a3e16d325ec2991c5e050f940bf630ecef62be841627b6089127"
+    },
+    "java-springboot-backend/practical/day-30/domain.md": {
+      "source_sha256": "3ed2819ccee5e871dcdd64686ab46a328168c8e657fb1aec777ee6184cc835be",
+      "published_sha256": "3ed2819ccee5e871dcdd64686ab46a328168c8e657fb1aec777ee6184cc835be"
+    },
+    "java-springboot-backend/practical/day-30/http-examples.md": {
+      "source_sha256": "34dca94bc073ed13b071331570a41d399b91d37a04ba4c6077b3ad49796d44db",
+      "published_sha256": "34dca94bc073ed13b071331570a41d399b91d37a04ba4c6077b3ad49796d44db"
+    },
+    "java-springboot-backend/projects/final-project/README.md": {
+      "source_sha256": "9612a7e808c0037b7e5b9909d9ce95f0f841b9d47294f267641f8cd6f4462cfa",
+      "published_sha256": "9612a7e808c0037b7e5b9909d9ce95f0f841b9d47294f267641f8cd6f4462cfa"
+    },
+    "java-springboot-backend/projects/project-01-crud-api/README.md": {
+      "source_sha256": "41913bed49aef0d24958e16ea971498f9cc6a6dd5ee849ebe18e0bdb56b4d3aa",
+      "published_sha256": "41913bed49aef0d24958e16ea971498f9cc6a6dd5ee849ebe18e0bdb56b4d3aa"
+    },
+    "java-springboot-backend/projects/project-02-product-api/README.md": {
+      "source_sha256": "ec2bf330b74d390e57aaafcc3d0ff9dff884828dd8700b2926bb6535b1ef6222",
+      "published_sha256": "ec2bf330b74d390e57aaafcc3d0ff9dff884828dd8700b2926bb6535b1ef6222"
+    },
+    "java-springboot-backend/projects/project-03-authentication-api/README.md": {
+      "source_sha256": "1793e7ad2b2483190359327b9508d0adb3fff2064e047a5f943edd952299b972",
+      "published_sha256": "1793e7ad2b2483190359327b9508d0adb3fff2064e047a5f943edd952299b972"
+    },
+    "java-springboot-backend/projects/project-04-mongodb-blog-api/README.md": {
+      "source_sha256": "ec74c944ce41c796fb9dcef17fb216a7df5fd704c89e88bfc0e46108eb2dbe2c",
+      "published_sha256": "ec74c944ce41c796fb9dcef17fb216a7df5fd704c89e88bfc0e46108eb2dbe2c"
+    },
+    "java-springboot-backend/projects/project-05-postgresql-employee-api/README.md": {
+      "source_sha256": "d83d6c8d8d430f6c6545c7e13910eef6abfdfaa412150e4a7fd18d2034b37482",
+      "published_sha256": "d83d6c8d8d430f6c6545c7e13910eef6abfdfaa412150e4a7fd18d2034b37482"
+    }
+  },
+  "unavailable_links": []
+}

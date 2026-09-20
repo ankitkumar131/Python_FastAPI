@@ -1,0 +1,473 @@
+{
+  "repository": "ankitkumar131/DSA-in-java",
+  "branch": "arena/01a0bf70-dsa-in-java",
+  "commit": "150cce769a5671e37788a9dbb0a87e7112a41258",
+  "files": {
+    "DSA-Java-30-Days/00-Roadmap/error-log-template.md": {
+      "source_sha256": "b901a0b7ea380e7e1de15ecc27a878191bb47f43132a7efd8c58230705c607e1",
+      "published_sha256": "b901a0b7ea380e7e1de15ecc27a878191bb47f43132a7efd8c58230705c607e1"
+    },
+    "DSA-Java-30-Days/00-Roadmap/how-to-study.md": {
+      "source_sha256": "c080ad5ebbbcd13fa94e416b35c56fd192214df28463f1c82a3e06e329503294",
+      "published_sha256": "c080ad5ebbbcd13fa94e416b35c56fd192214df28463f1c82a3e06e329503294"
+    },
+    "DSA-Java-30-Days/00-Roadmap/interview-preparation.md": {
+      "source_sha256": "2dbbe30169cc049e8739e457846b334a5f0b50010d8f2ba6e4060d3c8b325488",
+      "published_sha256": "2dbbe30169cc049e8739e457846b334a5f0b50010d8f2ba6e4060d3c8b325488"
+    },
+    "DSA-Java-30-Days/00-Roadmap/problem-solving-strategy.md": {
+      "source_sha256": "997cdf279a077c215e260016e22ce779df7f0c68be5d50b3237fa8a9824f3d5c",
+      "published_sha256": "997cdf279a077c215e260016e22ce779df7f0c68be5d50b3237fa8a9824f3d5c"
+    },
+    "DSA-Java-30-Days/00-Roadmap/roadmap.md": {
+      "source_sha256": "1814dfda5a1f92aae62e90f39ad808537ad7ec37017c3196642c8d912f3f2524",
+      "published_sha256": "1814dfda5a1f92aae62e90f39ad808537ad7ec37017c3196642c8d912f3f2524"
+    },
+    "DSA-Java-30-Days/01-Java-Foundations/day-01-java-dsa-foundations.md": {
+      "source_sha256": "8093bc94d5c32ba9a23628d7a1a25ddf1d37fc71c9c2bc9962aa8a0245dd2e45",
+      "published_sha256": "8093bc94d5c32ba9a23628d7a1a25ddf1d37fc71c9c2bc9962aa8a0245dd2e45"
+    },
+    "DSA-Java-30-Days/01-Java-Foundations/day-02-oops-java.md": {
+      "source_sha256": "1cd1d8dfb03a65ffc20daa0a1994c4394fa03055d5f17b8d714b0200ecd093f3",
+      "published_sha256": "1cd1d8dfb03a65ffc20daa0a1994c4394fa03055d5f17b8d714b0200ecd093f3"
+    },
+    "DSA-Java-30-Days/02-Complexity-and-Problem-Solving/day-03-complexity-analysis.md": {
+      "source_sha256": "6e60008f58e593b65f9be6b76aea6dcca56c2f212de2919553076163c59377d7",
+      "published_sha256": "6e60008f58e593b65f9be6b76aea6dcca56c2f212de2919553076163c59377d7"
+    },
+    "DSA-Java-30-Days/02-Complexity-and-Problem-Solving/day-04-math-and-problem-solving.md": {
+      "source_sha256": "ec1d802b5f2a92bc081df411c5ff34fad3c608fa114fd293aa89955ba4c4226d",
+      "published_sha256": "ec1d802b5f2a92bc081df411c5ff34fad3c608fa114fd293aa89955ba4c4226d"
+    },
+    "DSA-Java-30-Days/03-Arrays-and-Strings/day-05-arrays.md": {
+      "source_sha256": "0ba9b8a3f9c7ff14c2a13a33903a07870a2b0a75e5845ba014981056c7d4b414",
+      "published_sha256": "0ba9b8a3f9c7ff14c2a13a33903a07870a2b0a75e5845ba014981056c7d4b414"
+    },
+    "DSA-Java-30-Days/03-Arrays-and-Strings/day-06-strings.md": {
+      "source_sha256": "35f23764e99c062aa67ee9dced33cadebc817381ec72f7b6ad69432148f70e20",
+      "published_sha256": "35f23764e99c062aa67ee9dced33cadebc817381ec72f7b6ad69432148f70e20"
+    },
+    "DSA-Java-30-Days/03-Arrays-and-Strings/day-07-two-pointers.md": {
+      "source_sha256": "5a30078262adab9208603c33ee9bfd1b1b10f9d485395ab7b17b2001ed99a032",
+      "published_sha256": "5a30078262adab9208603c33ee9bfd1b1b10f9d485395ab7b17b2001ed99a032"
+    },
+    "DSA-Java-30-Days/03-Arrays-and-Strings/day-08-sliding-window.md": {
+      "source_sha256": "174d8dd4cf6a56f15ab7fa83e74e0cb75a5851aa2d52c42cdc474ad71c7612ab",
+      "published_sha256": "174d8dd4cf6a56f15ab7fa83e74e0cb75a5851aa2d52c42cdc474ad71c7612ab"
+    },
+    "DSA-Java-30-Days/03-Arrays-and-Strings/day-09-prefix-sum.md": {
+      "source_sha256": "da30d24c9df708150c74f5629f8ab0240a6b5a1756ae3fcf81fe9cb4d38c72b2",
+      "published_sha256": "da30d24c9df708150c74f5629f8ab0240a6b5a1756ae3fcf81fe9cb4d38c72b2"
+    },
+    "DSA-Java-30-Days/04-Searching-and-Sorting/day-10-searching.md": {
+      "source_sha256": "f4cf06fe28a8d38bdb4b25dd196443d100ca3188c1771e6331fd6c2cdcfd0f56",
+      "published_sha256": "f4cf06fe28a8d38bdb4b25dd196443d100ca3188c1771e6331fd6c2cdcfd0f56"
+    },
+    "DSA-Java-30-Days/04-Searching-and-Sorting/day-11-sorting.md": {
+      "source_sha256": "9eb122d307f61e7edced4defd5f686c3bb1a1d9e522e2b52424dea56780e889a",
+      "published_sha256": "9eb122d307f61e7edced4defd5f686c3bb1a1d9e522e2b52424dea56780e889a"
+    },
+    "DSA-Java-30-Days/05-Recursion-and-Linked-Lists/day-12-recursion.md": {
+      "source_sha256": "e7070339bb5005e89036217327d64cb4abbd3cbcffa700d69c1d0bc249f6a0a9",
+      "published_sha256": "e7070339bb5005e89036217327d64cb4abbd3cbcffa700d69c1d0bc249f6a0a9"
+    },
+    "DSA-Java-30-Days/05-Recursion-and-Linked-Lists/day-13-linked-list.md": {
+      "source_sha256": "c83ddd7f78890418df5dc9ebd4a6e86c599c12be47a9283b67ddea0b1fbb8e04",
+      "published_sha256": "c83ddd7f78890418df5dc9ebd4a6e86c599c12be47a9283b67ddea0b1fbb8e04"
+    },
+    "DSA-Java-30-Days/05-Recursion-and-Linked-Lists/day-14-linked-list-advanced.md": {
+      "source_sha256": "ecf325e07ff2948e8bcc176e6ab6ef7be036929927646935440c4f7d0e993ef6",
+      "published_sha256": "ecf325e07ff2948e8bcc176e6ab6ef7be036929927646935440c4f7d0e993ef6"
+    },
+    "DSA-Java-30-Days/06-Stacks-Queues-Hashing/day-15-stack.md": {
+      "source_sha256": "e58eeafa45c47b02fa0b07923d52c5501b65a1d3c2a463b7adb0120afbce4c3b",
+      "published_sha256": "e58eeafa45c47b02fa0b07923d52c5501b65a1d3c2a463b7adb0120afbce4c3b"
+    },
+    "DSA-Java-30-Days/06-Stacks-Queues-Hashing/day-16-queue-deque.md": {
+      "source_sha256": "2ccc7d8bddf3b96bf075f2d96134f45fc2999851efa8ece9ea8100d819d4030f",
+      "published_sha256": "2ccc7d8bddf3b96bf075f2d96134f45fc2999851efa8ece9ea8100d819d4030f"
+    },
+    "DSA-Java-30-Days/06-Stacks-Queues-Hashing/day-17-hashing-hashmap-hashset.md": {
+      "source_sha256": "bf015b9eb038fc3603b2a9e4505633aaa76bff75e749b9a19a7ac653305f3fe1",
+      "published_sha256": "bf015b9eb038fc3603b2a9e4505633aaa76bff75e749b9a19a7ac653305f3fe1"
+    },
+    "DSA-Java-30-Days/07-Trees-and-Heaps/day-18-binary-tree.md": {
+      "source_sha256": "68cad9095210f4abf8b363d62e5fe63f979accf079c0ef2167d07cbc0fbf07f6",
+      "published_sha256": "68cad9095210f4abf8b363d62e5fe63f979accf079c0ef2167d07cbc0fbf07f6"
+    },
+    "DSA-Java-30-Days/07-Trees-and-Heaps/day-19-bst.md": {
+      "source_sha256": "71d5be011957d85137b103e6b1fd7cde47d3376fb9d90d7b1859ba385e0215a4",
+      "published_sha256": "71d5be011957d85137b103e6b1fd7cde47d3376fb9d90d7b1859ba385e0215a4"
+    },
+    "DSA-Java-30-Days/07-Trees-and-Heaps/day-20-heaps-priority-queue.md": {
+      "source_sha256": "7b6b0e70f3fc1f2bf79e74d3001f51933b4f181ae48a9f0cde3f3b4f7b73eb1f",
+      "published_sha256": "7b6b0e70f3fc1f2bf79e74d3001f51933b4f181ae48a9f0cde3f3b4f7b73eb1f"
+    },
+    "DSA-Java-30-Days/07-Trees-and-Heaps/day-21-tree-problems.md": {
+      "source_sha256": "03c521db15cb6622281846f7de7031e80f9ae15874437bc61adb7e19518c43b8",
+      "published_sha256": "03c521db15cb6622281846f7de7031e80f9ae15874437bc61adb7e19518c43b8"
+    },
+    "DSA-Java-30-Days/08-Greedy-and-Backtracking/day-22-greedy.md": {
+      "source_sha256": "dc3a8cd6de44f0112f0373697395b6b10bc3707d0c0513230b0dc81d4215d997",
+      "published_sha256": "dc3a8cd6de44f0112f0373697395b6b10bc3707d0c0513230b0dc81d4215d997"
+    },
+    "DSA-Java-30-Days/08-Greedy-and-Backtracking/day-23-backtracking.md": {
+      "source_sha256": "e80d18f58c7b432baf3312e6aef66caf6c3e201d8f5abdb2e35f1792147d9124",
+      "published_sha256": "e80d18f58c7b432baf3312e6aef66caf6c3e201d8f5abdb2e35f1792147d9124"
+    },
+    "DSA-Java-30-Days/09-Graphs/day-24-graph-fundamentals.md": {
+      "source_sha256": "ec53de13729c1c3dea9c94049f076f09cc2e5125d77e4a22f0630b0466f1a3c0",
+      "published_sha256": "ec53de13729c1c3dea9c94049f076f09cc2e5125d77e4a22f0630b0466f1a3c0"
+    },
+    "DSA-Java-30-Days/09-Graphs/day-25-bfs-dfs.md": {
+      "source_sha256": "8e81b061d56904956c2797f6fd40f733788298423ef356277a4a0a93666b5c4e",
+      "published_sha256": "8e81b061d56904956c2797f6fd40f733788298423ef356277a4a0a93666b5c4e"
+    },
+    "DSA-Java-30-Days/09-Graphs/day-26-shortest-paths.md": {
+      "source_sha256": "df38cc66ebebe733ec41f1854bd35b9e1f4e7d6602c6a0a1ef1f3bc3ffc1dca3",
+      "published_sha256": "df38cc66ebebe733ec41f1854bd35b9e1f4e7d6602c6a0a1ef1f3bc3ffc1dca3"
+    },
+    "DSA-Java-30-Days/10-Dynamic-Programming/day-27-dp-fundamentals.md": {
+      "source_sha256": "53f75b31559fbfd7ae727df310bc70640670b88d48d9f7543fad38da0ae95bad",
+      "published_sha256": "53f75b31559fbfd7ae727df310bc70640670b88d48d9f7543fad38da0ae95bad"
+    },
+    "DSA-Java-30-Days/10-Dynamic-Programming/day-28-dp-patterns.md": {
+      "source_sha256": "212b47969a4d57aacaf46f0304a34a28fb2e81ae0c279b354637f84e4182fe26",
+      "published_sha256": "212b47969a4d57aacaf46f0304a34a28fb2e81ae0c279b354637f84e4182fe26"
+    },
+    "DSA-Java-30-Days/10-Dynamic-Programming/day-29-advanced-dp.md": {
+      "source_sha256": "f4f65149cc1be89bff580b89cfb24fa3a7babf1c6367134034b22187f2921494",
+      "published_sha256": "f4f65149cc1be89bff580b89cfb24fa3a7babf1c6367134034b22187f2921494"
+    },
+    "DSA-Java-30-Days/11-Final-Revision/day-30-final-revision-and-interview-preparation.md": {
+      "source_sha256": "5fbe8fd8a2e95c440836a242a79d584682e0e6c89b9a69227d532c96704d4fed",
+      "published_sha256": "5fbe8fd8a2e95c440836a242a79d584682e0e6c89b9a69227d532c96704d4fed"
+    },
+    "DSA-Java-30-Days/12-Cheat-Sheets/collections-cheatsheet.md": {
+      "source_sha256": "1053333584430bf45f765e219580e106154fe2fff75b29a4f3f02108bef5ca16",
+      "published_sha256": "1053333584430bf45f765e219580e106154fe2fff75b29a4f3f02108bef5ca16"
+    },
+    "DSA-Java-30-Days/12-Cheat-Sheets/complexity-cheatsheet.md": {
+      "source_sha256": "6c4a82b96e9d815e05ce3b4287d7a211ecfb90c503aac8a029638e94672e8e21",
+      "published_sha256": "6c4a82b96e9d815e05ce3b4287d7a211ecfb90c503aac8a029638e94672e8e21"
+    },
+    "DSA-Java-30-Days/12-Cheat-Sheets/interview-cheatsheet.md": {
+      "source_sha256": "75a660737ab3b60e02a20101b39e5270ee743a794c0cd58ea25c296af403ad25",
+      "published_sha256": "75a660737ab3b60e02a20101b39e5270ee743a794c0cd58ea25c296af403ad25"
+    },
+    "DSA-Java-30-Days/12-Cheat-Sheets/java-dsa-cheatsheet.md": {
+      "source_sha256": "7db613dceb498c4dbcee60ee9ac0b7b86873f6a0644e462ffce7c2b97e67bed8",
+      "published_sha256": "7db613dceb498c4dbcee60ee9ac0b7b86873f6a0644e462ffce7c2b97e67bed8"
+    },
+    "DSA-Java-30-Days/13-Patterns/01-two-pointers.md": {
+      "source_sha256": "6e0558606df7ad9b88365c26c24b00d2cbd470a18b38706e9939237e94f95820",
+      "published_sha256": "6e0558606df7ad9b88365c26c24b00d2cbd470a18b38706e9939237e94f95820"
+    },
+    "DSA-Java-30-Days/13-Patterns/02-sliding-window.md": {
+      "source_sha256": "caf39c253fe6257ee386da2a81e36cb89560404c33e366ea43f006fb2c0a7f10",
+      "published_sha256": "caf39c253fe6257ee386da2a81e36cb89560404c33e366ea43f006fb2c0a7f10"
+    },
+    "DSA-Java-30-Days/13-Patterns/03-prefix-sum.md": {
+      "source_sha256": "7a3cb4a037b25c99aee6ff33e28fbebcbfe16b4e24e2de6098dc82f236be3f1e",
+      "published_sha256": "7a3cb4a037b25c99aee6ff33e28fbebcbfe16b4e24e2de6098dc82f236be3f1e"
+    },
+    "DSA-Java-30-Days/13-Patterns/04-binary-search.md": {
+      "source_sha256": "743205558c618d4084ef0ed0e7d8e10f5b69f6c5eba01fa5c25cffeda44bfb53",
+      "published_sha256": "743205558c618d4084ef0ed0e7d8e10f5b69f6c5eba01fa5c25cffeda44bfb53"
+    },
+    "DSA-Java-30-Days/13-Patterns/05-monotonic-stack.md": {
+      "source_sha256": "9447274bbf488a673adb4e6c104702b6ef5b8e0a271038fa5cce764361b217b8",
+      "published_sha256": "9447274bbf488a673adb4e6c104702b6ef5b8e0a271038fa5cce764361b217b8"
+    },
+    "DSA-Java-30-Days/13-Patterns/06-dynamic-programming.md": {
+      "source_sha256": "dbfc023a5c4eee90ffc79e5a611e092eb0761b9177a64790529b69e6fdaf69fc",
+      "published_sha256": "dbfc023a5c4eee90ffc79e5a611e092eb0761b9177a64790529b69e6fdaf69fc"
+    },
+    "DSA-Java-30-Days/13-Patterns/07-backtracking.md": {
+      "source_sha256": "509ebbd896d7051b7c516b74b07b1e6c9fe0d75859035d73cc5587cc525eeab8",
+      "published_sha256": "509ebbd896d7051b7c516b74b07b1e6c9fe0d75859035d73cc5587cc525eeab8"
+    },
+    "DSA-Java-30-Days/13-Patterns/08-greedy.md": {
+      "source_sha256": "f3b0a2c289ff20f8de23ed71c1c55d337c18f9a089a1fd4a86c54bfe777429fc",
+      "published_sha256": "f3b0a2c289ff20f8de23ed71c1c55d337c18f9a089a1fd4a86c54bfe777429fc"
+    },
+    "DSA-Java-30-Days/13-Patterns/09-graph.md": {
+      "source_sha256": "7ade69bf1f57a4e367e6d627e76c7798988c15d2d9bfb1c01edc436c93495690",
+      "published_sha256": "7ade69bf1f57a4e367e6d627e76c7798988c15d2d9bfb1c01edc436c93495690"
+    },
+    "DSA-Java-30-Days/13-Patterns/10-tree-bfs-dfs.md": {
+      "source_sha256": "bc4310dd22da8fb9c6cc747b8c656dea772f01e47b3538065d697abb52fca698",
+      "published_sha256": "bc4310dd22da8fb9c6cc747b8c656dea772f01e47b3538065d697abb52fca698"
+    },
+    "DSA-Java-30-Days/13-Patterns/11-linked-list.md": {
+      "source_sha256": "bed6d4b3b0ac5ed45d405bcc7f67428ef1caafd00e493f0ca0306449d82eb995",
+      "published_sha256": "bed6d4b3b0ac5ed45d405bcc7f67428ef1caafd00e493f0ca0306449d82eb995"
+    },
+    "DSA-Java-30-Days/13-Patterns/12-heap.md": {
+      "source_sha256": "dc00709d8e8157b85ab15342545ac772738536ea7162d29abd2cd0e1633ae661",
+      "published_sha256": "dc00709d8e8157b85ab15342545ac772738536ea7162d29abd2cd0e1633ae661"
+    },
+    "DSA-Java-30-Days/14-Question-Bank/450-questions.md": {
+      "source_sha256": "b661529ad143f4d1f2f9356c99f7ca19733a15358b6bb6177692d8a0479a9510",
+      "published_sha256": "b661529ad143f4d1f2f9356c99f7ca19733a15358b6bb6177692d8a0479a9510"
+    },
+    "DSA-Java-30-Days/README.md": {
+      "source_sha256": "0f3131cdcfbbfb644eba9d413c62d1976a29b739ee354416ab7d0aefbe70d4aa",
+      "published_sha256": "0f3131cdcfbbfb644eba9d413c62d1976a29b739ee354416ab7d0aefbe70d4aa"
+    },
+    "DSA-Java-30-Days/progress-tracker.md": {
+      "source_sha256": "9d3a0277fd6d591118f3ff320e04fc2be23169308f1b24179c533aa763d49187",
+      "published_sha256": "9d3a0277fd6d591118f3ff320e04fc2be23169308f1b24179c533aa763d49187"
+    },
+    "INDEX.md": {
+      "source_sha256": "a0c8674fcd020a42bd864604f560d9f181d5da03f1360dfb0d924b36ba69770e",
+      "published_sha256": "9f4abb8402a1cf0e7563639cf67292434adc2e4be6e11f4ea3110d67981aa0ab"
+    },
+    "practical/day-01/README.md": {
+      "source_sha256": "6c3c2dc6f0b3a04c48e7f39c7ec273fec008ad1a30c9f2e6d492ffb5870c108a",
+      "published_sha256": "6c3c2dc6f0b3a04c48e7f39c7ec273fec008ad1a30c9f2e6d492ffb5870c108a"
+    },
+    "practical/day-02/README.md": {
+      "source_sha256": "1b850578eb1f5cf29454a37543e33aa4055325ce2b812b87a98ea37fbaeb3cec",
+      "published_sha256": "1b850578eb1f5cf29454a37543e33aa4055325ce2b812b87a98ea37fbaeb3cec"
+    },
+    "practical/day-03/README.md": {
+      "source_sha256": "e1da1c8411459cb13b931db4b2f80fe552a593121dd30a0994c8711838597a48",
+      "published_sha256": "e1da1c8411459cb13b931db4b2f80fe552a593121dd30a0994c8711838597a48"
+    },
+    "practical/day-04/README.md": {
+      "source_sha256": "a648ea5ee29b1b18a484c732b3ae5d3100c9cdef3d7def6dfc011bcedb2dc53e",
+      "published_sha256": "a648ea5ee29b1b18a484c732b3ae5d3100c9cdef3d7def6dfc011bcedb2dc53e"
+    },
+    "practical/day-05/README.md": {
+      "source_sha256": "362c642bcc3131c6a751d26b473effda1c2c65b000664c47b5327c0acbb5d060",
+      "published_sha256": "362c642bcc3131c6a751d26b473effda1c2c65b000664c47b5327c0acbb5d060"
+    },
+    "practical/day-06/README.md": {
+      "source_sha256": "bda0a6609af12596cc019c1638abae0024a96e9f2a3df78b3c69823e924bc76a",
+      "published_sha256": "bda0a6609af12596cc019c1638abae0024a96e9f2a3df78b3c69823e924bc76a"
+    },
+    "practical/day-07/README.md": {
+      "source_sha256": "aac1e599d53929bda6e88b1abce2d73510bfd3750882e1c4417c6a5d5ef1d55e",
+      "published_sha256": "aac1e599d53929bda6e88b1abce2d73510bfd3750882e1c4417c6a5d5ef1d55e"
+    },
+    "practical/day-08/README.md": {
+      "source_sha256": "92673ca4c5e6a077673f17cfa8262e5e0fca12a433c9675b3ca761bb208c4c53",
+      "published_sha256": "92673ca4c5e6a077673f17cfa8262e5e0fca12a433c9675b3ca761bb208c4c53"
+    },
+    "practical/day-09/README.md": {
+      "source_sha256": "2fd92f02ac3b0046ba3cb2929054f60b021bcf55a40fed49b37f953de7b261ce",
+      "published_sha256": "2fd92f02ac3b0046ba3cb2929054f60b021bcf55a40fed49b37f953de7b261ce"
+    },
+    "practical/day-10/README.md": {
+      "source_sha256": "41bd0799570f203721e2163e3b6f02fed21380e9ffe7528e25b6dbf4afe4d370",
+      "published_sha256": "41bd0799570f203721e2163e3b6f02fed21380e9ffe7528e25b6dbf4afe4d370"
+    },
+    "practical/day-11/README.md": {
+      "source_sha256": "833e3bbe3fbf6316e2397c4084d3011eebde4ab61a9abb5647508b3e2a2b081d",
+      "published_sha256": "833e3bbe3fbf6316e2397c4084d3011eebde4ab61a9abb5647508b3e2a2b081d"
+    },
+    "practical/day-12/README.md": {
+      "source_sha256": "be43e42a736b74fc50eb1bd84857d94777857ce76e4f1eaf1d87a14e3dd17106",
+      "published_sha256": "be43e42a736b74fc50eb1bd84857d94777857ce76e4f1eaf1d87a14e3dd17106"
+    },
+    "practical/day-13/README.md": {
+      "source_sha256": "c0ddc8251538c0404d9970cf5ef2e0bace48df340253ef42d1904146a203d19c",
+      "published_sha256": "c0ddc8251538c0404d9970cf5ef2e0bace48df340253ef42d1904146a203d19c"
+    },
+    "practical/day-14/README.md": {
+      "source_sha256": "40bbacb6a31a1f2cc3dc72b226e07b14a47647fd5b78b1af3f67c1b74d6a25a5",
+      "published_sha256": "40bbacb6a31a1f2cc3dc72b226e07b14a47647fd5b78b1af3f67c1b74d6a25a5"
+    },
+    "practical/day-15/README.md": {
+      "source_sha256": "d948733addfbb2f52a310ddf75d6a3ea428bd5b9a88a1319004f7b796870b223",
+      "published_sha256": "d948733addfbb2f52a310ddf75d6a3ea428bd5b9a88a1319004f7b796870b223"
+    },
+    "practical/day-16/README.md": {
+      "source_sha256": "2191b33b330d22a0667ab50144ecd7cfd9247398d1146066f3590a4bcddaf3b9",
+      "published_sha256": "2191b33b330d22a0667ab50144ecd7cfd9247398d1146066f3590a4bcddaf3b9"
+    },
+    "practical/day-17/README.md": {
+      "source_sha256": "044ffc77d7c27c830636231293b8c2a204d1a62b1c78c3592170da51e167ee88",
+      "published_sha256": "044ffc77d7c27c830636231293b8c2a204d1a62b1c78c3592170da51e167ee88"
+    },
+    "practical/day-18/README.md": {
+      "source_sha256": "312904adea15ae4682fa4a3e80fc095ae5648b5bcce01fde4a7bd470bb67bf3c",
+      "published_sha256": "312904adea15ae4682fa4a3e80fc095ae5648b5bcce01fde4a7bd470bb67bf3c"
+    },
+    "practical/day-19/README.md": {
+      "source_sha256": "1a180d425f9030a52f4acea7fb09cc9adca93a40a6e09cf730c77bfc873712ae",
+      "published_sha256": "1a180d425f9030a52f4acea7fb09cc9adca93a40a6e09cf730c77bfc873712ae"
+    },
+    "practical/day-20/README.md": {
+      "source_sha256": "02391421aadde1c21d4908a8477d78045d781cb22fdef1def508608ec1cba0d9",
+      "published_sha256": "02391421aadde1c21d4908a8477d78045d781cb22fdef1def508608ec1cba0d9"
+    },
+    "practical/day-21/README.md": {
+      "source_sha256": "85535ec4b250603e9347f6ae4b1285b07dd4a53eae229516aadd2df009bc27c0",
+      "published_sha256": "85535ec4b250603e9347f6ae4b1285b07dd4a53eae229516aadd2df009bc27c0"
+    },
+    "practical/day-22/README.md": {
+      "source_sha256": "392c6ce6db413794a3fa6c3d2c4a12856be94e4902a85e8af24ee0ae0efe44b2",
+      "published_sha256": "392c6ce6db413794a3fa6c3d2c4a12856be94e4902a85e8af24ee0ae0efe44b2"
+    },
+    "practical/day-23/README.md": {
+      "source_sha256": "c532786467498f921d2e12b58a595fb3c53be1a56db5ea7d1808792ddac3c28f",
+      "published_sha256": "c532786467498f921d2e12b58a595fb3c53be1a56db5ea7d1808792ddac3c28f"
+    },
+    "practical/day-24/README.md": {
+      "source_sha256": "b1733865e8dd8056d34c7794607c496a8ac19245155bae40e68123071098f128",
+      "published_sha256": "b1733865e8dd8056d34c7794607c496a8ac19245155bae40e68123071098f128"
+    },
+    "practical/day-25/README.md": {
+      "source_sha256": "0fdde731f2898c818bfd84698d9f0d37b5479a6db6782461dbf592234f1a4b5a",
+      "published_sha256": "0fdde731f2898c818bfd84698d9f0d37b5479a6db6782461dbf592234f1a4b5a"
+    },
+    "practical/day-26/README.md": {
+      "source_sha256": "95a3c706db652e07c384524f801fe1a5526ad2ae6e3f6bcfd6139525eba87caf",
+      "published_sha256": "95a3c706db652e07c384524f801fe1a5526ad2ae6e3f6bcfd6139525eba87caf"
+    },
+    "practical/day-27/README.md": {
+      "source_sha256": "9e99b6efc80f01ba82a6eb60e9b819feb7d624dcd4ea2a822a8cda190a5e8338",
+      "published_sha256": "9e99b6efc80f01ba82a6eb60e9b819feb7d624dcd4ea2a822a8cda190a5e8338"
+    },
+    "practical/day-28/README.md": {
+      "source_sha256": "882949c0c2be7dcac64afbf614f9d97ab1c441557fcd0e65f5e25381573b5472",
+      "published_sha256": "882949c0c2be7dcac64afbf614f9d97ab1c441557fcd0e65f5e25381573b5472"
+    },
+    "practical/day-29/README.md": {
+      "source_sha256": "b906f02714c2a63f728d17bc560121cb3c4a9de4b2d67c2562abcdf96525b345",
+      "published_sha256": "b906f02714c2a63f728d17bc560121cb3c4a9de4b2d67c2562abcdf96525b345"
+    },
+    "practical/day-30/README.md": {
+      "source_sha256": "50114fac72c407546779ca6bf262e7ed0df1fe487faf6519defb649b5b357f2e",
+      "published_sha256": "50114fac72c407546779ca6bf262e7ed0df1fe487faf6519defb649b5b357f2e"
+    }
+  },
+  "unavailable_links": [
+    {
+      "file": "INDEX.md",
+      "target": "src/day-01"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "src/day-02"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "src/day-03"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "src/day-04"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "src/day-05"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "src/day-06"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "src/day-07"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "src/day-08"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "src/day-09"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "src/day-10"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "src/day-11"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "src/day-12"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "src/day-13"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "src/day-14"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "src/day-15"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "src/day-16"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "src/day-17"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "src/day-18"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "src/day-19"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "src/day-20"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "src/day-21"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "src/day-22"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "src/day-23"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "src/day-24"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "src/day-25"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "src/day-26"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "src/day-27"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "src/day-28"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "src/day-29"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "src/day-30"
+    },
+    {
+      "file": "INDEX.md",
+      "target": "DSA-Java-30-Days/PROGRESS.md"
+    }
+  ]
+}

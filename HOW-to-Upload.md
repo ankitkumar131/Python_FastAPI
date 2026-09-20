@@ -2,16 +2,17 @@
 
 **A complete worked guide for your actual repositories, starting on a new PC.**
 
-Verified against the repository contents and publishing tool on **19 September 2026**.
+Verified against the repository contents and publishing tool on **20 September 2026**.
 
 > This file is a publishing guide, not a React lesson. It belongs at the root of
 > `Python_FastAPI`, alongside `gitbook-sources.json`. It is not automatically added
 > as a page in the GitBook course sidebar.
 >
 > **Implementation update:** React is now imported into this publishing repository: **149
-> selected pages** (139 chapters, 9 cheatsheets and one common-errors page), with **247
-> total navigation pages** (including 23 generated folder indexes) across three courses. The registry corrections below are
-> already applied. Pull the publishing branch on a new PC; use this guide to understand
+> selected pages** (139 chapters, 9 cheatsheets and one common-errors page), with **455
+> total navigation pages** (including 43 generated folder indexes) across five courses.
+> DSA in Java and Spring Boot are now included too; see [GITBOOK.md](GITBOOK.md).
+> The registry corrections below are already applied. Pull the publishing branch on a new PC; use this guide to understand
 > the configuration and refresh future updates. GitBook account-side sync, preview and
 > publication still need verification; a repository import is not hosted-site confirmation.
 
@@ -39,22 +40,17 @@ Verified against the repository contents and publishing tool on **19 September 2
 
 ## 1. The exact result you are building
 
-Your GitBook homepage will contain three course cards:
+Your GitBook homepage contains five course cards:
 
 ```text
 Cognivolt Docs
 └── Dashboard
     ├── Python_FastAPI Notes
-    │   └── Existing FastAPI course
     ├── Node_Express Notes
-    │   └── Existing Node/Express course
-    └── Understanding_React Notes
-        ├── HTML, CSS and JavaScript prerequisites
-        ├── TypeScript
-        ├── React fundamentals
-        ├── State and hooks, routing, APIs and forms
-        ├── Advanced React, testing, authentication and production
-        └── Projects, interview preparation, cheatsheets and common errors
+    ├── Understanding_React Notes
+    │   └── React + TypeScript lessons and reference pages
+    ├── DSA-in-java Notes
+    └── Springboot Notes
 ```
 
 Clicking **Understanding_React Notes** opens its overview **inside GitBook**.
@@ -123,7 +119,7 @@ needed three corrections. They are now applied; the table documents the old mist
 | Group keys such as `"01-prerequisites"` | Nested label overrides need the full source-relative folder path | Omit `group_titles` for literal folder names, or use a key such as `"react-notes/01-prerequisites"` |
 
 **On an older checkout, replace the existing React entry; do not append a duplicate.** Section 7 supplies
-the complete corrected file for the currently known three-course setup.
+the complete corrected file for the currently known five-course setup.
 
 If you have added more courses since this guide was written, preserve their entries
 and replace only the React entry. Do not erase newer configuration by blindly
@@ -361,7 +357,7 @@ path. This is a read-only check; it does not change that repository.
 | `notes/gitbook-docs.yaml` | Keep unchanged; verify section 8 | Maps the existing GitBook space to notes/ |
 | `tools/sync_gitbook.py` | Use the latest version; no React-specific manual edits needed | Imports source files and generates navigation; compatibility fix is included |
 | `tests/test_gitbook_sync.py` | Use the shipped tests; no content edit needed | Tests archive handling, links and generation |
-| `notes/README.md` | **Generated**; do not paste a card manually | Dashboard with three cards |
+| `notes/README.md` | **Generated**; do not paste a card manually | Dashboard with five cards |
 | `notes/SUMMARY.md` | **Generated**; do not handwrite the React list | Course groups and all selected chapter links |
 | `notes/courses/understanding-react/README.md` | **Generated** | React overview and chapter index |
 | `notes/courses/understanding-react/source.json` | **Generated** | Source commit, file hashes and unavailable-reference record |
@@ -383,9 +379,9 @@ Open **`Python_FastAPI/gitbook-sources.json`**, not a file inside Understanding_
 With VS Code available, run `code gitbook-sources.json`; otherwise open the file in
 your editor through its Open File dialog.
 
-For the current FastAPI + Node/Express + React setup, save the following **complete
-file contents**. It preserves FastAPI and Node/Express and replaces the incorrect
-React entry. If you have since added other courses, retain those additional entries.
+For the current five-course setup, the following **complete file contents** preserve
+FastAPI, Node/Express, React, DSA in Java and Spring Boot. The original incorrect
+React entry has already been corrected. If you have since added other courses, retain those additional entries.
 
 ### File: `gitbook-sources.json`
 
@@ -421,6 +417,28 @@ React entry. If you have since added other courses, retain those additional entr
         "react-notes/[0-9][0-9]-*/*.md",
         "react-notes/cheatsheets/*.md",
         "react-notes/common-errors.md"
+      ]
+    },
+    {
+      "id": "dsa-in-java",
+      "title": "DSA-in-java Notes",
+      "description": "Study data structures and algorithms in Java with a 30-day course, problem-solving patterns, a question bank and practical exercises.",
+      "repository": "ankitkumar131/DSA-in-java",
+      "branch": "arena/01a0bf70-dsa-in-java",
+      "include": [
+        "DSA-Java-30-Days/*.md",
+        "practical/*/*.md",
+        "INDEX.md"
+      ]
+    },
+    {
+      "id": "springboot",
+      "title": "Springboot Notes",
+      "description": "Learn Java and Spring Boot backend development through 30 days of lessons, databases, security, testing, practical exercises and projects.",
+      "repository": "ankitkumar131/Springboot",
+      "branch": "arena/01a0bfa7-springboot",
+      "include": [
+        "java-springboot-backend/*.md"
       ]
     }
   ]
@@ -536,7 +554,8 @@ python -X utf8 tools/sync_gitbook.py --refresh
 What happens:
 
 1. The tool reads the corrected registry.
-2. It refreshes Node/Express as well as React because both are in `imports`.
+2. It refreshes **all four source repositories**, not just React, because all are
+   configured in `imports`. Review changes to every imported course before pushing.
 3. For each repository it resolves the requested branch to an immutable commit SHA.
 4. It downloads that exact revision through GitHub CLI, selects matching existing
    Markdown chapter files and checks archive safety limits.
@@ -550,35 +569,38 @@ No npm package installation or source code execution happens as part of the impo
 
 ### Expected baseline output
 
-With the verified source revision and otherwise unchanged course counts, the React
-portion and final check read:
+The current offline publication check reads:
 
 ```text
-Imported 149 chapters from ankitkumar131/Understanding_React@bcc0871cf916fb19731e198f82dcf28daac209b9; marked 1 unavailable references.
-GitBook dashboard verified: 3 courses, 247 unique pages; local/card links and imported-file hashes valid.
+GitBook dashboard verified: 5 courses, 455 unique pages; local/card links and imported-file hashes valid.
 ```
 
-There will also be a Node/Express import message. Future commits can legitimately
+A refresh also prints an import message for each of the four source repositories. Future commits can legitimately
 change these numbers, the SHA and the number of unavailable references. Success of
 the validation matters more than matching a historical count exactly.
 
-The 247-page baseline is:
+The 455-page baseline is:
 
 ```text
 1 dashboard
 25 FastAPI pages
 1 Node/Express overview + 47 Node/Express chapters
 1 React overview + 149 React chapter/reference pages
-23 folder indexes (3 Node/Express + 20 React)
+1 DSA overview + 85 DSA course/practical/reference pages
+1 Spring Boot overview + 101 course/practical/reference pages
+43 folder indexes (3 Node + 20 React + 16 DSA + 4 Spring Boot)
 -----------------------------------------------
-247 navigation pages
+455 navigation pages
 ```
 
-A missing-reference message is not the same as an import failure. In this revision,
-one source link points to a directory rather than a Markdown page. The importer
-keeps a clear unavailable-reference note; its five chapter pages are published and
-can be opened from the overview. The CLI calls all selected Markdown files
-“chapters”; the 149 files include 139 lessons and ten reference pages.
+A missing-reference message is not the same as an import failure. The existing React
+copy retains one directory-only reference from the earlier importer. All five forms
+chapters are already available. The updated importer resolves directory links to
+folder READMEs on refresh, so that reference can resolve in the next refresh.
+DSA records 31 references to excluded/absent targets; Spring Boot records none.
+See GITBOOK.md for their exact selection and remaining-reference details. The CLI
+calls all selected Markdown files “chapters”; React's 149 files include 139 lessons
+and ten reference pages.
 
 **If the command exits with an error, do not push the partial result.** It can have
 written some files before a later check fails. Resolve the error, rerun the command
@@ -594,10 +616,12 @@ Python_FastAPI/
 └── notes/
     ├── .gitbook.yaml                     # Unchanged
     ├── gitbook-docs.yaml                 # Unchanged
-    ├── README.md                        # Regenerated three-card dashboard
+    ├── README.md                        # Regenerated five-card dashboard
     ├── SUMMARY.md                       # Regenerated combined sidebar
     └── courses/
+        ├── dsa-in-java/                  # Imported Java DSA course
         ├── node-express/                 # Existing copy; may be refreshed
+        ├── springboot/                   # Imported Spring Boot course
         └── understanding-react/
             ├── README.md                # Generated React overview
             ├── source.json              # Generated provenance and hashes
@@ -630,6 +654,8 @@ Pick a course below to read its notes, examples and exercises. Each course opens
 <tr><td><strong>Python_FastAPI Notes</strong></td><td>Learn FastAPI from Python and HTTP fundamentals to databases, authentication, testing and deployment.</td><td><a href="00-course-guide.md">Open course</a></td></tr>
 <tr><td><strong>Node_Express Notes</strong></td><td>Study web fundamentals, Node.js and Express with detailed explanations, practical examples and projects.</td><td><a href="courses/node-express/README.md">Open course</a></td></tr>
 <tr><td><strong>Understanding_React Notes</strong></td><td>Learn React and TypeScript from web prerequisites through hooks, routing, APIs, testing, authentication and production projects.</td><td><a href="courses/understanding-react/README.md">Open course</a></td></tr>
+<tr><td><strong>DSA-in-java Notes</strong></td><td>Study data structures and algorithms in Java with a 30-day course, problem-solving patterns, a question bank and practical exercises.</td><td><a href="courses/dsa-in-java/README.md">Open course</a></td></tr>
+<tr><td><strong>Springboot Notes</strong></td><td>Learn Java and Spring Boot backend development through 30 days of lessons, databases, security, testing, practical exercises and projects.</td><td><a href="courses/springboot/README.md">Open course</a></td></tr>
 </tbody></table>
 
 ### Quick links
@@ -637,6 +663,8 @@ Pick a course below to read its notes, examples and exercises. Each course opens
 - [Python_FastAPI Notes](00-course-guide.md)
 - [Node_Express Notes](courses/node-express/README.md)
 - [Understanding_React Notes](courses/understanding-react/README.md)
+- [DSA-in-java Notes](courses/dsa-in-java/README.md)
+- [Springboot Notes](courses/springboot/README.md)
 
 ### How to use this library
 
@@ -669,7 +697,7 @@ a parent page, with deeper folders and chapters indented beneath it. For example
 
 This is an **illustrative excerpt**, not the complete sidebar. Chapter titles come
 from their first Markdown H1 headings. The full file retains Dashboard, FastAPI,
-Node/Express and every selected React chapter. Do not replace it with this excerpt.
+Node/Express, DSA, Spring Boot and every selected React chapter. Do not replace it with this excerpt.
 
 ### Generated folder indexes: `<source-folder>/README.md`
 
@@ -744,7 +772,7 @@ python -X utf8 -m unittest discover -s tests -p test_gitbook_sync.py -v
    local links still work. It is not a React runtime test.
 3. The unittest command runs the importer/navigation regression tests. `-s tests`
    selects the test directory, `-p` selects the file and `-v` shows individual names.
-   The current importer suite has 28 tests; later versions may have more.
+   The current importer suite has 32 tests; later versions may have more.
 
 These commands do not run React/TypeScript examples in a browser and cannot
 publish or visually preview the hosted GitBook site. That check comes after sync.
@@ -853,7 +881,7 @@ create a second site or space merely to follow this single-space workflow.
    details. Verify the selected repository, branch and project directory before
    changing content mappings.
 4. Open the site preview and its Dashboard page.
-5. Confirm all three course cards exist.
+5. Confirm all five course cards exist.
 6. Click Understanding_React Notes, then a prerequisites page, a TypeScript page and
    a state/hooks page.
 7. Expand `react-notes` and the numbered folder pages. Verify chapters are children
@@ -991,6 +1019,14 @@ should not manually edit the importer just to add React**.
 If you are comparing an older copy, locate the function beginning
 `def adapt_links(path: str, text: str, available: set[str])`. The corrected function
 is below. Prefer pulling the tested version rather than modifying it by hand.
+
+The current module also uses `publication_paths()` to include generated folder
+indexes when resolving links. Pull the complete tested tool, not just this function.
+Its URL utility import includes:
+
+```python
+from urllib.parse import quote, unquote, urlsplit, urlunsplit
+```
 This is a complete **function replacement**, not the contents of the entire script.
 
 ```python
@@ -1011,6 +1047,11 @@ def adapt_links(path: str, text: str, available: set[str]) -> tuple[str, list[di
             target = local_target(path, href)
             if target is None or target in available:
                 return match[0]
+            # GitHub accepts folder links; GitBook navigation needs a Markdown page.
+            if posixpath.join(target, 'README.md') in available:
+                parsed = urlsplit(href)
+                href = urlunsplit(parsed._replace(path=posixpath.join(parsed.path, 'README.md')))
+                return f'[{label}]({href})'
             missing.append({'file': path, 'target': href})
             return f'{label} *(not available in this published source revision)*'
 
@@ -1045,12 +1086,13 @@ modify a test file for each newly configured repository.
 
 - The source repository is public, and the requested branch was read successfully.
 - The configured patterns selected 139 lessons and ten reference pages at the recorded commit.
-- The actual repository import produced three course groups and 247 unique sidebar pages,
+- The actual repository import produced five course groups and 455 unique sidebar pages,
   with local/card links and imported-file hashes passing validation.
-- One directory-only link was safely marked unavailable; all five destination-section
-  chapters are included. The previously absent Part 5 chapter now links normally.
-- The importer regression suite passed 28 tests including nested navigation checks. The full Python test
-  suite also passed **46 tests**, with the previously documented upstream
+- The existing React copy retains one unavailable reference; its contents were not
+  refreshed while adding DSA and Spring Boot. Directory-link resolution now has
+  regression coverage and is applied on future source refreshes.
+- The importer regression suite passed 32 tests including nested navigation checks. The full Python test
+  suite also passed **50 tests**, with the previously documented upstream
   Starlette/AnyIO deprecation warning. No dependency changes were required.
 - The registry corrections, React publication copies, dashboard and sidebar are now
   applied to this publishing repository, not just an isolated rehearsal.
@@ -1084,7 +1126,7 @@ modify a test file for each newly configured repository.
 
 - [ ] I pushed `arena/01a0b045-python-fastapi`.
 - [ ] GitBook imported that commit using project directory `notes/`.
-- [ ] All three cards work in the preview.
+- [ ] All five cards work in the preview.
 - [ ] React chapter pages open and the other courses still work.
 - [ ] I completed any publication step required by my GitBook workflow.
 

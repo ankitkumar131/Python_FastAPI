@@ -7,26 +7,41 @@ Cognivolt Docs
 └── Dashboard
     ├── Python_FastAPI Notes → original FastAPI course (25 pages)
     ├── Node_Express Notes → course overview and 47 imported chapters
-    └── Understanding_React Notes → overview, 139 chapters and 10 reference pages
+    ├── Understanding_React Notes → overview, 139 chapters and 10 reference pages
+    ├── DSA-in-java Notes → overview and 85 course/practical/reference pages
+    └── Springboot Notes → overview and 101 course/practical/reference pages
 ```
 
 The landing page uses GitBook's documented card-table format, plus ordinary quick
-links for Markdown readers. All three cards open **notes inside the same GitBook site**,
+links for Markdown readers. All five cards open **notes inside the same GitBook site**,
 not GitHub source pages. The sidebar groups each course's chapters under its own
 overview. The FastAPI overview remains at `notes/00-course-guide.md`; its contents
 have not moved. The new homepage is `notes/README.md`.
 
-There are **247 navigation pages**: one dashboard, 25 FastAPI pages, one Node/Express
-overview plus 47 chapters, and one React overview plus 149 chapter/reference pages,
-plus **23 generated folder indexes** (3 Node/Express and 20 React). These indexes
-are navigation pages, not additional lessons copied from the source.
-React includes all 18 numbered sections (139 lessons), nine cheatsheets and one
-common-errors page. Its source revision is recorded in the generated manifest.
+There are **455 navigation pages**:
 
-One React link points at `../08-forms-validation/` rather than a Markdown page;
-it is marked unavailable instead of producing a broken navigation link. All five
-forms/validation chapters are available through the course overview and sidebar.
-Node/Express retains its 29 unavailable references; no fictional chapters are added.
+| Content | Pages |
+|---|---:|
+| Dashboard | 1 |
+| Original FastAPI course | 25 |
+| Imported course overviews (Node, React, DSA, Spring Boot) | 4 |
+| Node/Express imported pages | 47 |
+| React imported pages | 149 |
+| DSA in Java imported pages | 85 |
+| Spring Boot imported pages | 101 |
+| Generated folder indexes (3 Node + 20 React + 16 DSA + 4 Spring Boot) | 43 |
+| **Total** | **455** |
+
+Folder indexes are navigation pages, not extra lessons. Source directory README
+pages are reused as folder landing pages and counted only once among imported pages.
+The three existing courses were not refreshed while adding DSA and Spring Boot;
+their chapters, manifests and indexes remain byte-for-byte unchanged.
+
+Node/Express retains its 29 previously recorded unavailable references. React's
+existing copy retains one directory-only unavailable reference; all five forms
+chapters are already present. The newer importer now resolves directory links to
+selected/generated README pages on refresh, so that React reference can resolve
+on a future refresh without changing the original source.
 
 ## Directory structure is preserved in navigation
 
@@ -55,7 +70,8 @@ Understanding_React Notes
 - Each folder is a real parent page with its children nested beneath it. The tool
   generates a small marked `README.md` inside that folder, listing its direct children.
 - If a directory `README.md` is already selected as a source file, it is reused
-  unchanged as the parent page and not listed twice. The course-root README remains
+  as the parent page and not listed twice. The navigation generator leaves its
+  published content untouched; documented link adaptations still apply during import. The course-root README remains
   reserved for the generated course overview.
 - All imported lesson paths, lesson contents and source manifests are unchanged by
   this navigation update. Generated indexes are separate from source-file hashes.
@@ -78,6 +94,75 @@ Check important public URLs and any redirects: GitBook can derive URLs from page
 hierarchy, so unchanged source file paths do not guarantee unchanged hosted URLs.
 The hosted UI, expansion state and public redirects have not been verified here.
 
+## DSA in Java and Spring Boot: imported content
+
+Both requested source branches are published with their actual folder names and
+nesting. No display-label overrides flatten or rename those folders.
+
+```text
+DSA-in-java Notes
+├── DSA-Java-30-Days
+│   ├── 00-Roadmap
+│   ├── 01-Java-Foundations
+│   ├── … (remaining numbered source sections)
+│   ├── 12-Cheat-Sheets
+│   ├── 13-Patterns
+│   ├── 14-Question-Bank
+│   └── Progress Tracker
+├── Course Index
+└── practical
+    ├── day-01
+    └── … through day-30
+
+Springboot Notes
+└── java-springboot-backend
+    ├── 00-roadmap
+    ├── cheatsheets
+    ├── day-01-java-for-springboot
+    ├── … through day-30-final-capstone
+    ├── interview
+    ├── practical
+    │   ├── day-01
+    │   └── … through day-30 (including additional Markdown notes)
+    └── projects
+        ├── final-project
+        └── project-01-crud-api … project-05-postgresql-employee-api
+```
+
+The trees abbreviate entries for readability; the actual sidebar includes every
+selected file exactly once. Existing source READMEs are imported as content, not
+replaced with generated lesson summaries. Navigation reuses their publication copies.
+
+### Selection rules
+
+- **DSA:** `DSA-Java-30-Days/*.md`, `practical/*/*.md`, and root `INDEX.md`.
+  Python's `fnmatch` lets `*` match slashes, so the first pattern selects nested
+  course files too. This imports 54 course/reference Markdown files, 30 practical
+  READMEs and the root course index: **85 source pages**.
+- **Spring Boot:** `java-springboot-backend/*.md`, including nested Markdown files:
+  **101 source pages** covering all 30 days, roadmaps, cheatsheets, interviews,
+  practical guides and project documentation.
+- Both repositories' root `30-Day … Course.md` files are authoring requirements,
+  not lessons, and are excluded. DSA's root README is replaced by the generated
+  publication overview; its nested course README is included.
+- Java source, Maven configuration, database scripts, environment files and other
+  non-Markdown assets remain in the original repositories. No Java/Maven/Docker
+  commands from the source were executed during this documentation import.
+
+### Folder links and remaining unavailable references
+
+GitHub permits `[Lab](practical/day-01)`. The importer now publishes that as
+`[Lab](practical/day-01/README.md)` when a selected or generated landing page exists.
+Trailing slashes, query strings and anchors are handled; inline/fenced code examples
+are left unchanged. This is a publication-link adaptation, recorded in file hashes,
+not an edit to the source repository.
+
+Spring Boot has **zero unavailable references** in this publication. DSA has **31**:
+30 links in `INDEX.md` point to excluded runnable `src/day-XX` directories, and one
+points to an absent `DSA-Java-30-Days/PROGRESS.md`. They are marked unavailable instead
+of leaving broken local links. The actual `progress-tracker.md` is imported and
+accessible from the sidebar. Use the source-repository link for runnable Java files.
+
 ## GitBook settings: keep the existing connection
 
 | Setting | Value |
@@ -95,7 +180,7 @@ it can replace the space and break links.
 
 `notes/.gitbook.yaml` selects `README.md` as the entry page and `SUMMARY.md` as the
 sidebar. After the push, let Git Sync import the revision, preview the dashboard,
-click all three course cards and publish/merge the change as required by your GitBook
+click all five course cards and publish/merge the change as required by your GitBook
 site workflow. This repository cannot authenticate or click Publish on your behalf.
 If the old homepage remains, check the selected branch and last synced commit first.
 
@@ -114,8 +199,22 @@ React source remains here:
 - Imported commit: `bcc0871cf916fb19731e198f82dcf28daac209b9`
 - Full walkthrough: [HOW-to-Upload.md](HOW-to-Upload.md)
 
+DSA-in-java Notes source remains here:
+
+- Repository: <https://github.com/ankitkumar131/DSA-in-java>
+- Branch: `arena/01a0bf70-dsa-in-java`
+- Imported commit: `150cce769a5671e37788a9dbb0a87e7112a41258`
+- Publication overview: [Open DSA-in-java Notes](notes/courses/dsa-in-java/README.md)
+
+Springboot Notes source remains here:
+
+- Repository: <https://github.com/ankitkumar131/Springboot>
+- Branch: `arena/01a0bfa7-springboot`
+- Imported commit: `1cc8be4a573637619a9af4d640ea470e04888a40`
+- Publication overview: [Open Springboot Notes](notes/courses/springboot/README.md)
+
 This site contains a **revision-tracked publication copy**, not a second live
-GitBook Git Sync connection. Updating either source repository alone does **not** update
+GitBook Git Sync connection. Updating a source repository alone does **not** update
 this GitBook site. Refresh the copy and push this repository as described below.
 Neither the source repository nor its branch is modified by the importer.
 
@@ -134,12 +233,11 @@ this repository's site configuration.
 
 `gitbook-sources.json` defines the local course plus additional repositories. For
 each source the importer reads only matching Markdown chapter/reference files. It does not
-execute JavaScript, npm scripts, shell commands or instructions found in the source.
+execute Java, Maven builds, JavaScript, npm scripts, shell commands or instructions found in the source.
 The original root README is replaced in the publication copy by an honest index of
 files actually available; executable project files stay in the source repository.
 
-Each course's `source.json` (`notes/courses/node-express/source.json` or
-`notes/courses/understanding-react/source.json`) records the immutable source commit, branch,
+Each course's `notes/courses/<id>/source.json` records the immutable source commit, branch,
 original and published SHA-256 hashes, and references to unavailable chapters.
 Those missing links are rendered as explanatory text instead of broken links.
 Fenced code examples and inline code are not rewritten. Future refreshes restore a
@@ -152,7 +250,7 @@ Generated overviews, dashboard and sidebar are rebuilt from the registry; custom
 the registry/rendering code rather than manually editing these generated files.
 The original FastAPI chapter files are not regenerated by this tool.
 
-## Refresh Node/Express and React after source changes
+## Refresh imported courses after source changes
 
 Requirements: Python 3.11+ and the GitHub CLI (`gh`) with repository read access.
 No additional Python packages are needed for the importer or its offline tests.
@@ -167,12 +265,12 @@ git diff --stat
 git status --short
 ```
 
-1. `--refresh` resolves the configured branch to a commit, downloads that exact
+1. `--refresh` refreshes **all four imported courses**. For each it resolves the configured branch to a commit, downloads that exact
    archive through `gh`, imports the selected existing files and regenerates
    dashboard/navigation. It is explicit network activity, not a background job.
 2. `--check` performs read-only, offline checks of generated files, sidebar coverage,
    card/local links and imported hashes. It does not claim runtime correctness of
-   the Node/Express or React code samples or test GitBook's hosted rendering.
+   the Java, Spring Boot, Node/Express or React code samples or test GitBook's hosted rendering.
 3. The existing checker verifies the original FastAPI course and examples.
 4. The unittest command checks importer/navigation behaviour without network calls.
 5. Review the diff and status, including new or removed chapters. Commit the intended
@@ -212,23 +310,27 @@ private content: publish only repositories you own or are authorized to redistri
 
 ## Verification for this dashboard change
 
-The complete Python test suite passes **46 tests**, including 28 offline dashboard/importer
+The complete Python test suite passes **50 tests**, including 32 offline dashboard/importer
 tests. Both documentation checkers pass: the original 25-page FastAPI course and the
-three-course, 247-page GitBook navigation. All imported chapter files and
-source manifests are byte-for-byte unchanged by the navigation update; hashes and
-local/card links validate. Tests cover deep nesting, folder ordering, reused source
-READMEs, safe stale-index cleanup, unmanaged-file protection and encoded paths. The existing
+five-course, 455-page GitBook navigation. All 186 new DSA/Spring Boot source hashes
+and fenced code examples match the pinned source archives. Every selected page
+occurs exactly once in the sidebar. Existing courses and their manifests are
+byte-for-byte unchanged; all publication hashes and local/card links validate. Tests
+cover deep nesting, folder ordering, reused source READMEs, safe stale-index cleanup,
+unmanaged-file protection, encoded paths, and directory-link resolution. The existing
 upstream Starlette/AnyIO deprecation warning remains unrelated to the dashboard.
 
 Hosted GitBook rendering/publishing was not executed from this session. After Git
-Sync imports the publishing commit, verify all three cards and representative React
-pages in the hosted preview, then publish/merge as required by the site workflow.
+Sync imports the publishing commit, verify all five cards and representative pages
+from both new courses in the hosted preview, then publish/merge as required by the
+site workflow.
 The source repositories, their runnable projects and the stable GitBook YAML
 configuration are unchanged. Imported upstream whitespace is preserved intentionally;
-newly authored tooling/configuration pass `git diff --check`. The new React import
-retains one upstream trailing space in the fenced example at
-`react-notes/04-state-and-hooks/01-state.md:97`; the full staged whitespace check
-reports that line intentionally rather than silently modifying source code.
+newly authored tooling/configuration pass `git diff --check`. Whitespace present in
+imported source files is retained to preserve their code examples exactly. The full
+staged whitespace check reports 38 upstream whitespace warnings across 35 imported
+files (including terminal blank lines and Markdown hard breaks); authored files and
+generated indexes pass the check.
 
 ## References
 

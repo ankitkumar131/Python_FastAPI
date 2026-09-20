@@ -30,6 +30,28 @@
         "react-notes/cheatsheets/*.md",
         "react-notes/common-errors.md"
       ]
+    },
+    {
+      "id": "dsa-in-java",
+      "title": "DSA-in-java Notes",
+      "description": "Study data structures and algorithms in Java with a 30-day course, problem-solving patterns, a question bank and practical exercises.",
+      "repository": "ankitkumar131/DSA-in-java",
+      "branch": "arena/01a0bf70-dsa-in-java",
+      "include": [
+        "DSA-Java-30-Days/*.md",
+        "practical/*/*.md",
+        "INDEX.md"
+      ]
+    },
+    {
+      "id": "springboot",
+      "title": "Springboot Notes",
+      "description": "Learn Java and Spring Boot backend development through 30 days of lessons, databases, security, testing, practical exercises and projects.",
+      "repository": "ankitkumar131/Springboot",
+      "branch": "arena/01a0bfa7-springboot",
+      "include": [
+        "java-springboot-backend/*.md"
+      ]
     }
   ]
 }

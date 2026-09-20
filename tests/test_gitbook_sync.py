@@ -17,6 +17,34 @@ class LinkAdaptationTests(unittest.TestCase):
         self.assertEqual(result, text)
         self.assertEqual(missing, [])
 
+    def test_folder_links_open_readmes_with_or_without_trailing_slash(self):
+        text = '[Day 1](practical/day-01) [Day 2](practical/day-02/)'
+        result, missing = sync.adapt_links('INDEX.md', text,
+            {'practical/day-01/README.md', 'practical/day-02/README.md'})
+        self.assertEqual(result, '[Day 1](practical/day-01/README.md) [Day 2](practical/day-02/README.md)')
+        self.assertEqual(missing, [])
+
+    def test_nested_folder_links_preserve_query_fragment_and_inline_label(self):
+        result, missing = sync.adapt_links('course/lesson.md',
+            '[`lab`](../practical/day-01/?view=full#run)', {'practical/day-01/README.md'})
+        self.assertEqual(result, '[`lab`](../practical/day-01/README.md?view=full#run)')
+        self.assertEqual(missing, [])
+
+    def test_generated_folder_indexes_are_valid_targets_but_absent_folders_are_not(self):
+        available = sync.publication_paths({'course/part/chapter.md'})
+        self.assertEqual(available, {'README.md', 'course/README.md',
+                                    'course/part/README.md', 'course/part/chapter.md'})
+        result, missing = sync.adapt_links('course/start.md',
+            '[Part](part/) [Examples](../src/)', available)
+        self.assertIn('[Part](part/README.md)', result)
+        self.assertEqual(missing, [{'file': 'course/start.md', 'target': '../src/'}])
+
+    def test_folder_link_examples_inside_code_are_not_rewritten(self):
+        text = 'Inline `[Lab](lab)`\n\n```md\n[Lab](lab)\n```\n[Lab](lab)\n'
+        result, missing = sync.adapt_links('index.md', text, {'lab/README.md'})
+        self.assertEqual(result, text.replace('```\n[Lab](lab)\n', '```\n[Lab](lab/README.md)\n'))
+        self.assertEqual(missing, [])
+
     def test_missing_link_becomes_explanatory_text(self):
         result, missing = sync.adapt_links('01-node/chapter.md', '[Databases](../03-db/intro.md)', set())
         self.assertIn('not available in this published source revision', result)
