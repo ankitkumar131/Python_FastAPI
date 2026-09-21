@@ -1,0 +1,132 @@
+{
+  "repository": "ankitkumar131/Go",
+  "branch": "feature/go-course",
+  "commit": "4f8d2d41aa1b7b34e36af5ba101f47bd7df2e394",
+  "files": {
+    "go-30-days/00-setup/installation.md": {
+      "source_sha256": "8ba097cbcfa4cd7a2ede9a829885b616c2c4e00d491189d60f9f146f98323fc2",
+      "published_sha256": "8ba097cbcfa4cd7a2ede9a829885b616c2c4e00d491189d60f9f146f98323fc2"
+    },
+    "go-30-days/README.md": {
+      "source_sha256": "ed2a2bd9ad9aef5f1fc6c6a0a9007a2a84530dc115fff1e26431aa4afe339912",
+      "published_sha256": "4011d9adf3ae66e2be7c068d1eae5b7a2f20277b99b742013df09033d0add71b"
+    },
+    "go-30-days/day-01-go-fundamentals/README.md": {
+      "source_sha256": "0d16846ab6dfba96e4db50ba5e8452457ab1e3c495a57cfd1f81ffcbf4878f26",
+      "published_sha256": "0d16846ab6dfba96e4db50ba5e8452457ab1e3c495a57cfd1f81ffcbf4878f26"
+    },
+    "go-30-days/day-02-variables-types/README.md": {
+      "source_sha256": "673c212cad5d5f87d0098a4bdbb3817277949c38edf59effc9ca78de919dfcc7",
+      "published_sha256": "673c212cad5d5f87d0098a4bdbb3817277949c38edf59effc9ca78de919dfcc7"
+    },
+    "go-30-days/day-03-control-flow/README.md": {
+      "source_sha256": "b87f23a74b94e6d5dde008bff518f472c9a26249271e15f50ac8c2011d56b962",
+      "published_sha256": "b87f23a74b94e6d5dde008bff518f472c9a26249271e15f50ac8c2011d56b962"
+    },
+    "go-30-days/day-04-functions/README.md": {
+      "source_sha256": "e46a75cf5a90c5732747afc74e1683c68aba3d2476b35cbf862532a38a654d30",
+      "published_sha256": "e46a75cf5a90c5732747afc74e1683c68aba3d2476b35cbf862532a38a654d30"
+    },
+    "go-30-days/day-05-arrays-slices/README.md": {
+      "source_sha256": "5347c4a9db24873d0f32449f7d30c29cd32e929d84d913d3904086ced7bdf9a2",
+      "published_sha256": "5347c4a9db24873d0f32449f7d30c29cd32e929d84d913d3904086ced7bdf9a2"
+    },
+    "go-30-days/day-06-maps-strings/README.md": {
+      "source_sha256": "236a0ee97734a36ab01bd4a0ff6d29e00929be53538e29d1224458f383c20e3a",
+      "published_sha256": "236a0ee97734a36ab01bd4a0ff6d29e00929be53538e29d1224458f383c20e3a"
+    },
+    "go-30-days/day-07-structs/README.md": {
+      "source_sha256": "b323c60c950504a8207d9d4b401e815584fcd4fadac0eac54cb22c282b4c30d4",
+      "published_sha256": "b323c60c950504a8207d9d4b401e815584fcd4fadac0eac54cb22c282b4c30d4"
+    },
+    "go-30-days/day-08-pointers/README.md": {
+      "source_sha256": "81bf20bf9dc933fae26f346d104d12df8271694a765ac3b4aeb04918580de50a",
+      "published_sha256": "81bf20bf9dc933fae26f346d104d12df8271694a765ac3b4aeb04918580de50a"
+    },
+    "go-30-days/day-09-methods/README.md": {
+      "source_sha256": "9d33a399049f5d6582edc31ae6d13619ac134add20ff51ba21acc47728fc2511",
+      "published_sha256": "9d33a399049f5d6582edc31ae6d13619ac134add20ff51ba21acc47728fc2511"
+    },
+    "go-30-days/day-10-interfaces/README.md": {
+      "source_sha256": "b4e2f3a6e9495b147f03bf448a2eb65ea03ad0d74174cadbf6e1d3476c3d0e90",
+      "published_sha256": "b4e2f3a6e9495b147f03bf448a2eb65ea03ad0d74174cadbf6e1d3476c3d0e90"
+    },
+    "go-30-days/day-11-error-handling/README.md": {
+      "source_sha256": "fd31e22b83082d335e7dca497e468fa41236b62c55704b549af5f6f84b5cdb48",
+      "published_sha256": "fd31e22b83082d335e7dca497e468fa41236b62c55704b549af5f6f84b5cdb48"
+    },
+    "go-30-days/day-12-packages-modules/README.md": {
+      "source_sha256": "77d6be46c6035073c2b9f9dcce40610b9f1834d505ed6658b58efbfe82848d8b",
+      "published_sha256": "77d6be46c6035073c2b9f9dcce40610b9f1834d505ed6658b58efbfe82848d8b"
+    },
+    "go-30-days/day-13-file-handling/README.md": {
+      "source_sha256": "55d68601086ab6835e795ab6870890c10134425290e9a7a416528208d5d1a4fe",
+      "published_sha256": "55d68601086ab6835e795ab6870890c10134425290e9a7a416528208d5d1a4fe"
+    },
+    "go-30-days/day-14-json/README.md": {
+      "source_sha256": "1e65219c9e4d3baa548d3a6cea92f28475fd828fed05de03c62c429794133dc4",
+      "published_sha256": "1e65219c9e4d3baa548d3a6cea92f28475fd828fed05de03c62c429794133dc4"
+    },
+    "go-30-days/day-15-http/README.md": {
+      "source_sha256": "80045f6c9ad111911408c48fdbca9a53efee27f6cfa4b02f2493cce974c88f3a",
+      "published_sha256": "80045f6c9ad111911408c48fdbca9a53efee27f6cfa4b02f2493cce974c88f3a"
+    },
+    "go-30-days/day-16-rest-api/README.md": {
+      "source_sha256": "9377f0298017a81a7ca1845784ac9d97f339b7fdebe008fd866ee100fcf3564d",
+      "published_sha256": "9377f0298017a81a7ca1845784ac9d97f339b7fdebe008fd866ee100fcf3564d"
+    },
+    "go-30-days/day-17-api-architecture/README.md": {
+      "source_sha256": "c748ffed7a2dc4c928074dc5d5fc92594cd5a8158b8e82a478bbf44924550c14",
+      "published_sha256": "c748ffed7a2dc4c928074dc5d5fc92594cd5a8158b8e82a478bbf44924550c14"
+    },
+    "go-30-days/day-18-database-sql/README.md": {
+      "source_sha256": "5a4f290f27b0fb31fcba9d706583ae0ed6543d5725335d8edcc409c292ce5108",
+      "published_sha256": "5a4f290f27b0fb31fcba9d706583ae0ed6543d5725335d8edcc409c292ce5108"
+    },
+    "go-30-days/day-19-mongodb/README.md": {
+      "source_sha256": "feb9196beac3e12183951dbf86576a5e830c3b5a9da32972c6dd4c173bc3de02",
+      "published_sha256": "feb9196beac3e12183951dbf86576a5e830c3b5a9da32972c6dd4c173bc3de02"
+    },
+    "go-30-days/day-20-testing/README.md": {
+      "source_sha256": "4af0c6ab85dea16d987d57520c4b3ab2e1fb26c09312d349b9276baf829eb973",
+      "published_sha256": "4af0c6ab85dea16d987d57520c4b3ab2e1fb26c09312d349b9276baf829eb973"
+    },
+    "go-30-days/day-21-concurrency/README.md": {
+      "source_sha256": "059cd8a3c04893e5708060f78bc05c2127c24064d499d73b33e9dfff8738d7e7",
+      "published_sha256": "059cd8a3c04893e5708060f78bc05c2127c24064d499d73b33e9dfff8738d7e7"
+    },
+    "go-30-days/day-22-channels/README.md": {
+      "source_sha256": "a5f13c10b3df3e98b38f0beea827e3ca55f4307662c38a6c4b7dbc65d8dfe01a",
+      "published_sha256": "a5f13c10b3df3e98b38f0beea827e3ca55f4307662c38a6c4b7dbc65d8dfe01a"
+    },
+    "go-30-days/day-23-context-sync/README.md": {
+      "source_sha256": "19f59eafa814afbeaf2eb4bdd80c6e1f93f0197c4a029bbb45cc207929cc0268",
+      "published_sha256": "19f59eafa814afbeaf2eb4bdd80c6e1f93f0197c4a029bbb45cc207929cc0268"
+    },
+    "go-30-days/day-24-generics/README.md": {
+      "source_sha256": "c7275d0e1d6f11996b5ca862ba86dc31aedc1483317546ff7ce1cfca68873753",
+      "published_sha256": "c7275d0e1d6f11996b5ca862ba86dc31aedc1483317546ff7ce1cfca68873753"
+    },
+    "go-30-days/day-25-cli-development/README.md": {
+      "source_sha256": "d9ec0b9733061931381bfece170442102a4a5d9c7dba8cd0e01664106cabd4ab",
+      "published_sha256": "d9ec0b9733061931381bfece170442102a4a5d9c7dba8cd0e01664106cabd4ab"
+    },
+    "go-30-days/day-26-advanced-go/README.md": {
+      "source_sha256": "4c19daccb00946dd6be7b654363d2fdcf876137310da8ba450b638ae3430f604",
+      "published_sha256": "4c19daccb00946dd6be7b654363d2fdcf876137310da8ba450b638ae3430f604"
+    },
+    "go-30-days/day-27-performance-debugging/README.md": {
+      "source_sha256": "88913d15ed77081e30c2ee2da5175af2a5087041ea382d59d194ffe513da3cb0",
+      "published_sha256": "88913d15ed77081e30c2ee2da5175af2a5087041ea382d59d194ffe513da3cb0"
+    },
+    "go-30-days/day-28-production-go/README.md": {
+      "source_sha256": "d009f9fc2cfc73ca3235079ba32a5f4916a3ed4988c7042182b45207d8933ec6",
+      "published_sha256": "d009f9fc2cfc73ca3235079ba32a5f4916a3ed4988c7042182b45207d8933ec6"
+    },
+    "go-30-days/day-29-project/README.md": {
+      "source_sha256": "d568ac30d95858b4ee4d18ae1ebc50314afba45c3cd17707a6b502831a6f72f5",
+      "published_sha256": "d568ac30d95858b4ee4d18ae1ebc50314afba45c3cd17707a6b502831a6f72f5"
+    }
+  },
+  "unavailable_links": []
+}

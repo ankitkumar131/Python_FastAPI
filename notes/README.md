@@ -10,6 +10,7 @@ Pick a course below to read its notes, examples and exercises. Each course opens
 <tr><td><strong>Understanding_React Notes</strong></td><td>Learn React and TypeScript from web prerequisites through hooks, routing, APIs, testing, authentication and production projects.</td><td><a href="courses/understanding-react/README.md">Open course</a></td></tr>
 <tr><td><strong>DSA-in-java Notes</strong></td><td>Study data structures and algorithms in Java with a 30-day course, problem-solving patterns, a question bank and practical exercises.</td><td><a href="courses/dsa-in-java/README.md">Open course</a></td></tr>
 <tr><td><strong>Springboot Notes</strong></td><td>Learn Java and Spring Boot backend development through 30 days of lessons, databases, security, testing, practical exercises and projects.</td><td><a href="courses/springboot/README.md">Open course</a></td></tr>
+<tr><td><strong>Learn GO</strong></td><td>Learn GO in 30 Days</td><td><a href="courses/learn-go/README.md">Open course</a></td></tr>
 </tbody></table>
 
 ### Quick links
@@ -19,6 +20,7 @@ Pick a course below to read its notes, examples and exercises. Each course opens
 - [Understanding_React Notes](courses/understanding-react/README.md)
 - [DSA-in-java Notes](courses/dsa-in-java/README.md)
 - [Springboot Notes](courses/springboot/README.md)
+- [Learn GO](courses/learn-go/README.md)
 
 ### Source repositories
 
@@ -31,6 +33,7 @@ These links open the original GitHub repositories and their study branches. Use 
 | Understanding_React Notes | [ankitkumar131/Understanding_React](https://github.com/ankitkumar131/Understanding_React) | [arena/01a0b8da-understanding-react](https://github.com/ankitkumar131/Understanding_React/tree/arena/01a0b8da-understanding-react) |
 | DSA-in-java Notes | [ankitkumar131/DSA-in-java](https://github.com/ankitkumar131/DSA-in-java) | [arena/01a0bf70-dsa-in-java](https://github.com/ankitkumar131/DSA-in-java/tree/arena/01a0bf70-dsa-in-java) |
 | Springboot Notes | [ankitkumar131/Springboot](https://github.com/ankitkumar131/Springboot) | [arena/01a0bfa7-springboot](https://github.com/ankitkumar131/Springboot/tree/arena/01a0bfa7-springboot) |
+| Learn GO | [ankitkumar131/Go](https://github.com/ankitkumar131/Go) | [feature/go-course](https://github.com/ankitkumar131/Go/tree/feature/go-course) |
 
 ### How to use this library
 

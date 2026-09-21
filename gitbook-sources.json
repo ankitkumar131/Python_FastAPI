@@ -54,6 +54,19 @@
       "include": [
         "java-springboot-backend/*.md"
       ]
+    },
+    {
+      "id": "learn-go",
+      "title": "Learn GO",
+      "description": "Learn GO in 30 Days",
+      "repository": "ankitkumar131/Go",
+      "branch": "feature/go-course",
+      "include": [
+        "go-30-days/*.md"
+      ],
+      "group_titles": {
+        "GO_language_30Days": "go-30-days"
+      }
     }
   ]
 }
