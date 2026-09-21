@@ -1,0 +1,17 @@
+# 10-advanced-react
+
+[← react-notes](../)
+
+This folder index is generated from the selected source files. The directory names, nesting and sorted path order follow the source repository.
+
+## Contents
+
+* [01 — Rendering: Elements, the Render Phase, the Commit Phase](01-rendering.md)
+* [02 — Re-rendering: What Causes It, What Does Not, and Why It Is Usually Fine](02-re-rendering.md)
+* [03 — Memoization: `React.memo`, `useMemo`, `useCallback` Done Honestly](03-memoization.md)
+* [04 — Performance: Measuring First, Then Fixing What the Numbers Say](04-performance.md)
+* [05 — Lazy Loading: Code That Waits Until It Is Needed](05-lazy-loading.md)
+* [06 — Code Splitting: Bundles, Chunks and What It Actually Saves](06-code-splitting.md)
+* [07 — Suspense and `use()`: Waiting Without a Flag](07-suspense.md)
+* [08 — Error Boundaries: Failure as a Designed State](08-error-boundaries.md)
+* [09 — Concurrent Features: `useTransition` and `useDeferredValue`](09-concurrent-features.md)

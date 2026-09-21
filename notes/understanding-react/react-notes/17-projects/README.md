@@ -1,0 +1,15 @@
+# 17-projects
+
+[← react-notes](../)
+
+This folder index is generated from the selected source files. The directory names, nesting and sorted path order follow the source repository.
+
+## Contents
+
+* [01 — Project: Counter (Components, State, Events, Props)](01-counter.md)
+* [02 — Project: Todo App (Lists, Forms, Filters, Persistence)](02-todo-app.md)
+* [03 — Project: Weather App (API, Async, Loading, Errors, Types)](03-weather-app.md)
+* [04 — Project: Library CRUD App (Routing, Forms, Server State)](04-crud-app.md)
+* [05 — Project: Authentication App (Register, Session, Guards, Roles)](05-authentication-app.md)
+* [06 — Production React App: the Taskboard Capstone (Everything, in One App)](06-production-react-app.md)
+* [05 — Project: Performance Lab (Re-renders, the Compiler, Windowing)](07-performance-lab.md)

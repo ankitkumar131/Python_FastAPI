@@ -1,0 +1,26 @@
+# 01-nodejs
+
+[← Node\_Express Notes](../)
+
+This folder index is generated from the selected source files. The directory names, nesting and sorted path order follow the source repository.
+
+## Contents
+
+* [01 — Introduction to Node.js](01-introduction.md)
+* [02 — JavaScript Prerequisites](02-javascript-prerequisites.md)
+* [03 — Node.js Basics](03-nodejs-basics.md)
+* [04 — Modules: CommonJS and ES Modules](04-modules.md)
+* [05 — npm and package.json](05-npm.md)
+* [06 — The `fs` Module](06-filesystem.md)
+* [07 — The `path` Module](07-path.md)
+* [08 — Events and EventEmitter](08-events.md)
+* [09 — Streams](09-streams.md)
+* [10 — Buffers](10-buffers.md)
+* [11 — The `http` Module: Building a Server by Hand](11-http-module.md)
+* [12 — Asynchronous Programming](12-async-programming.md)
+* [13 — Promises, `async` and `await`](13-promises.md)
+* [14 — The Event Loop](14-event-loop.md)
+* [15 — Environment Variables](15-environment-variables.md)
+* [16 — Error Handling](16-error-handling.md)
+* [17 — Debugging and Tooling](17-debugging.md)
+* [18 — Project: A CRUD API with Node.js Only](18-nodejs-project.md)
