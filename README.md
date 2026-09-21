@@ -1,5 +1,7 @@
 # Python FastAPI — Study Course
 
+**Adding a course? Use the [publisher app](PUBLISHER.md)** — repository, branch, notes directory, name and description, then one push.
+
 **Start here: [Cognivolt Docs dashboard](notes/README.md)** — choose Python FastAPI, Node/Express, React + TypeScript, DSA in Java or Spring Boot notes.
 
 [FastAPI course guide](notes/00-course-guide.md) · [GitBook publishing and refresh instructions](GITBOOK.md) · [Detailed React publishing guide](HOW-to-Upload.md)

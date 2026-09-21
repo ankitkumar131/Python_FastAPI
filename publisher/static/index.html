@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GitBook course publisher</title>
+<style>
+  :root {
+    --bg: #0f1115; --panel: #171a21; --panel-2: #1e222b; --line: #2a2f3a;
+    --text: #e7eaf0; --muted: #98a2b3; --accent: #4f8cff; --accent-2: #2f6fe0;
+    --ok: #3ddc97; --warn: #ffb648; --err: #ff6b6b; --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  header { display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+           padding: 18px 22px; border-bottom: 1px solid var(--line); background: var(--panel); }
+  header h1 { margin: 0; font-size: 18px; letter-spacing: .2px; }
+  header .grow { flex: 1; }
+  .pill { font-family: var(--mono); font-size: 12px; color: var(--muted);
+          border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; }
+  main { display: grid; grid-template-columns: minmax(340px, 1fr) minmax(380px, 1.15fr);
+         gap: 18px; padding: 18px 22px 40px; align-items: start; }
+  @media (max-width: 980px) { main { grid-template-columns: 1fr; } }
+  section { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px 16px 18px; }
+  section + section { margin-top: 18px; }
+  h2 { margin: 0 0 4px; font-size: 15px; }
+  h2 + p.hint { margin: 0 0 14px; }
+  p.hint { color: var(--muted); font-size: 13px; margin: 0 0 14px; }
+  label { display: block; font-size: 12.5px; color: var(--muted); margin: 12px 0 5px; }
+  input, textarea, select { width: 100%; padding: 9px 11px; border-radius: 9px; color: var(--text);
+                            background: var(--panel-2); border: 1px solid var(--line); font: inherit; }
+  input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  textarea { font-family: var(--mono); font-size: 12.5px; min-height: 64px; resize: vertical; }
+  .row { display: flex; gap: 10px; }
+  .row > div { flex: 1; }
+  button { border: 0; border-radius: 10px; padding: 10px 16px; font: inherit; font-weight: 600;
+           cursor: pointer; color: #fff; background: var(--panel-2); border: 1px solid var(--line); }
+  button.primary { background: var(--accent); border-color: var(--accent); }
+  button.primary:hover { background: var(--accent-2); }
+  button:disabled { opacity: .55; cursor: not-allowed; }
+  .actions { display: flex; gap: 10px; align-items: center; margin-top: 18px; flex-wrap: wrap; }
+  .check { display: flex; gap: 8px; align-items: center; color: var(--muted); font-size: 13px; }
+  .check input { width: auto; }
+  #log { font-family: var(--mono); font-size: 12.5px; background: #0c0e12; border: 1px solid var(--line);
+         border-radius: 10px; padding: 12px; height: 320px; overflow: auto; white-space: pre-wrap; }
+  #log div { margin-bottom: 4px; }
+  .step { color: #cfe0ff; } .info { color: var(--muted); } .warn { color: var(--warn); }
+  .error { color: var(--err); } .done { color: var(--ok); }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th, td { text-align: left; padding: 9px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 500; font-size: 12.5px; }
+  code { font-family: var(--mono); font-size: 12.5px; color: #cdd6f4; }
+  .muted { color: var(--muted); }
+  .tag { font-family: var(--mono); font-size: 11.5px; padding: 2px 7px; border-radius: 6px;
+         background: var(--panel-2); border: 1px solid var(--line); color: var(--muted); }
+  #preview .stats { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+  #chapters { max-height: 260px; overflow: auto; border: 1px solid var(--line); border-radius: 10px; }
+  #chapters div { font-family: var(--mono); font-size: 12px; padding: 6px 10px; border-bottom: 1px solid #20242c; }
+  .banner { border-radius: 10px; padding: 10px 12px; font-size: 13px; margin-bottom: 12px; border: 1px solid var(--line); }
+  .banner.warn { background: #2a2113; border-color: #4a3a17; color: #ffd79a; }
+  .banner.ok { background: #12261d; border-color: #1f4634; color: #b6f2d4; }
+  footer { color: var(--muted); font-size: 12.5px; padding: 0 22px 30px; }
+</style>
+</head>
+<body>
+<header>
+  <h1 id="site">GitBook course publisher</h1>
+  <span class="pill" id="repo-state">…</span>
+  <span class="grow"></span>
+  <span class="pill" id="token-pill" hidden>token</span>
+  <input id="token" placeholder="publisher token" style="width:190px" hidden>
+</header>
+
+<main>
+  <div>
+    <section>
+      <h2>Add or update a course</h2>
+      <p class="hint">Paste a repository and the notes directory inside it. The app imports those Markdown
+        files, regenerates the dashboard and sidebar, then pushes to the branch GitBook reads.</p>
+      <label for="title">Course name</label>
+      <input id="title" placeholder="DSA in Java">
+      <label for="description">Description (shown on the dashboard card)</label>
+      <input id="description" placeholder="Study data structures and algorithms in Java.">
+      <label for="repository">Repository</label>
+      <input id="repository" placeholder="https://github.com/ankitkumar131/DSA-in-java">
+      <div class="row">
+        <div>
+          <label for="branch">Source branch</label>
+          <input id="branch" placeholder="main">
+        </div>
+        <div>
+          <label for="notes_dir">Notes directory in that repo</label>
+          <input id="notes_dir" placeholder="DSA-Java-30-Days (blank = whole repo)">
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label for="id">Course ID (URL slug)</label>
+          <input id="id" placeholder="auto from the name">
+        </div>
+        <div>
+          <label for="publish_branch">Publishing branch (GitBook)</label>
+          <input id="publish_branch">
+        </div>
+      </div>
+      <label for="include">Advanced: include patterns (one per line, blank = derived from the directory)</label>
+      <textarea id="include" placeholder="DSA-Java-30-Days/*.md"></textarea>
+      <label for="group_titles">Advanced: folder labels (JSON)</label>
+      <textarea id="group_titles" placeholder='{ "DSA-Java-30-Days": "30-Day Course" }'></textarea>
+      <label for="message">Commit message (blank = generated)</label>
+      <input id="message" placeholder="Publish DSA in Java to the GitBook library">
+      <div class="actions">
+        <button id="check">Check source</button>
+        <button id="push" class="primary">Push to GitBook</button>
+        <label class="check"><input type="checkbox" id="dry_run"> dry run</label>
+      </div>
+    </section>
+
+    <section>
+      <h2>Library</h2>
+      <p class="hint">Courses currently published here. “Publish library” pushes the current state
+        (for example after a removal or a manual edit) without importing anything.</p>
+      <table>
+        <thead><tr><th>Course</th><th>Source</th><th>Pages</th><th></th></tr></thead>
+        <tbody id="courses"></tbody>
+      </table>
+      <div class="actions">
+        <button id="publish-library">Publish library</button>
+      </div>
+    </section>
+  </div>
+
+  <div>
+    <section id="preview">
+      <h2>Source check</h2>
+      <p class="hint">Nothing is written until you press “Push to GitBook”.</p>
+      <div id="preview-body" class="muted">Press “Check source” to resolve the branch and list the chapters.</div>
+    </section>
+
+    <section>
+      <h2>Run log</h2>
+      <p class="hint">Everything the app did, in order, including the importer’s own output.</p>
+      <div id="log"><div class="info">Idle.</div></div>
+    </section>
+  </div>
+</main>
+<footer>
+  After a push, GitBook only shows the change if the space’s Git Sync direction includes
+  <strong>GitHub → GitBook</strong>. Clicking <strong>Push to GitBook</strong> pushes to the
+  branch above; it does not force-push and it does not touch any source repository.
+</footer>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const state = { publish_branch: '', token: localStorage.getItem('publisher_token') || '' };
+let poll = null;
+
+function logLine(level, message) {
+  const box = $('log');
+  if (box.dataset.clean !== '1') { box.innerHTML = ''; box.dataset.clean = '1'; }
+  const div = document.createElement('div');
+  div.className = level || 'info';
+  div.textContent = message;
+  box.appendChild(div);
+  box.scrollTop = box.scrollHeight;
+}
+
+async function api(path, body) {
+  const headers = { 'Content-Type': 'application/json' };
+  const token = $('token').value.trim() || state.token;
+  if (token) headers['X-Publisher-Token'] = token;
+  const response = await fetch(path, { method: 'POST', headers, body: JSON.stringify(body || {}) });
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(data.detail || data.error || `HTTP ${response.status}`);
+  return data;
+}
+
+function form() {
+  return {
+    title: $('title').value, description: $('description').value,
+    repository: $('repository').value, branch: $('branch').value,
+    notes_dir: $('notes_dir').value, id: $('id').value,
+    include: $('include').value, group_titles: $('group_titles').value,
+    options: {
+      branch: $('publish_branch').value || state.publish_branch,
+      message: $('message').value, dry_run: $('dry_run').checked,
+    },
+  };
+}
+
+function renderPreview(p) {
+  $('preview-body').innerHTML = '';
+  const stats = document.createElement('div');
+  stats.className = 'stats';
+  for (const [label, value] of [['revision', p.commit_short], ['chapters', p.chapters],
+                                ['unavailable links', p.unavailable], ['size', (p.bytes / 1024).toFixed(0) + ' KB']]) {
+    const tag = document.createElement('span');
+    tag.className = 'tag';
+    tag.textContent = `${label}: ${value}`;
+    stats.appendChild(tag);
+  }
+  $('preview-body').appendChild(stats);
+  const source = document.createElement('p');
+  source.className = 'muted';
+  source.innerHTML = `<code>${p.repository}@${p.branch}</code> matched by <code>${p.patterns.join(', ')}</code>`;
+  $('preview-body').appendChild(source);
+  for (const warning of p.warnings) {
+    const banner = document.createElement('div');
+    banner.className = 'banner warn';
+    banner.textContent = '⚠ ' + warning;
+    $('preview-body').appendChild(banner);
+  }
+  const list = document.createElement('div');
+  list.id = 'chapters';
+  for (const page of p.pages.slice(0, 200)) {
+    const row = document.createElement('div');
+    row.textContent = `${page.source}  →  /${page.page}` + (page.unavailable ? `  (${page.unavailable} external link(s))` : '');
+    list.appendChild(row);
+  }
+  $('preview-body').appendChild(list);
+  if (p.pages.length > 200) {
+    const more = document.createElement('p');
+    more.className = 'muted';
+    more.textContent = `… and ${p.pages.length - 200} more chapters.`;
+    $('preview-body').appendChild(more);
+  }
+}
+
+async function checkSource() {
+  $('check').disabled = true;
+  logLine('step', 'Checking the source repository (read-only)…');
+  try {
+    const data = await api('/api/preview', form());
+    renderPreview(data.preview);
+    logLine('done', `Ready: ${data.preview.chapters} chapter(s) at ${data.preview.commit_short}.`);
+  } catch (error) {
+    logLine('error', error.message);
+    $('preview-body').innerHTML = `<div class="banner warn">${error.message}</div>`;
+  } finally { $('check').disabled = false; }
+}
+
+async function watch(jobId) {
+  clearInterval(poll);
+  poll = setInterval(async () => {
+    let data;
+    try { data = await (await fetch(`/api/jobs/${jobId}`)).json(); }
+    catch (error) { return; }
+    const box = $('log');
+    box.innerHTML = '';
+    box.dataset.clean = '1';
+    for (const entry of data.log) logLine(entry.level, entry.message);
+    if (data.status !== 'running') {
+      clearInterval(poll);
+      $('push').disabled = false; $('publish-library').disabled = false;
+      $('check').disabled = false;
+      if (data.status === 'error') logLine('error', 'Stopped: ' + data.error);
+      else if (data.result && data.result.published) logLine('done', `Published to origin/${data.result.branch}.`);
+      await loadState();
+    }
+  }, 700);
+}
+
+async function start(path, body) {
+  $('push').disabled = true; $('publish-library').disabled = true; $('check').disabled = true;
+  $('log').innerHTML = ''; $('log').dataset.clean = '1';
+  try {
+    const data = await api(path, body);
+    logLine('step', 'Job started…');
+    await watch(data.job);
+  } catch (error) {
+    logLine('error', error.message);
+    $('push').disabled = false; $('publish-library').disabled = false; $('check').disabled = false;
+  }
+}
+
+async function loadState() {
+  const data = await (await fetch('/api/state')).json();
+  $('site').textContent = data.site_title + ' — publisher';
+  $('repo-state').textContent = `${data.repository.branch}${data.repository.dirty ? ' · uncommitted changes' : ''} → ${data.repository.remote || 'no remote'}`;
+  if (data.token_required) {
+    $('token').hidden = false; $('token-pill').hidden = false;
+    $('token').value = state.token;
+  }
+  state.publish_branch = data.repository.branch;
+  if (!$('publish_branch').value) $('publish_branch').value = data.repository.branch;
+  const body = $('courses');
+  body.innerHTML = '';
+  for (const course of data.courses) {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td><strong>${course.title}</strong><br><code>${course.id}</code></td>
+      <td><code>${course.repository}</code><br><span class="muted">${course.branch}</span></td>
+      <td>${course.imported ? course.pages + '<br><span class="muted">' + course.commit + '</span>' : '<span class="muted">not imported</span>'}</td>
+      <td><button class="remove" data-id="${course.id}">Remove</button></td>`;
+    body.appendChild(tr);
+  }
+  for (const button of document.querySelectorAll('button.remove')) {
+    button.onclick = () => {
+      if (confirm(`Remove “${button.dataset.id}” from the library? Nothing is pushed until you press “Publish library”.`)) {
+        start('/api/remove', { id: button.dataset.id });
+      }
+    };
+  }
+}
+
+$('token').addEventListener('change', () => {
+  state.token = $('token').value.trim();
+  localStorage.setItem('publisher_token', state.token);
+});
+$('check').onclick = checkSource;
+$('push').onclick = () => start('/api/publish', form());
+$('publish-library').onclick = () => start('/api/publish',
+  { mode: 'library', options: { branch: $('publish_branch').value || state.publish_branch, message: $('message').value } });
+loadState().catch((error) => logLine('error', error.message));
+</script>
+</body>
+</html>

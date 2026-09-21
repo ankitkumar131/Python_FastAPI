@@ -1,5 +1,6 @@
 """Offline tests for the GitBook publishing tool; uses only Python's standard library."""
 import io
+import sys
 import json
 from pathlib import Path
 import tarfile
@@ -371,6 +372,47 @@ class DashboardTests(unittest.TestCase):
     def test_invalid_course_id_cannot_escape_destination(self):
         with self.assertRaisesRegex(ValueError, 'URL slugs'):
             sync.destination({'id': '../../escape'})
+
+
+class CommandLineTests(unittest.TestCase):
+    """`--refresh --only ID` refreshes the courses the publisher app just changed."""
+
+    def setUp(self):
+        self.directory = tempfile.TemporaryDirectory()
+        self.addCleanup(self.directory.cleanup)
+        root = Path(self.directory.name)
+        notes = root / 'notes'
+        notes.mkdir()
+        (root / 'gitbook-sources.json').write_text(json.dumps({
+            'site_title': 'Library',
+            'local': {'title': 'Python', 'description': '', 'entry': '00-guide.md',
+                      'chapter_glob': '00-*.md'},
+            'imports': [{'id': 'one', 'title': 'One', 'repository': 'o/one', 'branch': 'main',
+                         'include': ['*.md']},
+                        {'id': 'two', 'title': 'Two', 'repository': 'o/two', 'branch': 'main',
+                         'include': ['*.md']}],
+        }))
+        for target, value in (('ROOT', root), ('NOTES', notes)):
+            patcher = patch.object(sync, target, value)
+            patcher.start()
+            self.addCleanup(patcher.stop)
+
+    def run_main(self, *argv) -> list[str]:
+        refreshed = []
+        with patch.object(sync, 'refresh', side_effect=lambda course: refreshed.append(course['id'])), \
+             patch.object(sync, 'write_generated'), patch.object(sync, 'check'), \
+             patch.object(sys, 'argv', ['sync_gitbook.py', *argv]):
+            sync.main()
+        return refreshed
+
+    def test_only_restricts_the_refresh_to_named_courses(self):
+        self.assertEqual(self.run_main('--refresh', '--only', 'two'), ['two'])
+        self.assertEqual(self.run_main('--refresh', '--only', 'one', '--only', 'two'), ['one', 'two'])
+        self.assertEqual(self.run_main('--refresh'), ['one', 'two'])
+
+    def test_unknown_course_ids_are_rejected_before_any_network_call(self):
+        with self.assertRaisesRegex(ValueError, 'Unknown course ID'):
+            self.run_main('--refresh', '--only', 'missing')
 
 
 if __name__ == '__main__':

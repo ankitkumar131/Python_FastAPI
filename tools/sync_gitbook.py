@@ -492,11 +492,16 @@ def main() -> None:
     mode.add_argument('--refresh', action='store_true')
     mode.add_argument('--check', action='store_true')
     mode.add_argument('--prune-reexport', dest='prune_reexport', action='store_true')
+    parser.add_argument('--only', action='append', default=[], metavar='ID',
+                        help='with --refresh, refresh only these course IDs (repeatable)')
     args = parser.parse_args()
     config = json.loads((ROOT / 'gitbook-sources.json').read_text())
     ids = [course['id'] for course in config['imports']]
     if len(ids) != len(set(ids)):
         raise ValueError('Imported course IDs must be unique')
+    unknown = [name for name in args.only if name not in ids]
+    if unknown:
+        raise ValueError(f'Unknown course ID(s): {", ".join(unknown)}; known: {", ".join(ids)}')
     if args.check:
         check(config)
         return
@@ -506,6 +511,8 @@ def main() -> None:
         return
     if args.refresh:
         for course in config['imports']:
+            if args.only and course['id'] not in args.only:
+                continue
             refresh(course)
     write_generated(config)
     check(config)
