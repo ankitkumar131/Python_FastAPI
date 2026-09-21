@@ -211,40 +211,66 @@ branch tips, so no re-import was needed.
 
 ### Make the cards appear in the hosted space
 
-A repository change cannot click Publish, and GitBook only shows content it has imported:
+**Verified on 21 September 2026 against the live space.** The two courses are missing from the
+space itself, and the repository is currently downstream of GitBook — so no repository commit
+can produce those two cards yet. Evidence:
 
-1. Push/merge the publishing branch so the GitBook-connected branch contains this commit.
-   Use the branch configured in Git Sync — if Git Sync follows `arena/01a0b045-python-fastapi`,
-   merge `arena/01a0c351-python-fastapi` into it (or select the new branch), then let Git Sync
-   import the revision.
-2. Confirm the sync direction. If the connection is set to **GitBook → GitHub** only, GitBook
-   never receives repository changes: switch it to GitHub → GitBook (or bidirectional), or add
-   the two missing cards in the GitBook editor instead.
-3. Open **Cognivolt Docs** → **Git Sync** and verify repository, branch and project directory
-   `notes/`.
-4. Open the Dashboard in the preview, confirm **five** cards under *Choose your learning path*,
-   then click **DSA-in-java Notes** and **Springboot Notes** and check their sidebar groups
-   (`DSA-Java-30-Days`, `practical`, `INDEX`; `java-springboot-backend`, `cheatsheets`,
-   `projects`).
-5. Publish/merge the imported change if the site workflow stages change requests.
+| Observation | Command / URL | Result |
+|---|---|---|
+| The space has no DSA-in-java page | `https://cognivolt.gitbook.io/cognivolt-docs/dsa-in-java` | **404 Page not found**; the "you might be looking for" list offers only the three courses |
+| The space's page index ends after three courses | `https://cognivolt.gitbook.io/cognivolt-docs/llms.txt` | `Dashboard`, `00-course-guide/*` (25), `node-express/*`, `understanding-react/*` — no `dsa-in-java`, no `springboot` |
+| GitBook writes to this repository, not from it | `git log -1 --format='%cn %s'` | `gitbook-bot  GitBook: Export content from Python FastAPI` — committed to **both** `arena/01a0b045-python-fastapi` (10:09 UTC) and `arena/01a0c351-python-fastapi` (10:13 UTC) |
+| That export overwrote the five-card dashboard | `git show 6912327:notes/README.md` | three card rows, three quick links, and 246 of GitBook's own page files re-added |
 
-If only three cards still appear after the import, the space is serving an older revision:
-re-check the synced commit, then the configured branch, before editing the cards by hand.
+So changing the connected branch changed where GitBook **writes**, not what it **reads**. A card
+is only rendered when its target is a page in the space; with the space holding three courses,
+GitBook renders three cards no matter what the repository says.
+
+**The fix is a GitBook setting, not a commit:**
+
+1. Open **Cognivolt Docs** in GitBook → **Git Sync** (settings) and read the **sync direction**.
+   It is currently exporting GitBook → GitHub, which is why repository commits never arrive.
+2. Set the direction to **GitHub → GitBook** (or two-way) and run the import/sync. This imports
+   the 455-page publication from this branch: the five-course sidebar and the five-card
+   dashboard.
+3. GitBook's first GitHub → GitBook import replaces the space's current content. That is the
+   intent here — the space only holds three of the five courses — but this is why the direction
+   must not be switched on a space whose content is the source of truth.
+4. Preview, then merge/publish if the workflow stages a change request.
+5. Verify: `https://cognivolt.gitbook.io/cognivolt-docs/dsa-in-java` must answer with the course
+   overview instead of 404, and *Choose your learning path* must show **five** cards. Sidebar
+   groups to check: `DSA-Java-30-Days`, `practical`, `INDEX` and `java-springboot-backend`,
+   `cheatsheets`, `projects`.
+
+#### Consequences to expect after the import
+
+* **FastAPI page URLs change.** The space currently uses the exported layout
+  (`/00-course-guide/01-python-prerequisites`); the canonical publication has the flat
+  `/01-python-prerequisites`. Add redirects in GitBook for any published URL you care about.
+* **If the direction must stay GitBook → GitHub**, the two courses have to be created inside
+  GitBook; repository commits cannot reach the space, and every GitBook sync will keep
+  overwriting the dashboard, the sidebar and (in `notes/`) one page per chapter. In that mode,
+  run `python tools/sync_gitbook.py --prune-reexport` after each such export — that is exactly
+  the 246-file conflict GitBook's 10:13 UTC export created, and it was reconciled twice on
+  21 September 2026.
+* **Two-way sync is not a merge.** GitBook imports repository changes and exports its own; when
+  both sides edited the same page, GitBook's version wins on the next export. Keep this
+  repository the single authoring side for generated pages, or stop generating them.
 
 ## GitBook settings: keep the existing connection
 
 | Setting | Value |
 |---|---|
 | Repository | `ankitkumar131/Python_FastAPI` |
-| Branch | the branch Git Sync follows; `arena/01a0b045-python-fastapi` when the space was connected, `arena/01a0c351-python-fastapi` for the reconciled dashboard |
+| Branch | the branch Git Sync exchanges content with; `arena/01a0c351-python-fastapi` for the reconciled five-course dashboard |
 | Project directory | `notes/` |
+| Sync direction | **GitHub → GitBook** (must be changed; see [dashboard cards for DSA and Spring Boot](#dashboard-cards-for-dsa-and-spring-boot)) |
 | Initial direction, if setting up again | **GitHub → GitBook** |
 | Space mapping | `./` (relative to the `notes/` project directory) |
 
-The branch in that table must be the branch that contains this commit. If Git Sync follows
-an older publishing branch, merge this one into it or point Git Sync at this branch; the
-dashboard, sidebar and one-page-per-chapter layout described above only reach the space
-through the branch GitBook imports.
+As measured on 21 September 2026 the connection was exporting GitBook → GitHub, so this
+repository was receiving GitBook's three-course content instead of sending its five-course
+publication. Confirm the direction before judging any change made in this repository.
 
 `notes/gitbook-docs.yaml` retains the original `python-fastapi` **key and path**.
 Only the display title becomes **Learning library**. Do not rename the key merely
