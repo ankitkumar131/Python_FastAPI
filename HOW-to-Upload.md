@@ -16,11 +16,20 @@ Verified against the repository contents and publishing tool on **20 September 2
 > the configuration and refresh future updates. GitBook account-side sync, preview and
 > publication still need verification; a repository import is not hosted-site confirmation.
 
-> **Later GitBook export:** the current dashboard/sidebar were reorganized by
-> GitBook after the five-course import. This guide describes the generator
-> configuration; do not run a full regeneration just to add repository links.
-> See [the export compatibility note](GITBOOK.md#dashboard-source-repository-links)
-> before replacing the current exported navigation.
+> **Branch names in this guide:** every command below names the publishing branch as it
+> was when the guide was written (`arena/01a0b045-python-fastapi`). What matters is the
+> branch **Git Sync actually follows**: substitute that branch name everywhere. The
+> reconciled dashboard described in the next note was produced on
+> `arena/01a0c351-python-fastapi`; merge it into the synced branch (or point Git Sync at
+> it) before expecting the hosted space to change.
+
+> **Later GitBook export, already reconciled:** GitBook wrote its own re-serialized
+> copy of the space back into this repository (454 lower-cased, folder-nested pages).
+> Those copies are removed, and the dashboard/sidebar are generated again from the
+> registry, so all five cards point at pages that really exist — including
+> DSA-in-java and Springboot. See
+> [dashboard cards for DSA and Spring Boot](GITBOOK.md#dashboard-cards-for-dsa-and-spring-boot)
+> for the cause and the GitBook-side steps that make the cards appear.
 
 ## Contents
 
@@ -694,9 +703,13 @@ Python/FastAPI is maintained in this documentation repository. Other repositorie
 ````
 
 `data-view="cards"` selects GitBook's card-table representation. The hidden
-`data-card-target` column supplies each card's destination. React points to
-`courses/understanding-react/README.md`, which is a real page in the same content
-space. The ordinary quick links make the file useful in Markdown viewers too.
+`data-card-target` column supplies each card's destination, and **a card only appears
+when that target resolves to a page in the same content space**. Every card therefore
+points at a real page file — `00-course-guide.md`, `courses/node-express/README.md`,
+`courses/understanding-react/README.md`, `courses/dsa-in-java/README.md`,
+`courses/springboot/README.md` — never at a bare folder such as `dsa-in-java/`, which
+becomes ambiguous as soon as the same page is reachable at two paths. The ordinary quick
+links make the file useful in Markdown viewers too.
 
 There are no guessed GitBook space IDs or hardcoded site domains. That is why this
 same file works with your current GitBook site address or a later custom domain.
@@ -961,13 +974,14 @@ If you intentionally edit repository/branch/include/title settings during a refr
 also stage `gitbook-sources.json` before committing. If nothing changed, Git reports
 nothing to commit; that is not an error requiring a new empty commit.
 
-### Three tool modes: do not confuse them
+### Four tool modes: do not confuse them
 
 | Command | Network? | Purpose |
 |---|---|---|
 | `python -X utf8 tools/sync_gitbook.py --refresh` | Yes | Import source revisions and regenerate publication files |
 | `python -X utf8 tools/sync_gitbook.py` | No | Regenerate overviews/dashboard/sidebar from existing imported manifests |
 | `python -X utf8 tools/sync_gitbook.py --check` | No | Verify current publication files without modifying them |
+| `python -X utf8 tools/sync_gitbook.py --prune-reexport` | No | Delete GitBook's re-exported copies of pages that are already published here; refuses to touch anything without a published counterpart |
 
 For a brand-new course, running without `--refresh` cannot work until its imported
 files/manifest exist. `--check` does not create missing content or refresh outdated
@@ -1003,6 +1017,9 @@ change, not quietly removing protections.
 | Broken link to `../05-react-concepts/01-component-communication.md` | An older importer missed code-formatted Markdown labels; pull the fixed tool described in section 16, then refresh and check |
 | `--check` reports stale dashboard/sidebar | Regenerate after changing titles/settings; for new source content use `--refresh`, not only regeneration |
 | GitBook still displays two cards | Verify you committed generated dashboard/sidebar/course files, pushed the connected branch, and GitBook imported that commit |
+| DSA-in-java or Springboot card missing under *Choose your learning path* | GitBook drops a card whose target page does not resolve. Confirm the imported commit contains the regenerated `notes/README.md` (card targets `courses/<id>/README.md`), that `--check` passes, and that the sync direction includes GitHub → GitBook. Details: [dashboard cards for DSA and Spring Boot](GITBOOK.md#dashboard-cards-for-dsa-and-spring-boot) |
+| `--check` reports unmanaged pages under `notes/` | GitBook exported its own copies of already-published pages; review the list, then run `python -X utf8 tools/sync_gitbook.py --prune-reexport` (it never deletes a page without a published counterpart) |
+| `--check` reports two published pages sharing one GitBook page path | A chapter file and a folder README would become the same GitBook page (`intro.md` and `intro/README.md`). Rename or move one of them in the source repository, then refresh |
 | GitBook cannot find `notes/gitbook-docs.yaml` | Confirm branch and project directory are exactly as section 13; the file belongs under notes/ |
 | GitBook looks for notes/notes/ | You combined project directory notes/ with content directory ./notes; content directory should remain ./ |
 | New card appears but pages do not | Check that `notes/courses/understanding-react/` was staged and pushed; committing only JSON/card markup is insufficient |
@@ -1166,7 +1183,16 @@ git add gitbook-sources.json notes/README.md notes/SUMMARY.md notes/courses/
 git diff --cached --stat
 git diff --cached --name-only
 git commit -m "Add Understanding React notes to the GitBook dashboard"
-git push origin arena/01a0b045-python-fastapi
+git push origin <the branch Git Sync follows>
+```
+
+If `--check` reports unmanaged pages because GitBook exported its own copy of the space
+into this repository, add this step before committing:
+
+```bash
+python -X utf8 tools/sync_gitbook.py --prune-reexport
+python -X utf8 tools/sync_gitbook.py --check
+git add -A notes/
 ```
 
 Then open GitBook, verify sync, preview and publish as needed.

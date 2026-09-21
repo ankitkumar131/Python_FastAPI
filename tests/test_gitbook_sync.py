@@ -309,6 +309,40 @@ class DashboardTests(unittest.TestCase):
         self.assertIn('Node &amp; Express', dashboard)
         sync.check(self.config)
 
+    def test_every_course_card_targets_a_page_that_exists(self):
+        dashboard = (self.notes / 'README.md').read_text()
+        cards = {row.split('href="')[1].split('"')[0]
+                 for row in dashboard.splitlines() if 'data-card-target' not in row and 'href="' in row}
+        self.assertEqual(cards, {'00-course-guide.md', 'courses/node-express/README.md'})
+        for target in cards:
+            self.assertTrue((self.notes / target).is_file(), f'missing card target {target}')
+
+    def test_gitbook_reexport_shadow_pages_are_reported_and_pruned(self):
+        # GitBook's export writes the same pages back lower-cased and folder-nested.
+        shadow = self.notes / 'node-express/01-node'
+        shadow.mkdir(parents=True)
+        (shadow / 'intro.md').write_text('# Node intro\n[Course](../README.md)\n')
+        with self.assertRaisesRegex(ValueError, 'shadow'):
+            sync.check(self.config)
+        sync.prune_reexport(self.config)
+        self.assertFalse(shadow.exists())
+        sync.check(self.config)
+
+    def test_shadow_page_without_a_published_counterpart_is_kept(self):
+        unique = self.notes / 'node-express/01-node/extra.md'
+        unique.parent.mkdir(parents=True)
+        unique.write_text('# Written in GitBook only\n')
+        with self.assertRaisesRegex(ValueError, 'no published counterpart'):
+            sync.prune_reexport(self.config)
+        self.assertEqual(unique.read_text(), '# Written in GitBook only\n')
+
+    def test_two_pages_with_one_gitbook_page_path_are_rejected(self):
+        # `intro.md` and `intro/README.md` are both published, but GitBook would show one page.
+        self.add_source_page('01-node/intro/README.md', '# Deep dive\n')
+        self.write_generated()
+        with self.assertRaisesRegex(ValueError, 'share one GitBook page path'):
+            sync.check(self.config)
+
     def test_offline_generation_is_repeatable(self):
         first = sync.render(self.config)
         self.write_generated()
