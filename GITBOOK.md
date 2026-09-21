@@ -35,7 +35,11 @@ There are **455 navigation pages**:
 Folder indexes are navigation pages, not extra lessons. Source directory README
 pages are reused as folder landing pages and counted only once among imported pages.
 The three existing courses were not refreshed while adding DSA and Spring Boot;
-their chapters, manifests and indexes remain byte-for-byte unchanged.
+their chapters, manifests and indexes remain byte-for-byte unchanged. GitBook's own
+re-export of the same space — 454 lower-cased, folder-nested copies of pages that are
+already published here — was removed when the dashboard was reconciled; see
+[Dashboard cards for DSA and Spring Boot](#dashboard-cards-for-dsa-and-spring-boot).
+Every chapter is now published exactly once.
 
 Node/Express retains its 29 previously recorded unavailable references. React's
 existing copy retains one directory-only unavailable reference; all five forms
@@ -167,27 +171,80 @@ accessible from the sidebar. Use the source-repository link for runnable Java fi
 
 The dashboard's **Source repositories** table links all five courses to their
 GitHub repositories and configured study branches. These external links are
-separate from the local GitBook course-card destinations. The generator reads the
-links from `gitbook-sources.json`; the local course now declares its own
-`repository` and `branch`, just like the imported sources.
+separate from the local GitBook course-card destinations. The generator reads the links from `gitbook-sources.json`; the local course now declares
+its own `repository` and `branch`, just like the imported sources.
 
-The later GitBook export (`8d09ae5`) changed the dashboard, sidebar and course paths
-and currently displays three course cards. The repository-link update preserves
-that exported layout and adds links for **all five configured repositories**.
-It does not regenerate navigation or revert the export. Consequently the existing
-strict importer `--check` reports generated-file drift (already present before this
-change). Reconcile the GitBook-exported layout with the generator before running a
-full regeneration; do not blindly overwrite the exported navigation to clear that check.
+## Dashboard cards for DSA and Spring Boot
+
+A card exists for every configured course, because the dashboard is generated from
+`gitbook-sources.json` rather than hand-maintained. Two repository problems still kept the
+**DSA-in-java** and **Springboot** cards from appearing under *Choose your learning path*:
+
+1. **GitBook's re-export shadowed every published page.** After the five-course import,
+   GitBook wrote the space back into this repository in its own serialization: lower-cased,
+   folder-nested paths, where a page with children becomes `<page>/README.md`. The imported
+   `courses/dsa-in-java/DSA-Java-30-Days/...` reappeared as `dsa-in-java/dsa-java-30-days/...`,
+   the other courses reappeared the same way, and the local course reappeared as
+   `notes/00-course-guide/` beside `notes/00-course-guide.md`. 454 such copies were tracked,
+   and the exported dashboard pointed its card targets at them (`href="dsa-in-java/"`).
+2. **A card is only rendered when its target resolves to a page.** While both layouts exist,
+   a target such as `dsa-in-java/` or `00-course-guide/` is ambiguous — the same page is
+   reachable at two paths, and for the FastAPI course a file page and a folder page compete
+   for one path. Cards whose target cannot be resolved are dropped from the card view, which
+   is why exactly the two newest courses disappeared from *Choose your learning path*.
+
+### What was changed in this repository
+
+| Change | Effect |
+|---|---|
+| Removed 454 GitBook re-exported copies | One published page per chapter; no competing page paths |
+| Regenerated `notes/README.md` | Five cards, each targeting a real page: `00-course-guide.md`, `courses/node-express/README.md`, `courses/understanding-react/README.md`, `courses/dsa-in-java/README.md`, `courses/springboot/README.md` |
+| Regenerated `notes/SUMMARY.md` | The sidebar lists all five courses with their nested chapters (455 unique pages) |
+| Added `--prune-reexport` and stricter `--check` | Unmanaged pages and colliding page paths are detected instead of silently published |
+
+Every file `--prune-reexport` removed already had a published counterpart with the same
+GitBook page path (case-folded, `README` folded into its folder). A page that exists only in
+GitBook is never deleted: the command lists it and stops. The imported source revisions were
+not touched — DSA-in-java `150cce7` on `arena/01a0bf70-dsa-in-java` (85 published pages) and
+Springboot `1cc8be4` on `arena/01a0bfa7-springboot` (101 published pages) are the current
+branch tips, so no re-import was needed.
+
+### Make the cards appear in the hosted space
+
+A repository change cannot click Publish, and GitBook only shows content it has imported:
+
+1. Push/merge the publishing branch so the GitBook-connected branch contains this commit.
+   Use the branch configured in Git Sync — if Git Sync follows `arena/01a0b045-python-fastapi`,
+   merge `arena/01a0c351-python-fastapi` into it (or select the new branch), then let Git Sync
+   import the revision.
+2. Confirm the sync direction. If the connection is set to **GitBook → GitHub** only, GitBook
+   never receives repository changes: switch it to GitHub → GitBook (or bidirectional), or add
+   the two missing cards in the GitBook editor instead.
+3. Open **Cognivolt Docs** → **Git Sync** and verify repository, branch and project directory
+   `notes/`.
+4. Open the Dashboard in the preview, confirm **five** cards under *Choose your learning path*,
+   then click **DSA-in-java Notes** and **Springboot Notes** and check their sidebar groups
+   (`DSA-Java-30-Days`, `practical`, `INDEX`; `java-springboot-backend`, `cheatsheets`,
+   `projects`).
+5. Publish/merge the imported change if the site workflow stages change requests.
+
+If only three cards still appear after the import, the space is serving an older revision:
+re-check the synced commit, then the configured branch, before editing the cards by hand.
 
 ## GitBook settings: keep the existing connection
 
 | Setting | Value |
 |---|---|
 | Repository | `ankitkumar131/Python_FastAPI` |
-| Branch | `arena/01a0b045-python-fastapi` |
+| Branch | the branch Git Sync follows; `arena/01a0b045-python-fastapi` when the space was connected, `arena/01a0c351-python-fastapi` for the reconciled dashboard |
 | Project directory | `notes/` |
 | Initial direction, if setting up again | **GitHub → GitBook** |
 | Space mapping | `./` (relative to the `notes/` project directory) |
+
+The branch in that table must be the branch that contains this commit. If Git Sync follows
+an older publishing branch, merge this one into it or point Git Sync at this branch; the
+dashboard, sidebar and one-page-per-chapter layout described above only reach the space
+through the branch GitBook imports.
 
 `notes/gitbook-docs.yaml` retains the original `python-fastapi` **key and path**.
 Only the display title becomes **Learning library**. Do not rename the key merely
@@ -285,18 +342,31 @@ git status --short
    archive through `gh`, imports the selected existing files and regenerates
    dashboard/navigation. It is explicit network activity, not a background job.
 2. `--check` performs read-only, offline checks of generated files, sidebar coverage,
-   card/local links and imported hashes. It does not claim runtime correctness of
-   the Java, Spring Boot, Node/Express or React code samples or test GitBook's hosted rendering.
+   card/local links, imported hashes, colliding GitBook page paths and unmanaged pages
+   under `notes/`. It does not claim runtime correctness of the Java, Spring Boot,
+   Node/Express or React code samples or test GitBook's hosted rendering.
 3. The existing checker verifies the original FastAPI course and examples.
 4. The unittest command checks importer/navigation behaviour without network calls.
 5. Review the diff and status, including new or removed chapters. Commit the intended
-   files and push **`arena/01a0b045-python-fastapi`**. GitBook then imports this branch.
+   files and push the branch Git Sync follows. GitBook then imports that branch.
 
 To regenerate just the dashboard/overviews/sidebar without fetching any repository:
 
 ```bash
 python tools/sync_gitbook.py
 ```
+
+If `--check` reports unmanaged pages under `notes/`, GitBook has written its own
+re-serialized copy of the space back into this repository (lower-cased, folder-nested
+paths). Review that list, then remove the copies whose pages are already published here:
+
+```bash
+python tools/sync_gitbook.py --prune-reexport
+python tools/sync_gitbook.py --check
+```
+
+`--prune-reexport` refuses to delete anything that has no published counterpart, so a page
+that only ever existed in GitBook is reported for manual review instead of being lost.
 
 Refreshing downloads a bounded archive, accepts only regular Markdown files with
 safe paths, preserves their relative hierarchy, and removes only obsolete files
@@ -324,19 +394,28 @@ group will be generated without requiring a new GitBook space or guessed URLs.
 A registry entry is publication configuration, not permission to copy unrelated
 private content: publish only repositories you own or are authorized to redistribute.
 
-## Verification for the original five-course import
+## Verification for the five-course publication
 
-The figures below record the checks before the later GitBook export described above.
-
-The complete Python test suite passes **50 tests**, including 32 offline dashboard/importer
+The complete Python test suite passes **56 tests**, including 38 offline dashboard/importer
 tests. Both documentation checkers pass: the original 25-page FastAPI course and the
-five-course, 455-page GitBook navigation. All 186 new DSA/Spring Boot source hashes
+five-course, 455-page GitBook navigation. All 186 DSA/Spring Boot source hashes
 and fenced code examples match the pinned source archives. Every selected page
-occurs exactly once in the sidebar. Existing courses and their manifests are
-byte-for-byte unchanged; all publication hashes and local/card links validate. Tests
-cover deep nesting, folder ordering, reused source READMEs, safe stale-index cleanup,
-unmanaged-file protection, encoded paths, and directory-link resolution. The existing
-upstream Starlette/AnyIO deprecation warning remains unrelated to the dashboard.
+occurs exactly once in the sidebar, and `--check` also proves that no two published pages
+share a GitBook page path and that no unmanaged page shadows the publication. Existing
+courses and their manifests are byte-for-byte unchanged; all publication hashes and
+local/card links validate. Tests cover deep nesting, folder ordering, reused source READMEs,
+safe stale-index cleanup, unmanaged-file protection, encoded paths, directory-link
+resolution, card targets that really exist, and the re-export prune that refuses to delete a
+page with no published counterpart. The existing upstream Starlette/AnyIO deprecation
+warning remains unrelated to the dashboard.
+
+Run it with the pinned runtime packages installed:
+
+```bash
+pip install -r requirements.txt
+python -m pytest tests -q
+```
+
 
 Hosted GitBook rendering/publishing was not executed from this session. After Git
 Sync imports the publishing commit, verify all five cards and representative pages

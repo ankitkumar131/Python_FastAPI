@@ -1,11 +1,20 @@
 """Publish GitBook course copies from public GitHub repositories without executing them.
 
-python tools/sync_gitbook.py --refresh   # Fetch selected branch commits with gh.
-python tools/sync_gitbook.py            # Regenerate dashboard/navigation offline.
-python tools/sync_gitbook.py --check    # Read-only validation; no network required.
+python tools/sync_gitbook.py --refresh        # Fetch selected branch commits with gh.
+python tools/sync_gitbook.py                 # Regenerate dashboard/navigation offline.
+python tools/sync_gitbook.py --check         # Read-only validation; no network required.
+python tools/sync_gitbook.py --prune-reexport  # Delete GitBook's shadow copies of these pages.
 
 Sources stay in their original repositories. Imported files are generated publication
 copies, not an independent two-way GitBook connection to those repositories.
+
+GitBook's own export (the "Export content" download, or a GitBook -> GitHub sync) writes
+the same page tree back with lower-cased, folder-nested paths: a page that has children
+becomes `<page>/README.md`, and every slug is lower-cased. Keeping both copies in this
+repository publishes each chapter twice and is how dashboard cards end up pointing at
+pages the space never received. `--check` reports such unmanaged pages, page paths that
+two published pages would share, and `--prune-reexport` removes the copies whose page
+path is already published here. Pages without a published counterpart are never deleted.
 """
 from __future__ import annotations
 
@@ -277,6 +286,81 @@ def write_generated(config: dict) -> None:
 
 
 
+def page_path(name: str) -> str:
+    """GitBook page path for a published file: lower-cased, `.md` dropped, README folded.
+
+    `course/part/README.md` and `course/part.md` describe the same GitBook page, which is
+    exactly the collision GitBook's re-export produces when a page gains children.
+    """
+    slug = re.sub(r'\.md$', '', name, flags=re.IGNORECASE)
+    return re.sub(r'(?:^|/)readme$', '', slug, flags=re.IGNORECASE).strip('/').lower()
+
+
+def publication_scope(config: dict) -> set[Path]:
+    """Every Markdown file this publication manages: generated pages, local chapters, imports."""
+    scope = set(render(config)) | set(NOTES.glob(config['local']['chapter_glob']))
+    for course in config['imports']:
+        scope |= {path for path in destination(course).rglob('*') if path.is_file()}
+    return scope
+
+
+def stray_pages(config: dict) -> list[Path]:
+    """Markdown under notes/ that no registry entry publishes (e.g. a GitBook re-export copy)."""
+    scope = publication_scope(config)
+    return sorted((path for path in NOTES.rglob('*.md') if not path.is_symlink() and path not in scope),
+                  key=lambda path: path.relative_to(NOTES).as_posix())
+
+
+def duplicate_page_paths(config: dict) -> dict[str, list[str]]:
+    """Page paths that two published pages would share in GitBook, with both file names."""
+    groups: dict[str, list[str]] = {}
+    for path in sorted(publication_scope(config)):
+        groups.setdefault(page_path(path.relative_to(NOTES).as_posix()), []).append(
+            path.relative_to(NOTES).as_posix())
+    return {slug: names for slug, names in groups.items() if len(names) > 1}
+
+
+def reexport_target(name: str, config: dict) -> str | None:
+    """Published path whose page a GitBook re-export copy of `name` duplicates, if any.
+
+    GitBook writes each course as its own lower-cased folder (`dsa-in-java/...`) next to the
+    registry location (`courses/dsa-in-java/...`), and the local course as the folder of its
+    entry page (`00-course-guide/...`) instead of the flat chapters.
+    """
+    first, _, rest = name.partition('/')
+    if not rest:
+        return None
+    if any(first == course['id'] for course in config['imports']):
+        return f'courses/{name}'
+    if first == PurePosixPath(config['local']['entry']).stem:
+        return rest if rest != 'README.md' else config['local']['entry']
+    return None
+
+
+def prune_reexport(config: dict) -> None:
+    """Delete GitBook's re-exported copies, but never a page this publication does not have."""
+    scope = publication_scope(config)
+    published = {page_path(path.relative_to(NOTES).as_posix()) for path in scope}
+    strays = stray_pages(config)
+    unmatched = []
+    for path in strays:
+        name = path.relative_to(NOTES).as_posix()
+        target = reexport_target(name, config)
+        if target is None or page_path(target) not in published:
+            unmatched.append(path)
+    if unmatched:
+        raise ValueError('Refusing to delete unmanaged pages with no published counterpart: '
+                         + ', '.join(str(path.relative_to(ROOT)) for path in unmatched[:10]))
+    for path in strays:
+        path.unlink()
+    for folder in sorted({path.parent for path in strays}, key=lambda path: len(path.parts), reverse=True):
+        while folder != NOTES and folder.exists() and not any(folder.iterdir()):
+            folder.rmdir()
+            folder = folder.parent
+    print(f'Removed {len(strays)} GitBook re-exported page(s); one published page per chapter remains.')
+
+
+
 def source_repositories(config: dict) -> list[str]:
     """Keep source links separate from the cards that open local GitBook lessons."""
     lines = ['### Source repositories', '',
@@ -370,6 +454,15 @@ def check(config: dict) -> None:
             raise ValueError(f'{path.relative_to(ROOT)} is stale; run python tools/sync_gitbook.py')
     for course in config['imports']:
         assert_unedited(course)
+    duplicates = duplicate_page_paths(config)
+    if duplicates:
+        raise ValueError('Two published pages share one GitBook page path: '
+                         + '; '.join('/'.join(names) for names in duplicates.values()))
+    strays = stray_pages(config)
+    if strays:
+        listed = ', '.join(str(path.relative_to(ROOT)) for path in strays[:5])
+        raise ValueError(f'{len(strays)} unmanaged page(s) shadow the publication ({listed}); '
+                         'review them, then run python tools/sync_gitbook.py --prune-reexport')
     summary = (NOTES / 'SUMMARY.md').read_text()
     entries = re.findall(r'^\s*\* \[[^\]]+\]\(([^)]+)\)$', summary, re.M)
     if len(entries) != len(set(entries)):
@@ -398,12 +491,17 @@ def main() -> None:
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument('--refresh', action='store_true')
     mode.add_argument('--check', action='store_true')
+    mode.add_argument('--prune-reexport', dest='prune_reexport', action='store_true')
     args = parser.parse_args()
     config = json.loads((ROOT / 'gitbook-sources.json').read_text())
     ids = [course['id'] for course in config['imports']]
     if len(ids) != len(set(ids)):
         raise ValueError('Imported course IDs must be unique')
     if args.check:
+        check(config)
+        return
+    if args.prune_reexport:
+        prune_reexport(config)
         check(config)
         return
     if args.refresh:
